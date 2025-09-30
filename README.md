@@ -98,13 +98,13 @@ Intelligent-Onboarding-Assistant/
 ```
 ### Team
 
-Lakshmi Vandhanie Ganesh
-Zankhana Pratik Mehta
-Mithun Dineshkumar
-Saran Jagadeesan Uma
-Akshaj Nevgi
+Lakshmi Vandhanie Ganesh, 
+Zankhana Pratik Mehta, 
+Mithun Dineshkumar, 
+Saran Jagadeesan Uma, 
+Akshaj Nevgi, 
 
 
-License
+### License
 This project is licensed under the MIT License. See LICENSE file for details.
 
