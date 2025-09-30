@@ -6,6 +6,9 @@ An intelligent RAG-based onboarding assistant that processes GitLab's public han
 
 New employees face information overload when navigating 1000+ pages of company documentation and meeting recordings. This system consolidates GitLab's publicly available handbook and YouTube meeting transcripts into a conversational assistant that reduces query resolution time from 15-20 minutes to under 2 minutes.
 
+Project Status
+In Development - This project is currently being built as part of an MLOps course.
+
 **Dataset**: GitLab Public Handbook + YouTube Meeting Transcriptions
 
 ## Architecture
@@ -102,7 +105,7 @@ Lakshmi Vandhanie Ganesh,
 Zankhana Pratik Mehta, 
 Mithun Dineshkumar, 
 Saran Jagadeesan Uma, 
-Akshaj Nevgi, 
+Akshaj Nevgi
 
 
 ### License
