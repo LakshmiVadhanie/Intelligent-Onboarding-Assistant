@@ -76,7 +76,7 @@ New employees face information overload when navigating 1000+ pages of company d
 ```
 
 ## Project Structure
-
+```
 Intelligent-Onboarding-Assistant/
 ├── data/                   # Data storage (gitignored)
 │   ├── raw/                # Scraped handbook & transcripts
@@ -95,7 +95,7 @@ Intelligent-Onboarding-Assistant/
 ├── configs/                # Configuration files
 ├── scripts/                # Automation scripts
 └── docs/                   # Documentation
-
+```
 ### Team
 
 Lakshmi Vandhanie Ganesh
