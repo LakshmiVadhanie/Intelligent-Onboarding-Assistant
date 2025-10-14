@@ -103,11 +103,11 @@ Intelligent-Onboarding-Assistant/
 
 Lakshmi Vandhanie Ganesh, 
 Zankhana Pratik Mehta, 
-Mithun Dineshkumar, 
+Mithun Dineshkumar,
 Saran Jagadeesan Uma, 
 Akshaj Nevgi
 
 
 ### License
-This project is licensed under the MIT License. See LICENSE file for details.
+This project is licensed under the MIT License. See LICENSE file for details. 
 
