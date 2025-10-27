@@ -28,6 +28,17 @@ import re
 from urllib.parse import urlsplit
 from pathlib import Path
 
+# ---------------- Logging Setup ---------------- #
+try:
+    from .logging_utils import get_logger
+except ImportError:
+    import sys
+    sys.path.append(os.path.dirname(__file__))
+    from logging_utils import get_logger
+
+logger = get_logger(__name__)
+
+# ---------------- Project Paths ---------------- #
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 BASE_DATA_DIR = PROJECT_ROOT / "data"
 
@@ -40,38 +51,31 @@ except ImportError:
     sys.path.append(os.path.dirname(__file__))
     from preprocess import default_preprocessor
 
+
 def fetch_page_content(url: str) -> str:
     """
     Fetch raw HTML content from a given URL.
-
-    Args:
-        url (str): The URL to scrape.
-
-    Returns:
-        str: Raw HTML text of the page.
-
-    Raises:
-        Exception: If the request fails or the response is invalid.
     """
+    logger.info(f"Fetching page content from {url}")
     headers = {
         "User-Agent": "Mozilla/5.0 (compatible; GitLabScraper/1.0; +https://handbook.gitlab.com)"
     }
 
-    response = requests.get(url, headers=headers, timeout=15)
-    response.raise_for_status()
-    return response.text
+    try:
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        logger.info(f"Successfully fetched content from {url} (size={len(response.text)} bytes)")
+        return response.text
+    except Exception as e:
+        logger.exception(f"Failed to fetch content from {url}: {e}")
+        raise
 
 
 def parse_html_content(html: str) -> Dict[str, Any]:
     """
     Parse the HTML and extract only clean paragraph text from the page.
-
-    Args:
-        html (str): The raw HTML string.
-
-    Returns:
-        dict: { "title": str, "paragraphs": List[str] }
     """
+    logger.info("Parsing HTML content...")
     soup = BeautifulSoup(html, "html.parser")
 
     title_tag = soup.find("h1") or soup.find("title")
@@ -83,27 +87,29 @@ def parse_html_content(html: str) -> Dict[str, Any]:
         if p.get_text(strip=True)
     ]
 
-    return {
-        "title": title,
-        "paragraphs": paragraphs
-    }
+    logger.info(f"Parsed {len(paragraphs)} paragraphs from page: {title}")
+    return {"title": title, "paragraphs": paragraphs}
 
 
 def scrape_gitlab_handbook(url: str) -> Dict[str, Any]:
     """
     Orchestrates the full scraping pipeline: fetch → parse → return only paragraphs.
-
-    Raises:
-        Exception: Propagates exceptions from fetch_page_content() or parse_html_content().
     """
-    html = fetch_page_content(url)
-    parsed_data = parse_html_content(html)
-    return parsed_data
+    logger.info(f"Starting scrape for {url}")
+    try:
+        html = fetch_page_content(url)
+        parsed_data = parse_html_content(html)
+        logger.info(f"Scraping complete for {url}")
+        return parsed_data
+    except Exception as e:
+        logger.exception(f"Scraping failed for {url}: {e}")
+        raise
 
 
-# ---------------------- CLI & Save ---------------------- #
+# ---------------------- Utilities ---------------------- #
 def ensure_directory(path: str) -> None:
     os.makedirs(path, exist_ok=True)
+    logger.info(f"Ensured directory exists: {path}")
 
 
 def safe_filename_from_url(url: str) -> str:
@@ -115,13 +121,21 @@ def safe_filename_from_url(url: str) -> str:
 
 
 def save_json(data: Dict[str, Any], output_path: str) -> None:
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    try:
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        logger.info(f"Saved JSON file → {output_path}")
+    except Exception as e:
+        logger.exception(f"Failed to save JSON file {output_path}: {e}")
+        raise
+
 
 def default_data_dir() -> str:
     from pathlib import Path
     return str(Path(__file__).resolve().parents[2] / "data")
 
+
+# ---------------------- CLI Execution ---------------------- #
 URLS: List[str] = [
     "https://handbook.gitlab.com/handbook/company/mission/",
     "https://handbook.gitlab.com/handbook/values/",
@@ -133,16 +147,20 @@ if __name__ == "__main__":
 
     items: List[Dict[str, str]] = []
     for url in URLS:
-        data = scrape_gitlab_handbook(url)
-        pre = default_preprocessor.preprocess_for_scraper(
-            data.get("title", ""),
-            data.get("paragraphs", [])
-        )
-        items.append({
-            "title": pre["title"],
-            "paragraph": " ".join(pre.get("paragraphs", []))
-        })
+        try:
+            data = scrape_gitlab_handbook(url)
+            pre = default_preprocessor.preprocess_for_scraper(
+                data.get("title", ""),
+                data.get("paragraphs", [])
+            )
+            items.append({
+                "title": pre["title"],
+                "paragraph": " ".join(pre.get("paragraphs", []))
+            })
+            logger.info(f"Processed {url} successfully with {len(pre.get('paragraphs', []))} cleaned paragraphs.")
+        except Exception as e:
+            logger.exception(f"Skipping URL due to error: {url} ({e})")
 
     output_file = os.path.join(out_dir, "handbook_paragraphs.json")
     save_json(items, output_file)
-    print(output_file)
+    logger.info(f"✅ Scraper run completed. Output file: {output_file}")
