@@ -44,6 +44,17 @@ with DAG(
         bash_command='python /opt/airflow/dags/scripts/validate_data.py',
     )
 
+    # Bias Detection Task
+    bias_task = BashOperator(
+    task_id='bias_detection',
+    bash_command='python /opt/airflow/dags/scripts/bias_detection.py',
+    )
+
+    # Bias Mitigation Task
+    bias_mitigation_task = BashOperator(
+    task_id='bias_mitigation',
+    bash_command='python /opt/airflow/dags/scripts/bias_mitigation.py',
+    )
 
     # Notifying mail on success
     notify_success = EmailOperator(
@@ -57,4 +68,4 @@ with DAG(
     )
 
     # Define execution order
-    scrape_task >> transcribe_task >> validate_task >> notify_success
+    scrape_task >> transcribe_task >> validate_task >> bias_task >> bias_mitigation_task >> notify_success
