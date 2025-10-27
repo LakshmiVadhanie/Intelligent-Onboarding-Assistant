@@ -1,0 +1,27 @@
+version: '3'
+x-airflow-common:
+  &airflow-common
+  build: .
+  image: airflow-custom:latest
+  environment:
+    - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+    - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=True
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./data:/opt/airflow/data
+    - ./logs:/opt/airflow/logs
+    - ./airflow_home:/opt/airflow    # persist Airflow DB and configs
+  user: "${AIRFLOW_UID:-50000}:0"
+
+services:
+  airflow:
+    <<: *airflow-common
+    container_name: airflow_container
+    ports:
+      - "8081:8080"  # changed from 8080:8080 to 8081:8080 since my docker runs at 8080
+    command: webserver
+  scheduler:
+    <<: *airflow-common
+    container_name: airflow_scheduler
+    command: scheduler

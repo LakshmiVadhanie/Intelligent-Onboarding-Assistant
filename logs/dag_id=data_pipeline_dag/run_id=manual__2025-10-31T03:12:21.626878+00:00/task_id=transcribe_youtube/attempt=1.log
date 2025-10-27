@@ -1,0 +1,37 @@
+[2025-10-31T03:12:28.981+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_pipeline_dag.transcribe_youtube manual__2025-10-31T03:12:21.626878+00:00 [queued]>
+[2025-10-31T03:12:28.983+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_pipeline_dag.transcribe_youtube manual__2025-10-31T03:12:21.626878+00:00 [queued]>
+[2025-10-31T03:12:28.984+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2025-10-31T03:12:28.991+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): transcribe_youtube> on 2025-10-31 03:12:21.626878+00:00
+[2025-10-31T03:12:28.996+0000] {standard_task_runner.py:57} INFO - Started process 49 to run task
+[2025-10-31T03:12:29.001+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'data_pipeline_dag', 'transcribe_youtube', 'manual__2025-10-31T03:12:21.626878+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/data_pipeline_dag.py', '--cfg-path', '/tmp/tmp4r_69ktr']
+[2025-10-31T03:12:29.007+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask transcribe_youtube
+[2025-10-31T03:12:29.055+0000] {task_command.py:416} INFO - Running <TaskInstance: data_pipeline_dag.transcribe_youtube manual__2025-10-31T03:12:21.626878+00:00 [running]> on host e4b4c365bd85
+[2025-10-31T03:12:29.104+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='data_pipeline_dag' AIRFLOW_CTX_TASK_ID='transcribe_youtube' AIRFLOW_CTX_EXECUTION_DATE='2025-10-31T03:12:21.626878+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-31T03:12:21.626878+00:00'
+[2025-10-31T03:12:29.105+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-31T03:12:29.106+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'python /opt/airflow/dags/scripts/transcription.py']
+[2025-10-31T03:12:29.110+0000] {subprocess.py:86} INFO - Output:
+[2025-10-31T03:12:33.178+0000] {subprocess.py:93} INFO - Loading Whisper model...
+[2025-10-31T03:12:33.180+0000] {subprocess.py:93} INFO - Using 'base' model. This may take a moment on first run...
+[2025-10-31T03:12:43.761+0000] {subprocess.py:93} INFO -   0%|                                               | 0.00/139M [00:00<?, ?iB/s]  0%|▏                                      | 464k/139M [00:00<00:30, 4.71MiB/s]  3%|▉                                     | 3.52M/139M [00:00<00:06, 20.7MiB/s]  6%|██▍                                   | 8.70M/139M [00:00<00:03, 36.0MiB/s] 10%|███▋                                  | 13.6M/139M [00:00<00:03, 41.9MiB/s] 14%|█████▏                                | 18.9M/139M [00:00<00:02, 46.8MiB/s] 18%|██████▊                               | 24.7M/139M [00:00<00:02, 51.7MiB/s] 21%|████████▏                             | 29.7M/139M [00:00<00:02, 49.9MiB/s] 25%|█████████▋                            | 35.2M/139M [00:00<00:02, 52.2MiB/s] 30%|███████████▏                          | 40.9M/139M [00:00<00:01, 54.6MiB/s] 33%|████████████▋                         | 46.1M/139M [00:01<00:02, 46.0MiB/s] 39%|██████████████▉                       | 54.4M/139M [00:01<00:01, 56.7MiB/s] 43%|████████████████▍                     | 60.0M/139M [00:01<00:01, 49.2MiB/s] 47%|█████████████████▊                    | 65.1M/139M [00:01<00:01, 49.5MiB/s] 51%|███████████████████▏                  | 70.0M/139M [00:01<00:01, 46.1MiB/s] 55%|████████████████████▉                 | 76.4M/139M [00:01<00:01, 51.5MiB/s] 60%|██████████████████████▊               | 83.1M/139M [00:01<00:01, 56.3MiB/s] 64%|████████████████████████▎             | 88.7M/139M [00:01<00:01, 50.4MiB/s] 68%|█████████████████████████▊            | 93.9M/139M [00:02<00:00, 51.7MiB/s] 71%|███████████████████████████▏          | 99.0M/139M [00:02<00:00, 51.8MiB/s] 76%|█████████████████████████████▋         | 105M/139M [00:02<00:00, 55.9MiB/s] 80%|███████████████████████████████▏       | 111M/139M [00:02<00:00, 54.6MiB/s] 84%|████████████████████████████████▋      | 116M/139M [00:02<00:00, 52.8MiB/s] 88%|██████████████████████████████████▎    | 122M/139M [00:02<00:00, 52.6MiB/s] 92%|████████████████████████████████████   | 128M/139M [00:02<00:00, 56.0MiB/s] 96%|█████████████████████████████████████▌ | 133M/139M [00:02<00:00, 56.4MiB/s]100%|███████████████████████████████████████| 139M/139M [00:02<00:00, 49.5MiB/s]WARNING: [youtube:tab] YouTube said: INFO - 60 unavailable videos are hidden
+[2025-10-31T03:12:44.204+0000] {subprocess.py:93} INFO - 
+[2025-10-31T03:12:45.439+0000] {subprocess.py:93} INFO - WARNING: [youtube:tab] Incomplete data received. Retrying (1/3)...
+[2025-10-31T03:12:45.692+0000] {subprocess.py:93} INFO - WARNING: [youtube:tab] Incomplete data received. Retrying (2/3)...
+[2025-10-31T03:12:45.932+0000] {subprocess.py:93} INFO - WARNING: [youtube:tab] Incomplete data received. Retrying (3/3)...
+[2025-10-31T03:12:46.150+0000] {subprocess.py:93} INFO - WARNING: [youtube:tab] Incomplete data received. Giving up after 3 retries
+[2025-10-31T03:12:46.246+0000] {subprocess.py:93} INFO - ✓ Model loaded successfully!
+[2025-10-31T03:12:46.251+0000] {subprocess.py:93} INFO - 
+[2025-10-31T03:12:46.252+0000] {subprocess.py:93} INFO - Fetching playlist information...
+[2025-10-31T03:12:46.253+0000] {subprocess.py:93} INFO - Found 127 videos in playlist
+[2025-10-31T03:12:46.254+0000] {subprocess.py:93} INFO - 
+[2025-10-31T03:12:46.307+0000] {subprocess.py:93} INFO - Process all 127 videos? (y/n):
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO - Error: EOF when reading a line
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO - 
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO - Make sure you have installed:
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO - pip install openai-whisper yt-dlp
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO - And install ffmpeg:
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO -   Mac: brew install ffmpeg
+[2025-10-31T03:12:46.308+0000] {subprocess.py:93} INFO -   Ubuntu: sudo apt install ffmpeg
+[2025-10-31T03:12:46.721+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-10-31T03:12:46.783+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=data_pipeline_dag, task_id=transcribe_youtube, execution_date=20251031T031221, start_date=20251031T031228, end_date=20251031T031246
+[2025-10-31T03:12:46.840+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-31T03:12:46.878+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
