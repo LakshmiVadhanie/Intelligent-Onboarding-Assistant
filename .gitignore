@@ -1,3 +1,5 @@
-youtube/meeting_transcripts
-youtube/audio_files
-data/
+# Ignore all data, but allow DVC metafiles anywhere inside
+data/**
+!data/**/*.dvc
+!data/**/.gitignore
+!data/meeting_transcripts/
