@@ -12,6 +12,7 @@ Dependencies:
 """
 
 import os
+import sys
 import json
 import yt_dlp
 import whisper
@@ -19,17 +20,20 @@ from pathlib import Path
 from typing import List, Dict, Any, Tuple
 import argparse
 
-# --- Logging Setup ---
+# ---------------- Logging Setup ---------------- #
+# Ensure this script works both locally and inside Airflow Docker
+CURRENT_DIR = Path(__file__).resolve().parent
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.append(str(CURRENT_DIR))
+
 try:
-    from .logging_utils import get_logger
-except ImportError:
-    import sys
-    sys.path.append(os.path.dirname(__file__))
     from logging_utils import get_logger
+except ImportError:
+    from dags.scripts.logging_utils import get_logger  # fallback for Airflow package imports
 
 logger = get_logger(__name__)
 
-# --- Paths (project-root aware) ---
+# ---------------- Paths (project-root aware) ---------------- #
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 BASE_DATA_DIR = PROJECT_ROOT / "data"
 
@@ -40,6 +44,7 @@ AUDIO_DIR = BASE_DATA_DIR / 'audio_files'
 WHISPER_MODEL = 'base'
 
 
+# ---------------- Playlist & Audio Helpers ---------------- #
 def get_playlist_videos(playlist_url: str) -> List[Dict[str, str]]:
     """Fetch all video IDs and titles from a YouTube playlist."""
     ydl_opts = {'quiet': True, 'extract_flat': True, 'force_generic_extractor': False}
@@ -93,6 +98,7 @@ def clean_filename(filename: str, max_length: int = 100) -> str:
     return safe_name[:max_length]
 
 
+# ---------------- Core Processing Logic ---------------- #
 def process_videos(videos: List[Dict[str, str]],
                    output_dir: Path,
                    audio_dir: Path,
@@ -191,6 +197,7 @@ def process_videos(videos: List[Dict[str, str]],
     logger.info(f"Audio files saved to: {audio_dir}")
 
 
+# ---------------- CLI Entry ---------------- #
 def main():
     parser = argparse.ArgumentParser(description="Transcribe a YouTube playlist with Whisper.")
     parser.add_argument("--limit", type=int, default=3,

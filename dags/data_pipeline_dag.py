@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.operators.email import EmailOperator
 from datetime import datetime
 
 # Define default args
@@ -7,6 +8,9 @@ default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
     'start_date': datetime(2024, 1, 1),
+    'email': ['zankhujunk@gmail.com'],       
+    'email_on_failure': True,                
+    'email_on_retry': False,
     'retries': 0,
 }
 
@@ -40,5 +44,17 @@ with DAG(
         bash_command='python /opt/airflow/dags/scripts/validate_data.py',
     )
 
+
+    # Notifying mail on success
+    notify_success = EmailOperator(
+    task_id='notify_success',
+    to='zankhujunk@gmail.com',
+    subject='Data Pipeline Succeeded',
+    html_content="""
+        <h3>Intelligent Onboarding Data Pipeline Completed Successfully!</h3>
+        <p>Both GitLab and YouTube data have been processed and validated.</p>
+    """,
+    )
+
     # Define execution order
-    scrape_task >> transcribe_task >> validate_task
+    scrape_task >> transcribe_task >> validate_task >> notify_success

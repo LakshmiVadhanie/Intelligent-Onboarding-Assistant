@@ -2,21 +2,12 @@
 GitLab Handbook Web Scraper
 ===========================
 
-This module provides functions to scrape structured content from
-GitLab's public handbook pages such as:
+This module scrapes structured content from GitLab's public handbook pages:
     https://handbook.gitlab.com/handbook/values/
     https://handbook.gitlab.com/handbook/marketing/blog/
-    ...
+    etc.
 
-It extracts the main textual content — including the page title, headings,
-and paragraphs — and returns a structured dictionary object.
-
-Dependencies:
-    - requests
-    - beautifulsoup4
-
-Install using:
-    pip install requests beautifulsoup4
+It extracts the title and paragraph text and saves them in a structured JSON file.
 """
 
 import requests
@@ -27,14 +18,19 @@ import os
 import re
 from urllib.parse import urlsplit
 from pathlib import Path
+import sys
 
 # ---------------- Logging Setup ---------------- #
+# Make sure scripts directory is in sys.path for Airflow
+CURRENT_DIR = Path(__file__).resolve().parent
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.append(str(CURRENT_DIR))
+
 try:
-    from .logging_utils import get_logger
-except ImportError:
-    import sys
-    sys.path.append(os.path.dirname(__file__))
     from logging_utils import get_logger
+except ImportError:
+    # Fallback for local direct runs
+    from dags.scripts.logging_utils import get_logger
 
 logger = get_logger(__name__)
 
@@ -42,29 +38,25 @@ logger = get_logger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 BASE_DATA_DIR = PROJECT_ROOT / "data"
 
+# Import preprocessor with dual compatibility
 try:
-    # Works when run as part of a package (python -m ...)
-    from .preprocess import default_preprocessor
+    from preprocess import default_preprocessor
 except ImportError:
-    # Works when run directly (python dags/scripts/scraper.py)
-    import sys, os
-    sys.path.append(os.path.dirname(__file__))
+    sys.path.append(str(CURRENT_DIR))
     from preprocess import default_preprocessor
 
 
+# ---------------- Core Scraping Logic ---------------- #
 def fetch_page_content(url: str) -> str:
-    """
-    Fetch raw HTML content from a given URL.
-    """
+    """Fetch raw HTML content from a given URL."""
     logger.info(f"Fetching page content from {url}")
     headers = {
         "User-Agent": "Mozilla/5.0 (compatible; GitLabScraper/1.0; +https://handbook.gitlab.com)"
     }
-
     try:
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
-        logger.info(f"Successfully fetched content from {url} (size={len(response.text)} bytes)")
+        logger.info(f"Fetched content from {url} (size={len(response.text)} bytes)")
         return response.text
     except Exception as e:
         logger.exception(f"Failed to fetch content from {url}: {e}")
@@ -72,9 +64,7 @@ def fetch_page_content(url: str) -> str:
 
 
 def parse_html_content(html: str) -> Dict[str, Any]:
-    """
-    Parse the HTML and extract only clean paragraph text from the page.
-    """
+    """Parse HTML and extract clean paragraph text from the page."""
     logger.info("Parsing HTML content...")
     soup = BeautifulSoup(html, "html.parser")
 
@@ -92,9 +82,7 @@ def parse_html_content(html: str) -> Dict[str, Any]:
 
 
 def scrape_gitlab_handbook(url: str) -> Dict[str, Any]:
-    """
-    Orchestrates the full scraping pipeline: fetch → parse → return only paragraphs.
-    """
+    """Orchestrates the full scraping pipeline: fetch → parse."""
     logger.info(f"Starting scrape for {url}")
     try:
         html = fetch_page_content(url)
@@ -106,7 +94,7 @@ def scrape_gitlab_handbook(url: str) -> Dict[str, Any]:
         raise
 
 
-# ---------------------- Utilities ---------------------- #
+# ---------------- Utility Functions ---------------- #
 def ensure_directory(path: str) -> None:
     os.makedirs(path, exist_ok=True)
     logger.info(f"Ensured directory exists: {path}")
@@ -131,11 +119,10 @@ def save_json(data: Dict[str, Any], output_path: str) -> None:
 
 
 def default_data_dir() -> str:
-    from pathlib import Path
     return str(Path(__file__).resolve().parents[2] / "data")
 
 
-# ---------------------- CLI Execution ---------------------- #
+# ---------------- CLI Execution ---------------- #
 URLS: List[str] = [
     "https://handbook.gitlab.com/handbook/company/mission/",
     "https://handbook.gitlab.com/handbook/values/",
@@ -157,10 +144,10 @@ if __name__ == "__main__":
                 "title": pre["title"],
                 "paragraph": " ".join(pre.get("paragraphs", []))
             })
-            logger.info(f"Processed {url} successfully with {len(pre.get('paragraphs', []))} cleaned paragraphs.")
+            logger.info(f"Processed {url} with {len(pre.get('paragraphs', []))} cleaned paragraphs.")
         except Exception as e:
             logger.exception(f"Skipping URL due to error: {url} ({e})")
 
     output_file = os.path.join(out_dir, "handbook_paragraphs.json")
     save_json(items, output_file)
-    logger.info(f"✅ Scraper run completed. Output file: {output_file}")
+    logger.info(f"Scraper run completed successfully. Output file: {output_file}")
