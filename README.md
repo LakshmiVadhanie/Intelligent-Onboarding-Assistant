@@ -44,42 +44,6 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 
 ## Architecture
 
-
-
-## Technology Stack
-
-- Orchestration: Apache Airflow
-- Embeddings: OpenAI text-embedding-3-large / Sentence-BERT
-- Vector Database: Pinecone
-- LLM: Claude 3.5 / GPT-4
-- API: FastAPI
-- Evaluation: RAGAS framework
-- Monitoring: MLflow, Prometheus, Grafana
-- Deployment: Docker
-
-## Key Features
-1. **Hybrid Retrieval System**
-- Combines semantic search (dense vectors) with keyword search (BM25)
-- Cross-encoder reranking for improved relevance
-- Handles both exact queries and conceptual questions
-
-2. **Multi-Modal Knowledge Base**
-- GitLab handbook (1000+ pages of markdown)
-- Meeting transcripts from YouTube (50+ videos via Whisper API)
-- Unified search across documents and discussions
-
-3. **Source Attribution**
-- Every answer includes clickable citations
-- Direct links to handbook sections or meeting timestamps
-- Confidence scores for transparency
-
-4. **MLOps Pipeline**
-- Automated data ingestion via Airflow DAGs
-- RAGAS evaluation (faithfulness, answer relevancy, context precision)
-- Experiment tracking with MLflow
-- Real-time monitoring with Prometheus/Grafana
-
-
 ##  Prerequisites
 
 - Python 3.10+
@@ -90,23 +54,58 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 
 ## Installation
 
-### 1. Clone Repository
-```bash
-  # Clone repository
-  git clone https://github.com/your-username/Intelligent-Onboarding-Assistant.git
-  cd Intelligent-Onboarding-Assistant
-  
-  # Create virtual environment
-  python -m venv venv
-  source venv/bin/activate  # Windows: venv\Scripts\activate
-  
-  # Install dependencies
-  pip install -r requirements.txt
-  
-  # Set up environment variables
-  cp .env.example .env
-  # Edit .env with your API keys
+The steps for User installation are as follows:
 
+1. Clone repository onto the local machine
+```
+git clone https://github.com/Thomas-George-T/Ecommerce-Data-MLOps.git
+```
+2. Check python version  >= 3.8
+```python
+python --version
+```
+3. Check if you have enough memory
+```docker
+docker run --rm "debian:bullseye-slim" bash -c 'numfmt --to iec $(echo $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE))))'
+```
+
+<hr>
+
+**FOR WINDOWS: Create a file called .env in the same folder as `docker-compose.yaml` and set the user as follows:**
+```
+AIRFLOW_UID=50000
+```
+**If you get the following error**
+```
+ValueError: Unable to configure handler 'processor'
+```
+**Setting the user manually like above fixes it**
+
+<hr>
+
+4. With Docker running, initialize the database. This step only has to be done once.
+```docker
+docker compose up airflow-init
+```
+5. Run airflow
+```docker
+docker-compose up
+```
+Wait until terminal outputs something similar to
+
+`app-airflow-webserver-1  | 127.0.0.1 - - [17/Feb/2023:09:34:29 +0000] "GET /health HTTP/1.1" 200 141 "-" "curl/7.74.0"`
+
+6. Visit localhost:8080 login with credentials
+
+```
+user:airflow2
+password:airflow2
+```
+7. Run the DAG by clicking on the play button on the right side of the window
+
+8. Stop docker containers
+```docker
+docker compose down
 ```
 
 ## Project Structure
