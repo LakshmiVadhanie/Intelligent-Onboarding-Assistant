@@ -1,0 +1,26 @@
+[2025-10-28T14:43:13.530-0400] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-28T14:43:13.533-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.preprocessing_tasks.chunk_documents manual__2025-10-28T18:43:01.549750+00:00 [queued]>
+[2025-10-28T14:43:13.534-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.preprocessing_tasks.chunk_documents manual__2025-10-28T18:43:01.549750+00:00 [queued]>
+[2025-10-28T14:43:13.534-0400] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-10-28T14:43:13.537-0400] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): preprocessing_tasks.chunk_documents> on 2025-10-28 18:43:01.549750+00:00
+[2025-10-28T14:43:13.541-0400] {standard_task_runner.py:72} INFO - Started process 9395 to run task
+[2025-10-28T14:43:13.543-0400] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'preprocessing_tasks.chunk_documents', 'manual__2025-10-28T18:43:01.549750+00:00', '--job-id', '53', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmpcfgin2j_']
+[2025-10-28T14:43:13.544-0400] {standard_task_runner.py:105} INFO - Job 53: Subtask preprocessing_tasks.chunk_documents
+[2025-10-28T14:43:13.556-0400] {task_command.py:467} INFO - Running <TaskInstance: onboarding_data_pipeline.preprocessing_tasks.chunk_documents manual__2025-10-28T18:43:01.549750+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-28T14:43:13.571-0400] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='team13@example.com' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='preprocessing_tasks.chunk_documents' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T18:43:01.549750+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T18:43:01.549750+00:00'
+[2025-10-28T14:43:13.572-0400] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-10-28T14:43:13.572-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-10-28T14:43:13.572-0400] {logging_mixin.py:190} INFO - Current task name:preprocessing_tasks.chunk_documents state:running start_date:2025-10-28 18:43:13.533492+00:00
+[2025-10-28T14:43:13.572-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline and current dag run status:running
+[2025-10-28T14:43:13.573-0400] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-28T14:43:13.573-0400] {logging_mixin.py:190} INFO - Simulating document chunking...
+[2025-10-28T14:43:13.575-0400] {python.py:240} INFO - Done. Returned value was: chunked_4
+[2025-10-28T14:43:13.577-0400] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-28T14:43:13.578-0400] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=onboarding_data_pipeline, task_id=preprocessing_tasks.chunk_documents, run_id=manual__2025-10-28T18:43:01.549750+00:00, execution_date=20251028T184301, start_date=20251028T184313, end_date=20251028T184313
+[2025-10-28T14:43:13.579-0400] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-10-28T14:43:13.580-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-10-28T14:43:13.580-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline queued_at:2025-10-28 18:43:01.561994+00:00
+[2025-10-28T14:43:13.580-0400] {logging_mixin.py:190} INFO - Task hostname:mithuns-macbook-pro.local operator:PythonOperator
+[2025-10-28T14:43:13.598-0400] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-28T14:43:13.606-0400] {taskinstance.py:3900} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2025-10-28T14:43:13.606-0400] {local_task_job_runner.py:245} INFO - ::endgroup::

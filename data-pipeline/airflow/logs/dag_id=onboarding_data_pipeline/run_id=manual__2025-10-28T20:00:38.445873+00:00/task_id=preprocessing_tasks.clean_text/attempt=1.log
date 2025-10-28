@@ -1,0 +1,193 @@
+[2025-10-28T16:00:48.541-0400] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-28T16:00:48.544-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.preprocessing_tasks.clean_text manual__2025-10-28T20:00:38.445873+00:00 [queued]>
+[2025-10-28T16:00:48.546-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.preprocessing_tasks.clean_text manual__2025-10-28T20:00:38.445873+00:00 [queued]>
+[2025-10-28T16:00:48.546-0400] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-10-28T16:00:48.549-0400] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): preprocessing_tasks.clean_text> on 2025-10-28 20:00:38.445873+00:00
+[2025-10-28T16:00:48.552-0400] {standard_task_runner.py:72} INFO - Started process 23329 to run task
+[2025-10-28T16:00:48.555-0400] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'preprocessing_tasks.clean_text', 'manual__2025-10-28T20:00:38.445873+00:00', '--job-id', '88', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmpnsdgigqh']
+[2025-10-28T16:00:48.556-0400] {standard_task_runner.py:105} INFO - Job 88: Subtask preprocessing_tasks.clean_text
+[2025-10-28T16:00:48.569-0400] {task_command.py:467} INFO - Running <TaskInstance: onboarding_data_pipeline.preprocessing_tasks.clean_text manual__2025-10-28T20:00:38.445873+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-28T16:00:48.586-0400] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='mehta.zan@northeastern.edu' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='preprocessing_tasks.clean_text' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T20:00:38.445873+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T20:00:38.445873+00:00'
+[2025-10-28T16:00:48.586-0400] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-10-28T16:00:48.587-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-10-28T16:00:48.587-0400] {logging_mixin.py:190} INFO - Current task name:preprocessing_tasks.clean_text state:running start_date:2025-10-28 20:00:48.544993+00:00
+[2025-10-28T16:00:48.587-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline and current dag run status:running
+[2025-10-28T16:00:48.587-0400] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-28T16:00:48.588-0400] {logging_mixin.py:190} INFO - Simulating text cleaning...
+[2025-10-28T16:00:48.590-0400] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/airflow/dags/main_pipeline_dag.py", line 28, in clean_all_text
+    raise Exception("Test failure: This is a simulated task failure to test Airflow email alerts.")
+Exception: Test failure: This is a simulated task failure to test Airflow email alerts.
+[2025-10-28T16:00:48.593-0400] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-10-28T16:00:48.594-0400] {logging_mixin.py:190} INFO - Task start:2025-10-28 20:00:48.544993+00:00 end:2025-10-28 20:00:48.593722+00:00 duration:0.048729
+[2025-10-28T16:00:48.594-0400] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): preprocessing_tasks.clean_text> dag:<DAG: onboarding_data_pipeline> dagrun:<DagRun onboarding_data_pipeline @ 2025-10-28 20:00:38.445873+00:00: manual__2025-10-28T20:00:38.445873+00:00, state:running, queued_at: 2025-10-28 20:00:38.462225+00:00. externally triggered: True>
+[2025-10-28T16:00:48.594-0400] {logging_mixin.py:190} INFO - Failure caused by Test failure: This is a simulated task failure to test Airflow email alerts.
+[2025-10-28T16:00:48.594-0400] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=onboarding_data_pipeline, task_id=preprocessing_tasks.clean_text, run_id=manual__2025-10-28T20:00:38.445873+00:00, execution_date=20251028T200038, start_date=20251028T200048, end_date=20251028T200048
+[2025-10-28T16:00:48.599-0400] {base.py:84} INFO - Retrieving connection 'smtp_default'
+[2025-10-28T16:00:48.600-0400] {email.py:272} INFO - Email alerting: attempt 1
+[2025-10-28T16:00:49.925-0400] {base.py:84} INFO - Retrieving connection 'smtp_default'
+[2025-10-28T16:00:49.925-0400] {email.py:272} INFO - Email alerting: attempt 1
+[2025-10-28T16:00:51.216-0400] {taskinstance.py:1234} ERROR - Failed to send email to: ['mehta.zan@northeastern.edu']
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/airflow/dags/main_pipeline_dag.py", line 28, in clean_all_text
+    raise Exception("Test failure: This is a simulated task failure to test Airflow email alerts.")
+Exception: Test failure: This is a simulated task failure to test Airflow email alerts.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 1442, in _email_alert
+    send_email(task.email, subject, html_content)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 282, in send_mime_email
+    smtp_conn.login(smtp_user, smtp_password)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 750, in login
+    raise last_exception
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-87fc48cba39sm86463246d6.15 - gsmtp')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 1232, in _handle_failure
+    task_instance.email_alert(error, failure_context["task"])
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3604, in email_alert
+    _email_alert(task_instance=self, exception=exception, task=task)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 1444, in _email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/email.py", line 282, in send_mime_email
+    smtp_conn.login(smtp_user, smtp_password)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 750, in login
+    raise last_exception
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-87fc48a8a10sm86059546d6.10 - gsmtp')
+[2025-10-28T16:00:51.225-0400] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-28T16:00:51.226-0400] {standard_task_runner.py:124} ERROR - Failed to execute job 88 for task preprocessing_tasks.clean_text (Test failure: This is a simulated task failure to test Airflow email alerts.; 23329)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/airflow/dags/main_pipeline_dag.py", line 28, in clean_all_text
+    raise Exception("Test failure: This is a simulated task failure to test Airflow email alerts.")
+Exception: Test failure: This is a simulated task failure to test Airflow email alerts.
+[2025-10-28T16:00:51.274-0400] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-28T16:00:51.287-0400] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-28T16:00:51.288-0400] {local_task_job_runner.py:245} INFO - ::endgroup::

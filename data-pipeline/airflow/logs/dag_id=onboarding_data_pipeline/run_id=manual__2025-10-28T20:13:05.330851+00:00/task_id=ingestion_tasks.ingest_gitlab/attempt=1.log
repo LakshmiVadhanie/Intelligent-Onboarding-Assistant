@@ -1,0 +1,26 @@
+[2025-10-28T16:13:25.695-0400] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-28T16:13:25.699-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_gitlab manual__2025-10-28T20:13:05.330851+00:00 [queued]>
+[2025-10-28T16:13:25.701-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_gitlab manual__2025-10-28T20:13:05.330851+00:00 [queued]>
+[2025-10-28T16:13:25.701-0400] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-10-28T16:13:25.704-0400] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): ingestion_tasks.ingest_gitlab> on 2025-10-28 20:13:05.330851+00:00
+[2025-10-28T16:13:25.707-0400] {standard_task_runner.py:72} INFO - Started process 28062 to run task
+[2025-10-28T16:13:25.711-0400] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'ingestion_tasks.ingest_gitlab', 'manual__2025-10-28T20:13:05.330851+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmp5sy5w9ue']
+[2025-10-28T16:13:25.712-0400] {standard_task_runner.py:105} INFO - Job 101: Subtask ingestion_tasks.ingest_gitlab
+[2025-10-28T16:13:25.727-0400] {task_command.py:467} INFO - Running <TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_gitlab manual__2025-10-28T20:13:05.330851+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-28T16:13:25.744-0400] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='mithun.feb2024@gmail.com' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='ingestion_tasks.ingest_gitlab' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T20:13:05.330851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T20:13:05.330851+00:00'
+[2025-10-28T16:13:25.745-0400] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-10-28T16:13:25.745-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-10-28T16:13:25.745-0400] {logging_mixin.py:190} INFO - Current task name:ingestion_tasks.ingest_gitlab state:running start_date:2025-10-28 20:13:25.699522+00:00
+[2025-10-28T16:13:25.745-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline and current dag run status:running
+[2025-10-28T16:13:25.745-0400] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-28T16:13:25.746-0400] {logging_mixin.py:190} INFO - Simulating GitLab handbook ingestion...
+[2025-10-28T16:13:25.748-0400] {python.py:240} INFO - Done. Returned value was: gitlab_ingested_2
+[2025-10-28T16:13:25.750-0400] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-28T16:13:25.751-0400] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=onboarding_data_pipeline, task_id=ingestion_tasks.ingest_gitlab, run_id=manual__2025-10-28T20:13:05.330851+00:00, execution_date=20251028T201305, start_date=20251028T201325, end_date=20251028T201325
+[2025-10-28T16:13:25.753-0400] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-10-28T16:13:25.753-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-10-28T16:13:25.753-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline queued_at:2025-10-28 20:13:05.336246+00:00
+[2025-10-28T16:13:25.754-0400] {logging_mixin.py:190} INFO - Task hostname:mithuns-macbook-pro.local operator:PythonOperator
+[2025-10-28T16:13:25.765-0400] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-28T16:13:25.771-0400] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-28T16:13:25.771-0400] {local_task_job_runner.py:245} INFO - ::endgroup::

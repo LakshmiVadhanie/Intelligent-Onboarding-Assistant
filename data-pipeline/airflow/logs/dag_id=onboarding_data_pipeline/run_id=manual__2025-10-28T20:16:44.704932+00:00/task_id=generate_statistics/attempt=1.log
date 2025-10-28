@@ -1,0 +1,55 @@
+[2025-10-28T16:17:02.508-0400] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-28T16:17:02.511-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.generate_statistics manual__2025-10-28T20:16:44.704932+00:00 [queued]>
+[2025-10-28T16:17:02.513-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.generate_statistics manual__2025-10-28T20:16:44.704932+00:00 [queued]>
+[2025-10-28T16:17:02.513-0400] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-10-28T16:17:02.516-0400] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): generate_statistics> on 2025-10-28 20:16:44.704932+00:00
+[2025-10-28T16:17:02.520-0400] {standard_task_runner.py:72} INFO - Started process 29688 to run task
+[2025-10-28T16:17:02.523-0400] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'generate_statistics', 'manual__2025-10-28T20:16:44.704932+00:00', '--job-id', '109', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmp51sfx3y2']
+[2025-10-28T16:17:02.523-0400] {standard_task_runner.py:105} INFO - Job 109: Subtask generate_statistics
+[2025-10-28T16:17:02.540-0400] {task_command.py:467} INFO - Running <TaskInstance: onboarding_data_pipeline.generate_statistics manual__2025-10-28T20:16:44.704932+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-28T16:17:02.559-0400] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='mithun.feb2024@gmail.com' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='generate_statistics' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T20:16:44.704932+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T20:16:44.704932+00:00'
+[2025-10-28T16:17:02.560-0400] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-10-28T16:17:02.560-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-10-28T16:17:02.560-0400] {logging_mixin.py:190} INFO - Current task name:generate_statistics state:running start_date:2025-10-28 20:17:02.511850+00:00
+[2025-10-28T16:17:02.560-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline and current dag run status:running
+[2025-10-28T16:17:02.560-0400] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-28T16:17:02.561-0400] {logging_mixin.py:190} INFO - [generate_statistics] Start
+[2025-10-28T16:17:02.561-0400] {logging_mixin.py:190} INFO - [generate_statistics] context keys: ['conf', 'dag', 'dag_run', 'data_interval_end', 'data_interval_start', 'outlet_events', 'ds', 'ds_nodash', 'execution_date', 'expanded_ti_count', 'inlets', 'inlet_events', 'logical_date', 'macros', 'map_index_template', 'next_ds', 'next_ds_nodash', 'next_execution_date', 'outlets', 'params', 'prev_data_interval_start_success', 'prev_data_interval_end_success', 'prev_ds', 'prev_ds_nodash', 'prev_execution_date', 'prev_execution_date_success', 'prev_start_date_success', 'prev_end_date_success', 'run_id', 'task', 'task_instance', 'task_instance_key_str', 'test_mode', 'ti', 'tomorrow_ds', 'tomorrow_ds_nodash', 'triggering_dataset_events', 'ts', 'ts_nodash', 'ts_nodash_with_tz', 'var', 'conn', 'yesterday_ds', 'yesterday_ds_nodash', 'templates_dict']
+[2025-10-28T16:17:02.561-0400] {logging_mixin.py:190} INFO - [generate_statistics] Pulling XCom values...
+[2025-10-28T16:17:02.563-0400] {logging_mixin.py:190} INFO - [generate_statistics] gitlab_docs_count: None
+[2025-10-28T16:17:02.564-0400] {logging_mixin.py:190} INFO - [generate_statistics] youtube_count: None
+[2025-10-28T16:17:02.565-0400] {logging_mixin.py:190} INFO - [generate_statistics] blog_count: None
+[2025-10-28T16:17:02.566-0400] {logging_mixin.py:190} INFO - [generate_statistics] cleaned_count: None
+[2025-10-28T16:17:02.566-0400] {logging_mixin.py:190} INFO - [generate_statistics] chunks_count: None
+[2025-10-28T16:17:02.567-0400] {logging_mixin.py:190} INFO - [generate_statistics] stats dict: {'ingestion': {'gitlab_docs': 0, 'youtube_videos': 0, 'blog_posts': 0}, 'preprocessing': {'cleaned_documents': 0, 'chunks_created': 0}, 'timestamp': '2025-10-28T16:17:02.567010', 'dag_run_id': 'manual__2025-10-28T20:16:44.704932+00:00', 'totals': {'total_ingested': 0, 'total_processed': 0}}
+[2025-10-28T16:17:02.567-0400] {logging_mixin.py:190} INFO - [generate_statistics] Writing stats to: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data/pipeline_statistics.json
+[2025-10-28T16:17:02.567-0400] {logging_mixin.py:190} INFO - [generate_statistics] Pipeline statistics saved to /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data/pipeline_statistics.json
+[2025-10-28T16:17:02.568-0400] {logging_mixin.py:190} INFO - [generate_statistics] Stats JSON:
+{
+  "ingestion": {
+    "gitlab_docs": 0,
+    "youtube_videos": 0,
+    "blog_posts": 0
+  },
+  "preprocessing": {
+    "cleaned_documents": 0,
+    "chunks_created": 0
+  },
+  "timestamp": "2025-10-28T16:17:02.567010",
+  "dag_run_id": "manual__2025-10-28T20:16:44.704932+00:00",
+  "totals": {
+    "total_ingested": 0,
+    "total_processed": 0
+  }
+}
+[2025-10-28T16:17:02.568-0400] {logging_mixin.py:190} INFO - [generate_statistics] End
+[2025-10-28T16:17:02.568-0400] {python.py:240} INFO - Done. Returned value was: statistics_generated
+[2025-10-28T16:17:02.572-0400] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-28T16:17:02.572-0400] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=onboarding_data_pipeline, task_id=generate_statistics, run_id=manual__2025-10-28T20:16:44.704932+00:00, execution_date=20251028T201644, start_date=20251028T201702, end_date=20251028T201702
+[2025-10-28T16:17:02.575-0400] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-10-28T16:17:02.576-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-10-28T16:17:02.576-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline queued_at:2025-10-28 20:16:44.733351+00:00
+[2025-10-28T16:17:02.576-0400] {logging_mixin.py:190} INFO - Task hostname:mithuns-macbook-pro.local operator:PythonOperator
+[2025-10-28T16:17:02.617-0400] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-28T16:17:02.625-0400] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-10-28T16:17:02.625-0400] {local_task_job_runner.py:245} INFO - ::endgroup::
