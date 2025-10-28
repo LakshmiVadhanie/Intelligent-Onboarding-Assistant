@@ -164,13 +164,84 @@ Intelligent-Onboarding-Assistant/
     └── test_fairness_analysis.py
 ```
 
-### Team
+## Data Pipeline
 
-Lakshmi Vandhanie Ganesh, 
-Zankhana Pratik Mehta, 
-Mithun Dineshkumar,
-Saran Jagadeesan Uma, 
-Akshaj Nevgi
+Our data pipeline is modularized right from data ingestion to preprocessing to make our data ready for modeling. It is made sure that every module functions as expected by following Test Driven Development (TDD). This is achieved through enforcing tests for every module. 
+
+We utilize Apache Airflow for our pipeline. We create a DAG with our modules.
+
+![DAG Image](assets/dag.jpg "Airflow DAG")
+Pictured: Our Airflow DAG
+
+The following is the explanation of our Data pipeline DAG
+
+## Data Pipeline Components
+
+The data pipeline in this repository is modular and orchestrated by Airflow (see `airflow/dags/main_pipeline_dag.py`). Each module is implemented as a small, testable script under `scripts/` and is executed as a task in the DAG. The stages below map the common pipeline components to the actual scripts and files in this repo.
+
+1) Data acquisition / downloading
+- Purpose: fetch raw content from sources and persist to the local `data/` folder (or a DVC-tracked store).
+- Relevant scripts:
+  - `scripts/ingestion/gitlab_scraper.py` — scraper for handbook/documentation pages.
+  - `scripts/ingestion/blog_fetcher.py` — fetches and parses blog posts or RSS feeds.
+  - `scripts/ingestion/video_extractor.py` — collects video URLs and metadata (used with transcription tools).
+  - `scripts/ingestion/v1.py` — ingestion entrypoints / orchestration helper for ingestion flows.
+
+2) Data cleaning & preprocessing
+- Purpose: clean raw text and transcript artifacts, normalize formats, and prepare downstream inputs.
+- Relevant scripts:
+  - `scripts/preprocessing/transcript_cleaner.py` — main transcript/text cleaning utilities.
+  - `scripts/preprocessing/meeting_transcript_cleaner.py` — meeting-specific transcript cleaning and normalization.
+  - `scripts/preprocessing/chunking_strategy.py` — document chunking logic used to split large documents into retrieval-friendly pieces.
+
+Notes: by convention ingestion scripts write raw artifacts to `data/raw/` (or `data/`) and preprocessing writes cleaned outputs to `data/processed/` (or a repo `data/` path). When running via Airflow the DAG tasks pass file locations or use a shared configuration in `configs/pipeline_config.yaml` and `scripts/utils/config_loader.py`.
+
+3) Validation, anomaly detection & statistics
+- Purpose: validate schema, detect anomalies, and compute dataset statistics or reports.
+- Relevant scripts:
+  - `scripts/validation/data_validator.py` — validators and schema checks.
+  - `scripts/validation/bias_detector.py` — performs data slicing and bias checks.
+  - `scripts/validation/fairness_analysis.py` — fairness reporting and slice-level metrics.
+
+Outputs: anomaly reports and pipeline statistics are written to `data/anomaly_report.json` and `data/pipeline_statistics.json` which can be monitored and used to trigger alerts via `scripts/monitoring/alert_manager.py` or Airflow alert hooks.
+
+4) Feature engineering & downstream artifacts
+- Purpose: derive features, perform chunking/embedding-creation and produce artifacts used by retrieval or modeling.
+- Where to look:
+  - `scripts/preprocessing/chunking_strategy.py` is used to create chunks for the retrieval layer.
+  - Embedding generation and storage may be implemented in `scripts/utils/` or in downstream model code that consumes cleaned/processed data.
+
+If you need additional feature-engineering modules (RFM, geographic features, etc.) add them under `scripts/preprocessing/` and ensure they are called from the DAG.
+
+5) Orchestration (Airflow DAG)
+- Purpose: wire tasks together, handle retries, scheduling and logging.
+- The primary DAG is `airflow/dags/main_pipeline_dag.py`. Typical DAG task mapping:
+  - Ingestion task(s) -> call to `scripts/ingestion/*`
+  - Preprocessing task(s) -> call to `scripts/preprocessing/*`
+  - Validation & statistics task(s) -> call to `scripts/validation/*`
+  - Monitoring/alerting -> call to `scripts/monitoring/alert_manager.py`
+
+Each DAG task should be idempotent and write outputs to deterministic paths (so DVC can track them and CI can assert reproducibility).
+
+6) Data versioning & model tracking
+- Data produced by the pipeline should be recorded with DVC (`data-pipeline/data.dvc`) and models/experiments tracked with MLflow. Use `dvc add` for large artifacts and `mlflow` APIs to log experiments.
+
+Example: run an ingestion + preprocess pair locally (manual/debug run):
+
+```bash
+source .venv/bin/activate
+python scripts/ingestion/v1.py         # run ingestion step (entrypoint)
+python scripts/preprocessing/transcript_cleaner.py   # run local preprocessing
+python scripts/validation/data_validator.py         # optional validation run
+```
+
+When running via Airflow, enable and trigger the DAG in the web UI or run `airflow dags trigger <dag_id>` to launch the full pipeline.
+
+---
+
+
+
+
 
 ### License
 This project is licensed under the MIT License. See LICENSE file for details.
