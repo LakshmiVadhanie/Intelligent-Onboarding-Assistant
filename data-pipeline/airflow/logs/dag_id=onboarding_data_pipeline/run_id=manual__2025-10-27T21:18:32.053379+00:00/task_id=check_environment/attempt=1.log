@@ -1,0 +1,21 @@
+[2025-10-27T17:18:35.510-0400] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.check_environment manual__2025-10-27T21:18:32.053379+00:00 [queued]>
+[2025-10-27T17:18:35.512-0400] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.check_environment manual__2025-10-27T21:18:32.053379+00:00 [queued]>
+[2025-10-27T17:18:35.512-0400] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2025-10-27T17:18:35.515-0400] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): check_environment> on 2025-10-27 21:18:32.053379+00:00
+[2025-10-27T17:18:35.518-0400] {standard_task_runner.py:57} INFO - Started process 64372 to run task
+[2025-10-27T17:18:35.521-0400] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'check_environment', 'manual__2025-10-27T21:18:32.053379+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmp_tt_kci9']
+[2025-10-27T17:18:35.525-0400] {standard_task_runner.py:85} INFO - Job 2: Subtask check_environment
+[2025-10-27T17:18:35.540-0400] {task_command.py:415} INFO - Running <TaskInstance: onboarding_data_pipeline.check_environment manual__2025-10-27T21:18:32.053379+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-27T17:18:35.555-0400] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='team13@example.com' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='check_environment' AIRFLOW_CTX_EXECUTION_DATE='2025-10-27T21:18:32.053379+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-27T21:18:32.053379+00:00'
+[2025-10-27T17:18:35.556-0400] {logging_mixin.py:151} INFO - Checking environment setup...
+[2025-10-27T17:18:35.556-0400] {logging_mixin.py:151} INFO - ✓ Directory exists: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/data/raw
+[2025-10-27T17:18:35.556-0400] {logging_mixin.py:151} INFO - ✓ Directory exists: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/data/processed/cleaned
+[2025-10-27T17:18:35.557-0400] {logging_mixin.py:151} INFO - ✓ Directory exists: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/data/processed/chunked
+[2025-10-27T17:18:35.557-0400] {logging_mixin.py:151} INFO - ✓ Directory exists: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/data/curated
+[2025-10-27T17:18:35.557-0400] {logging_mixin.py:151} INFO - ✓ Directory exists: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/logs/pipeline
+[2025-10-27T17:18:35.557-0400] {logging_mixin.py:151} INFO - ✓ Config file found: /Users/mithundineshkumar/Documents/Development/MLOps/Project/MLOPS-Test1/data-pipeline/configs/pipeline_config.yaml
+[2025-10-27T17:18:35.557-0400] {logging_mixin.py:151} INFO - Environment check complete!
+[2025-10-27T17:18:35.557-0400] {python.py:194} INFO - Done. Returned value was: environment_ready
+[2025-10-27T17:18:35.565-0400] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=onboarding_data_pipeline, task_id=check_environment, execution_date=20251027T211832, start_date=20251027T211835, end_date=20251027T211835
+[2025-10-27T17:18:35.574-0400] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-27T17:18:35.582-0400] {taskinstance.py:2776} INFO - 3 downstream tasks scheduled from follow-on schedule check

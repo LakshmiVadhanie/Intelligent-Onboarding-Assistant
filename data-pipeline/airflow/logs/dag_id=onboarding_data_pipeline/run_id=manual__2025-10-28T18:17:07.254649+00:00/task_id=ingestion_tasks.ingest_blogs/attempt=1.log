@@ -1,0 +1,26 @@
+[2025-10-28T14:17:17.016-0400] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-28T14:17:17.019-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_blogs manual__2025-10-28T18:17:07.254649+00:00 [queued]>
+[2025-10-28T14:17:17.021-0400] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_blogs manual__2025-10-28T18:17:07.254649+00:00 [queued]>
+[2025-10-28T14:17:17.021-0400] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-10-28T14:17:17.024-0400] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): ingestion_tasks.ingest_blogs> on 2025-10-28 18:17:07.254649+00:00
+[2025-10-28T14:17:17.029-0400] {standard_task_runner.py:72} INFO - Started process 95302 to run task
+[2025-10-28T14:17:17.033-0400] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'onboarding_data_pipeline', 'ingestion_tasks.ingest_blogs', 'manual__2025-10-28T18:17:07.254649+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline_dag.py', '--cfg-path', '/var/folders/bq/zp7dztbn5yxb9ljzbt_99_dr0000gn/T/tmprgisfpbm']
+[2025-10-28T14:17:17.034-0400] {standard_task_runner.py:105} INFO - Job 40: Subtask ingestion_tasks.ingest_blogs
+[2025-10-28T14:17:17.057-0400] {task_command.py:467} INFO - Running <TaskInstance: onboarding_data_pipeline.ingestion_tasks.ingest_blogs manual__2025-10-28T18:17:07.254649+00:00 [running]> on host mithuns-macbook-pro.local
+[2025-10-28T14:17:17.080-0400] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='team13@example.com' AIRFLOW_CTX_DAG_OWNER='Team13' AIRFLOW_CTX_DAG_ID='onboarding_data_pipeline' AIRFLOW_CTX_TASK_ID='ingestion_tasks.ingest_blogs' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T18:17:07.254649+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T18:17:07.254649+00:00'
+[2025-10-28T14:17:17.081-0400] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-10-28T14:17:17.081-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-10-28T14:17:17.081-0400] {logging_mixin.py:190} INFO - Current task name:ingestion_tasks.ingest_blogs state:running start_date:2025-10-28 18:17:17.019966+00:00
+[2025-10-28T14:17:17.081-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline and current dag run status:running
+[2025-10-28T14:17:17.081-0400] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-28T14:17:17.082-0400] {logging_mixin.py:190} INFO - Simulating blog post ingestion...
+[2025-10-28T14:17:17.084-0400] {python.py:240} INFO - Done. Returned value was: blogs_ingested_1
+[2025-10-28T14:17:17.087-0400] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-28T14:17:17.087-0400] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=onboarding_data_pipeline, task_id=ingestion_tasks.ingest_blogs, run_id=manual__2025-10-28T18:17:07.254649+00:00, execution_date=20251028T181707, start_date=20251028T181717, end_date=20251028T181717
+[2025-10-28T14:17:17.089-0400] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-10-28T14:17:17.089-0400] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-10-28T14:17:17.089-0400] {logging_mixin.py:190} INFO - Dag name:onboarding_data_pipeline queued_at:2025-10-28 18:17:07.270312+00:00
+[2025-10-28T14:17:17.090-0400] {logging_mixin.py:190} INFO - Task hostname:mithuns-macbook-pro.local operator:PythonOperator
+[2025-10-28T14:17:17.128-0400] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-28T14:17:17.137-0400] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-10-28T14:17:17.138-0400] {local_task_job_runner.py:245} INFO - ::endgroup::
