@@ -1,6 +1,6 @@
 # Intelligent-Onboarding-Assistant
 
-An intelligent RAG-based onboarding assistant that processes GitLab's public handbook and meeting recordings to provide instant answers to new employee questions. This project demonstrates end-to-end MLOps practices including automated data pipelines, hybrid retrieval, evaluation metrics, and production deployment.
+An intelligent RAG-based onboarding assistant that processes GitLab's public handbook and meeting recordings to provide instant answers to new employee questions. This project demonstrates end-to-end MLOps practices including automated data pipelines, hybrid retrieval, evaluation metrics and production deployment.
 
 ## Project Overview
 
