@@ -1,15 +1,46 @@
-# Intelligent-Onboarding-Assistant
+# Intelligent Onboarding Assistant
 
-An intelligent RAG-based onboarding assistant that processes GitLab's public handbook and meeting recordings to provide instant answers to new employee questions. This project demonstrates end-to-end MLOps practices including automated data pipelines, hybrid retrieval, evaluation metrics and production deployment.
+[Lakshmi Vandhanie Ganesh](https://github.com/LakshmiVadhanie),
+[Zankhana Pratik Mehta](https://github.com/zankhana46),
+[Mithun Dineshkumar](https://github.com/Mithun3110),
+[Saran Jagadeesan Uma](https://github.com/Saran-Jagadeesan-Uma),
+[Akshaj Nevgi](https://github.com/Akshaj-N)
 
-## Project Overview
+# Introduction 
+The Intelligent Onboarding Assistant is a RAG (Retrieval-Augmented Generation) system designed to transform the employee onboarding experience by consolidating fragmented organizational knowledge into a conversational AI assistant. New employees typically face information overload, struggling to navigate thousands of pages of documentation and scattered meeting recordings to understand company culture, processes and policies. The project addresses these challenges by implementing a hybrid retrieval system that combines semantic search with keyword matching across multiple data sources and reducing the average query resolution time and cutting onboarding duration.
 
-New employees face information overload when navigating 1000+ pages of company documentation and meeting recordings. This system consolidates GitLab's publicly available handbook and YouTube meeting transcripts into a conversational assistant that reduces query resolution time from 15-20 minutes to under 2 minutes.
+This project demonstrates a complete MLOps pipeline encompassing automated data ingestion from multiple sources including company handbooks and meeting transcripts, intelligent chunking strategies, multi-modal knowledge integration and production-ready deployment infrastructure with continuous monitoring. The objectives of this project include preparing the data pipeline, implementing hybrid retrieval with cross-encoder reranking, establishing comprehensive evaluation frameworks using RAGAS metrics, deploying a containerized FastAPI service with CI/CD automation and demonstrating real-world production viability. Thus, this project serves as a practical demonstration of how modern MLOps practices combined with RAG can dramatically reduce onboarding time, decrease senior employee mentorship burden and ultimately transform the employee experience while delivering measurable business value in the competitive talent landscape.
 
-Project Status
-In Development - This project is currently being built as part of an MLOps course.
 
-**Dataset**: GitLab Public Handbook + YouTube Meeting Transcriptions
+# Dataset Information 
+
+The dataset contains GitLab's public documentation ecosystem which serves as a real-world proxy for enterprise onboarding materials. GitLab was selected as the project's data source due to its comprehensive handbook content (1000+ pages), publicly accessible meeting recordings, complete operational transparency and zero data access barriers. This combination provides the multi-modal and real-world complexity necessary to build and validate a robust onboarding assistant while avoiding legal and privacy constraints.
+
+## Data Card
+  
+| **Attribute**       | **Details**                           |
+|---------------------|---------------------------------------|
+| **Dataset Name**     | GitLab-Onboarding-Knowledge-v1        |
+| **Total Size**       | ~800MB - 1.5GB                        |
+| **Source**           | [GitLab Handbook](https://handbook.gitlab.com/) |
+| **Document Count**   | 1000+ handbook pages, 50+ videos      |
+| **Format**           | Markdown (handbook), MP4/transcripts (meetings) |
+| **Access**           | Public (CC BY-SA 4.0 license)         |
+
+
+## Data Sources
+
+1. **GitLab Handbook**: [GitLab Handbook](https://handbook.gitlab.com/)
+   - Web scraping via BeautifulSoup/Scrapy
+   - Markdown files from GitLab's public repository
+
+2. **Meeting Recordings**: [YouTube GitLab Channel](https://www.youtube.com/@Gitlab)
+   - Video URLs: [GitLab YouTube](https://www.youtube.com/@Gitlab)
+   - Transcription: YouTube API + Whisper (for non-transcribed videos)
+
+3. **GitLab Blog**: [GitLab Blog](https://about.gitlab.com/blog/)
+   - RSS feed parsing
+   - Filtered for onboarding-relevant topics
 
 ## Architecture
 
