@@ -1,0 +1,111 @@
+{
+  "total_posts": 20,
+  "successfully_processed": 20,
+  "failed": 0,
+  "relevant_posts": 20,
+  "processed_posts": [
+    {
+      "title": "Modernize Java applications quickly with GitLab Duo with Amazon Q",
+      "url": "https://about.gitlab.com/blog/modernize-java-applications-quickly-with-gitlab-duo-with-amazon-q/",
+      "relevant": true
+    },
+    {
+      "title": "Delivering faster and smarter scans with Advanced SAST",
+      "url": "https://about.gitlab.com/blog/delivering-faster-and-smarter-scans-with-advanced-sast/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab 18.5: Intelligence that moves software development forward",
+      "url": "https://about.gitlab.com/blog/gitlab-18-5-intelligence-that-moves-software-development-forward/",
+      "relevant": true
+    },
+    {
+      "title": "Claude Haiku 4.5 now available in GitLab Duo Agentic Chat",
+      "url": "https://about.gitlab.com/blog/claude-haiku-4-5-now-available-in-gitlab-duo-agentic-chat/",
+      "relevant": true
+    },
+    {
+      "title": "Variable and artifact sharing in GitLab parent-child pipelines",
+      "url": "https://about.gitlab.com/blog/variable-and-artifact-sharing-in-gitlab-parent-child-pipelines/",
+      "relevant": true
+    },
+    {
+      "title": "How we built a structured Streamlit Application Framework in Snowflake",
+      "url": "https://about.gitlab.com/blog/how-we-built-a-structured-streamlit-application-framework-in-snowflake/",
+      "relevant": true
+    },
+    {
+      "title": "Optimize GitLab object storage for scale and performance",
+      "url": "https://about.gitlab.com/blog/optimize-gitlab-object-storage-for-scale-and-performance/",
+      "relevant": true
+    },
+    {
+      "title": "Streamline enterprise artifact management with GitLab",
+      "url": "https://about.gitlab.com/blog/streamline-enterprise-artifact-management-with-gitlab/",
+      "relevant": true
+    },
+    {
+      "title": "Atlassian ending Data Center as GitLab maintains deployment choice",
+      "url": "https://about.gitlab.com/blog/atlassian-ending-data-center-as-gitlab-maintains-deployment-choice/",
+      "relevant": true
+    },
+    {
+      "title": "How GitLab transforms embedded systems testing cycles",
+      "url": "https://about.gitlab.com/blog/how-gitlab-transforms-embedded-systems-testing-cycles/",
+      "relevant": true
+    },
+    {
+      "title": "Greater AI choice in GitLab Duo: Claude Sonnet 4.5 arrives",
+      "url": "https://about.gitlab.com/blog/greater-ai-choice-in-gitlab-duo-claude-sonnet-4-5-arrives/",
+      "relevant": true
+    },
+    {
+      "title": "Agentic AI guides and resources",
+      "url": "https://about.gitlab.com/blog/agentic-ai-guides-and-resources/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab Duo Agent Platform adds support for Model Context Protocol",
+      "url": "https://about.gitlab.com/blog/duo-agent-platform-with-mcp/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab named a Leader in the 2025 Gartner Magic Quadrant for DevOps Platforms",
+      "url": "https://about.gitlab.com/blog/gitlab-named-a-leader-in-the-2025-gartner-magic-quadrant-for-devops-platforms/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab 18.4: AI-native development with automation and insight",
+      "url": "https://about.gitlab.com/blog/gitlab-18-4-ai-native-development-with-automation-and-insight/",
+      "relevant": true
+    },
+    {
+      "title": "A comprehensive guide to GitLab DAST",
+      "url": "https://about.gitlab.com/blog/comprehensive-guide-to-gitlab-dast/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab named a Leader in the 2025 Gartner Magic Quadrant for AI Code Assistants",
+      "url": "https://about.gitlab.com/blog/gitlab-named-a-leader-in-the-2025-gartner-magic-quadrant-for-ai-code-assistants/",
+      "relevant": true
+    },
+    {
+      "title": "How GitLab Duo Agent Platform transforms DataOps",
+      "url": "https://about.gitlab.com/blog/how-gitlab-duo-agent-platform-transforms-dataops/",
+      "relevant": true
+    },
+    {
+      "title": "GitLab and Accenture announce Global Reseller Agreement",
+      "url": "https://about.gitlab.com/blog/gitlab-and-accenture-announce-global-reseller-agreement/",
+      "relevant": true
+    },
+    {
+      "title": "How we supercharged GitLab CI statuses with WebSockets",
+      "url": "https://about.gitlab.com/blog/how-we-supercharged-gitlab-ci-statuses-with-websockets/",
+      "relevant": true
+    }
+  ],
+  "failed_posts": [],
+  "processed_at": "2025-10-24T18:28:08.228042",
+  "duration_seconds": 17.848752975463867
+}

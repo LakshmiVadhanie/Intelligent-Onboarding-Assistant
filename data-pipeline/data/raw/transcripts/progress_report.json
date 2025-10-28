@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-10-27T14:14:29.221348",
+  "progress": "5/8",
+  "successful_count": 0,
+  "failed_count": 5,
+  "successful_videos": [],
+  "failed_videos": [
+    {
+      "url": "https://www.youtube.com/watch?v=jskAZAqhuAA",
+      "title": "GitLab Core Team meeting - July 2020",
+      "category": "product-marketing"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=apGuosOtXsY",
+      "title": "GitLab Core Team meeting June 2020",
+      "category": "culture"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=iHYQeXEM6os",
+      "title": "Q2 2020 Hackathon kickoff + May Core Team meeting",
+      "category": "remote-work"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=axvdHOiHuUY",
+      "title": "April 2020 GitLab Core Team meeting",
+      "category": "handbook"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IO-sjWpOG6s",
+      "title": "Q1 2020 Hackathon kickoff plus February Core Team meeting",
+      "category": "product"
+    }
+  ]
+}

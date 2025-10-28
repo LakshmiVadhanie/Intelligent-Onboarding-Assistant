@@ -1,0 +1,17 @@
+{
+  "content": "Marking tickets as spam in Zendesk\nWorkflow for marking Zendesk tickets as spam or unsolicited email\nMarking tickets as spam in Zendesk\nSometimes it can be necessary to mark a ticket as spam in Zendesk.\nThis suspends the end-user, and they wont be able to\nsubmit tickets or access our Service Desk anymore.\nThere are two methods to mark a ticket as spam, depending on your permissions:\nFor\nZendesk administrators\nand Support agents with\nSupport Staff - CMOC\nrole:\nClick the dropdown menu on the right side of the ticket\nSelect\nMark as spam\nFor all other Support agents:\nApply the\nSpam\nmacro\nThis will solve the ticket without sending a CSAT survey.\nLast modified November 13, 2024:\nClarify ZenDesk spam instructions: Different permissions and methods, but same outcome (\ndbfc956f\n)\nView page source\n-\nEdit this page\n-\nplease\ncontribute\n.",
+  "metadata": {
+    "url": "https://handbook.gitlab.com/handbook/support/workflows/marking_tickets_as_spam/",
+    "title": "Marking tickets as spam in Zendesk | The GitLab Handbook",
+    "scraped_at": "2025-10-26T20:49:46.015951",
+    "content_length": 838,
+    "section": "handbook"
+  },
+  "processing": {
+    "original_length": 838,
+    "cleaned_length": 837,
+    "cleaned_at": "2025-10-27T16:13:42.501363",
+    "processor": "text_cleaner_v1",
+    "word_count": 143
+  }
+}

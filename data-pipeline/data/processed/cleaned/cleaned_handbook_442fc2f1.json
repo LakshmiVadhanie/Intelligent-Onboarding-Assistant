@@ -1,0 +1,17 @@
+{
+  "content": "Tom McAtee's README\nPersonal readme page for Tom McAtee, Support Engineer, GitLab\nPlease see\nmy personal README repo!\nLast modified November 29, 2024:\nFix missing description frontmatter in engineering team READMEs (\n61cd45a3\n)\nView page source\n-\nEdit this page\n-\nplease\ncontribute\n.",
+  "metadata": {
+    "url": "https://handbook.gitlab.com/handbook/engineering/readmes/tom-mcatee/",
+    "title": "Tom McAtee's README | The GitLab Handbook",
+    "scraped_at": "2025-10-26T20:50:18.002832",
+    "content_length": 283,
+    "section": "handbook"
+  },
+  "processing": {
+    "original_length": 283,
+    "cleaned_length": 283,
+    "cleaned_at": "2025-10-27T16:13:42.656059",
+    "processor": "text_cleaner_v1",
+    "word_count": 45
+  }
+}
