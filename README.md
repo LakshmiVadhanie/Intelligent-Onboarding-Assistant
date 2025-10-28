@@ -111,24 +111,59 @@ docker compose down
 ## Project Structure
 ```
 Intelligent-Onboarding-Assistant/
-├── data/                   # Data storage (gitignored)
-│   ├── raw/                # Scraped handbook & transcripts
-│   ├── processed/          # Chunked documents
-│   └── sample/             # Sample test data
-├── src/                    # Source code
-│   ├── data/               # Data ingestion & preprocessing
-│   ├── embeddings/         # Embedding generation
-│   ├── retrieval/          # Hybrid search & reranking
-│   ├── generation/         # LLM generation
-│   ├── evaluation/         # Metrics & RAGAS
-│   └── api/                # FastAPI application
-├── airflow/                # Airflow DAGs
-├── notebooks/              # Exploratory analysis
-├── tests/                  # Unit & integration tests
-├── configs/                # Configuration files
-├── scripts/                # Automation scripts
-└── docs/                   # Documentation
+├── README.md                        # This file
+├── fix_airflow_setup.sh             # Helper script for local Airflow fixes
+├── test_dag_local.py                # Small harness to test DAG logic locally
+├── test_scraper.py                  # Tests for scraping/ingestion
+├── test_setup.py                    # Setup/unit test helpers
+├── data/                            # Data artifacts and outputs
+│   ├── anomaly_report.json
+│   └── pipeline_statistics.json
+├── data-pipeline/                   # DVC metadata and pipeline requirements
+│   ├── data.dvc
+│   └── requirements.txt
+├── airflow/                         # Airflow configuration + dags + logs
+│   ├── airflow.cfg
+│   ├── webserver_config.py
+│   ├── dags/
+│   │   └── main_pipeline_dag.py     # Primary pipeline DAG
+│   └── logs/
+├── configs/
+│   └── pipeline_config.yaml
+├── logs/                            # Pipeline/runtime logs
+├── monitoring/
+│   └── dashboards/
+├── scripts/                         # Modular pipeline code
+│   ├── ingestion/
+│   │   ├── blog_fetcher.py
+│   │   ├── gitlab_scraper.py
+│   │   ├── v1.py
+│   │   └── video_extractor.py
+│   ├── preprocessing/
+│   │   ├── chunking_strategy.py
+│   │   ├── meeting_transcript_cleaner.py
+│   │   └── transcript_cleaner.py
+│   ├── monitoring/
+│   │   └── alert_manager.py
+│   ├── utils/
+│   │   ├── config_loader.py
+│   │   ├── gcs_uploader.py
+│   │   ├── logging_config.py
+│   │   └── logging_setup.py
+│   └── validation/
+│       ├── bias_detector.py
+│       ├── data_validator.py
+│       └── fairness_analysis.py
+└── tests/                           # pytest unit tests
+  ├── conftest.py
+  ├── test_preprocessing/
+  │   └── test_transcript_cleaner.py
+  └── test_validation/
+    ├── test_bias_detector.py
+    ├── test_data_validator.py
+    └── test_fairness_analysis.py
 ```
+
 ### Team
 
 Lakshmi Vandhanie Ganesh, 
