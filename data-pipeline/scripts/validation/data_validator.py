@@ -1,10 +1,17 @@
 import pandas as pd
 import numpy as np
+import sys
+from pathlib import Path
 from typing import Dict, List, Optional
 import json
-from pathlib import Path
 from datetime import datetime
 import logging
+
+# Add the data-pipeline directory to the Python path
+current_dir = Path(__file__).resolve().parent
+data_pipeline_dir = current_dir.parent.parent
+sys.path.insert(0, str(data_pipeline_dir))
+
 from scripts.utils.logging_setup import setup_logger
 
 logger = setup_logger('data_validator')
@@ -142,6 +149,72 @@ class DataValidator:
         # Append new stats
         all_stats.append(stats)
 
-        # Save updated stats
+                # Save updated stats
         with open(stats_file, 'w') as f:
             json.dump(all_stats, f, indent=2)
+
+
+if __name__ == "__main__":
+    # Test with sample data
+    sample_data = {
+        "title": "Sample Video",
+        "video_id": "ABC123",
+        "segments": [
+            {"id": 0, "start": 0.0, "end": 5.5, "text": "Hello everyone, welcome to the meeting."},
+            {"id": 1, "start": 5.5, "end": 10.2, "text": "Today we will discuss the project updates."},
+            {"id": 2, "start": 10.2, "end": 15.8, "text": "Let's start with the first topic."}
+        ]
+    }
+    
+    print("=" * 60)
+    print("DATA VALIDATOR TEST")
+    print("=" * 60)
+    
+    validator = DataValidator()
+    
+    # Generate and validate schema
+    schema = validator.generate_schema(sample_data)
+    print("\nGenerated Schema:")
+    print("-" * 40)
+    print(json.dumps(schema, indent=2))
+    
+    # Validate data
+    validator.schema = schema
+    errors = validator.validate_schema(sample_data)
+    print("\nValidation Errors:")
+    print("-" * 40)
+    if errors:
+        for error in errors:
+            print(f"  - {error}")
+    else:
+        print("  No errors found!")
+    
+    # Generate statistics
+    stats = validator.generate_statistics(sample_data)
+    print("\nData Statistics:")
+    print("-" * 40)
+    for key, value in stats.items():
+        if key != "timestamp":
+            print(f"  {key}: {value}")
+    
+    # Test anomaly detection with second dataset
+    sample_data_2 = {
+        "title": "Another Video",
+        "video_id": "XYZ789",
+        "segments": [
+            {"id": 0, "start": 0.0, "end": 3.0, "text": "Short segment."}
+        ]
+    }
+    
+    stats_2 = validator.generate_statistics(sample_data_2)
+    anomalies = validator.detect_anomalies(stats_2)
+    
+    print("\nAnomaly Detection:")
+    print("-" * 40)
+    if anomalies:
+        for anomaly in anomalies:
+            print(f"  - {anomaly}")
+    else:
+        print("  No anomalies detected!")
+    
+    print("=" * 60)

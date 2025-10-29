@@ -1,7 +1,16 @@
 import re
+import sys
+import os
+from pathlib import Path
 from collections import Counter
 from typing import Dict, List, Optional
 import logging
+
+# Add the data-pipeline directory to the Python path
+current_dir = Path(__file__).resolve().parent
+data_pipeline_dir = current_dir.parent.parent
+sys.path.insert(0, str(data_pipeline_dir))
+
 from scripts.utils.logging_setup import setup_logger
 
 logger = setup_logger('bias_detector')
@@ -46,3 +55,38 @@ class BiasDetector:
         if speaker_counts:
             logger.info(f"Speaker distribution: {speaker_counts}")
         return speaker_counts
+
+
+if __name__ == "__main__":
+    # Test with sample transcript
+    sample_transcript = {
+        'full_text': 'Hello guys, this is a test. The man and woman were discussing the project. She said he was right.',
+        'segments': [
+            {'text': 'Hello guys, this is a test.', 'speaker': 'Speaker_1'},
+            {'text': 'The man and woman were discussing the project.', 'speaker': 'Speaker_2'},
+            {'text': 'She said he was right.', 'speaker': 'Speaker_1'}
+        ]
+    }
+    
+    print("=" * 60)
+    print("BIAS DETECTOR TEST")
+    print("=" * 60)
+    
+    detector = BiasDetector()
+    
+    # Detect bias
+    bias_freq = detector.detect_bias(sample_transcript)
+    print("\nBias Detection Results:")
+    print("-" * 40)
+    for term, count in bias_freq.items():
+        if count > 0:
+            print(f"  '{term}': {count} occurrences")
+    
+    # Check speaker balance
+    speaker_balance = detector.speaker_balance(sample_transcript)
+    print("\nSpeaker Balance:")
+    print("-" * 40)
+    for speaker, count in speaker_balance.items():
+        print(f"  {speaker}: {count} segments")
+    
+    print("=" * 60)
