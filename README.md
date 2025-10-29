@@ -79,22 +79,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-#### Step 3: Environment Setup
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Linux/macOS:
-source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
-
-# Install dependencies
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-#### Step 4: Environment Setup
+#### Step 3: Initialize Airflow 
 ```bash
 # Initialize Airflow database
 airflow db init
@@ -106,7 +91,7 @@ airflow webserver --port 8080
 airflow scheduler
 ```
 
-#### Step 5: Initialize DVC
+#### Step 4: Initialize DVC
 
 ```bash
 # Initialize DVC
@@ -120,7 +105,7 @@ Pull existing data
 dvc pull
 ```
 
-#### Step 6: Verify Installation
+#### Step 5: Verify Installation
 
 ```bash
 # Run tests
@@ -192,7 +177,7 @@ Our data pipeline is modularized right from data ingestion to preprocessing to m
 
 We utilize Apache Airflow for our pipeline. We create a DAG with our modules.
 
-![DAG Image](assets/dag.jpg "Airflow DAG")
+![DAG Image](assets/dag.png"Airflow DAG")
 Pictured: Our Airflow DAG
 
 The following is the explanation of our Data pipeline DAG
@@ -262,12 +247,25 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 
 # Pipeline Flow Optimization
 
+**Airflow Graph View**:
+1. Access the Airflow UI
+2. Select the desired DAG
+3. Navigate to the Graph View 
+4. Identify bottlenecks by spotting long-running tasks in the graph
+![Graph View](Assets/graph_view.png "Graph View ")
+
+**Airflow Gantt Chart**:
+1. Access the Airflow UI
+2. Select the desired DAG
+3. Navigate to the Graph View and then click on Gantt
+4. Identify bottlenecks by looking for tasks with long duration
+![Gantt View](Assets/gantt_view.png "Gantt View ")
 
 # Anomalies Detection and Alert Generation
 
 The repository already writes anomaly reports and pipeline statistics to `data/anomaly_report.json` and `data/pipeline_statistics.json`. Use `scripts/validation/data_validator.py` for detection and `scripts/monitoring/alert_manager.py` to send alerts via email when issues are found.
 
-![Email_alert](assets/email_alert.jpg "Email Alert")
+![Email_alert](Assets/email_alert.png "Email Alert")
 
 # Testing
 
@@ -295,3 +293,4 @@ pytest tests/test_generation.py -v
 
 # License
 This project is licensed under the MIT License. See LICENSE file for details.
+<img width="468" height="655" alt="image" src="https://github.com/user-attachments/assets/5623fa05-c284-4caf-b801-61c4694f637b" />
