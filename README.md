@@ -257,6 +257,48 @@ python scripts/validation/data_validator.py         # optional validation run
 
 When running via Airflow, enable and trigger the DAG in the web UI or run `airflow dags trigger <dag_id>` to launch the full pipeline.
 
+# Tracking and Logging
+
+
+# Pipeline Flow Optimization
+
+
+# Anomalies Detection and Alert Generation
+
+
+# Testing
+
+#### Run Unit Tests Only
+```bash
+pytest tests/unit/ -v
+```
+
+#### Run Integration Tests Only
+```bash
+pytest tests/test_integration.py --integration
+```
+
+#### Run Test Coverage by Module
+
+**Preprocessing Tests**
+```bash
+pytest tests/test_preprocessor.py -v
+```
+
+**Chunking Tests**
+```bash
+pytest tests/test_chunking.py -v
+```
+
+**Retrieval Tests**
+```bash
+pytest tests/test_retrieval.py -v
+```
+
+**Generation Tests (RAG Pipeline)**
+```bash
+pytest tests/test_generation.py -v
+```
 
 # Contributing / Development Guide
 
