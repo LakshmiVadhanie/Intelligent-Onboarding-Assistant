@@ -278,25 +278,6 @@ To running the test suites for the modules, run the following:
 ```python
 pytest 
 ```
-## DVC
-
-Steps to initialize and track files using DVC
-
-1. Initialize dvc in the parent directory of your local repository.
-    ```python
-    dvc remote add -d temp /tmp/dvcstore
-    ```
-2. Set up remote bucket.
-    ```python
-    dvc remote add -d temp /tmp/dvcstore
-    ```
-3. Add the location as default to your remote bucket.
-    ```python
-    dvc remote add -d myremote gs://<mybucket>/<path>
-    ```
-4. Don't forget to modify your credentials.
-    ```python
-    dvc remote modify --lab2 credentialpath <YOUR JSON TOKEN>```
 
 ### License
 This project is licensed under the MIT License. See LICENSE file for details.
