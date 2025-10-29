@@ -52,9 +52,9 @@ The steps for User installation are as follows:
 
 1. Clone repository onto the local machine
 ```
-git clone https://github.com/Thomas-George-T/Ecommerce-Data-MLOps.git
+git clone https://github.com/LakshmiVadhanie/Intelligent-Onboarding-Assistant.git
 ```
-2. Check python version  >= 3.8
+2. Check python version  >= 3.9
 ```python
 python --version
 ```
