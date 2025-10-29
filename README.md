@@ -237,9 +237,46 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 
 ---
 
+# Contributing / Development Guide
 
+**This is the user guide for developers**
 
+Before developing our code, we should install the required dependencies
+```python
+pip install -r requirements.txt
+```
 
+## Testing
+Before pushing code to GitHub, Run the following commands locally to ensure build success. Working on the suggestions given by `Pylint` improves code quality. Ensuring that the test cases are passed by `Pytest` are essential for code reviews and maintaining code quality.
+
+To test for formatting and code leaks, run the following:
+```python
+pytest --pylint
+```
+
+To running the test suites for the modules, run the following:
+```python
+pytest 
+```
+## DVC
+
+Steps to initialize and track files using DVC
+
+1. Initialize dvc in the parent directory of your local repository.
+    ```python
+    dvc remote add -d temp /tmp/dvcstore
+    ```
+2. Set up remote bucket.
+    ```python
+    dvc remote add -d temp /tmp/dvcstore
+    ```
+3. Add the location as default to your remote bucket.
+    ```python
+    dvc remote add -d myremote gs://<mybucket>/<path>
+    ```
+4. Don't forget to modify your credentials.
+    ```python
+    dvc remote modify --lab2 credentialpath <YOUR JSON TOKEN>```
 
 ### License
 This project is licensed under the MIT License. See LICENSE file for details.
