@@ -50,11 +50,12 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 
 The steps for User installation are as follows:
 
-1. Clone repository onto the local machine
+#### 1. Clone repository
 ```
 git clone https://github.com/LakshmiVadhanie/Intelligent-Onboarding-Assistant.git
+cd Intelligent-Onboarding-Assistant
 ```
-2. Check python version  >= 3.9
+#### 2. Check python version  >= 3.9
 ```python
 python --version
 ```
