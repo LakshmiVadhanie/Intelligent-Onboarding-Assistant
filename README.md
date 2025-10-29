@@ -265,6 +265,9 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 
 # Anomalies Detection and Alert Generation
 
+The repository already writes anomaly reports and pipeline statistics to `data/anomaly_report.json` and `data/pipeline_statistics.json`. Use `scripts/validation/data_validator.py` for detection and `scripts/monitoring/alert_manager.py` to send alerts via email when issues are found.
+
+![Email_alert](assets/email_alert.jpg "Email Alert")
 
 # Testing
 
