@@ -107,12 +107,13 @@ airflow scheduler
 
 ```bash
 # Initialize DVC
+cd Intelligent-Onboarding-Assistant
 dvc init
-
-# Configure remote storage
-dvc remote add -d myremote /path/to/dvc/storage
-
-# Pull existing data (if available)
+git add .dvc .gitignore
+git commit -m "Initialize DVC"
+```
+```
+Pull existing data
 dvc pull
 ```
 
