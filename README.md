@@ -126,9 +126,8 @@ pytest tests/ -v
 # Check Airflow DAGs
 airflow dags list
 ```
----
 
-## Project Structure
+# Project Structure
 ```
 Intelligent-Onboarding-Assistant/
 ├── README.md                        # This file
@@ -184,7 +183,7 @@ Intelligent-Onboarding-Assistant/
     └── test_fairness_analysis.py
 ```
 
-## Data Pipeline
+# Data Pipeline
 
 Our data pipeline is modularized right from data ingestion to preprocessing to make our data ready for modeling. It is made sure that every module functions as expected by following Test Driven Development (TDD). This is achieved through enforcing tests for every module. 
 
@@ -255,7 +254,6 @@ python scripts/validation/data_validator.py         # optional validation run
 
 When running via Airflow, enable and trigger the DAG in the web UI or run `airflow dags trigger <dag_id>` to launch the full pipeline.
 
----
 
 # Contributing / Development Guide
 
