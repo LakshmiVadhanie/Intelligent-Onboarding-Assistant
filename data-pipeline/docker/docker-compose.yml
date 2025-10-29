@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database for Airflow
+  postgres:
+    image: postgres:15
+    container_name: mlops-postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mlops-network
+
+  # Airflow webserver
+  airflow-webserver:
+    build:
+      context: ../..
+      dockerfile: data-pipeline/docker/Dockerfile
+    container_name: mlops-airflow-webserver
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW_HOME: /app/data-pipeline/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /app/data-pipeline/airflow/dags
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
+      AIRFLOW__CORE__FERNET_KEY: 'UKMzEm3yIuFYEq1y3-2FxPNWSVwRASpahmQ9kQfEr8E='
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../../data-pipeline:/app/data-pipeline
+      - ../../data:/app/data
+      - airflow-logs:/app/data-pipeline/airflow/logs
+    command: >
+      bash -c "
+        airflow db migrate &&
+        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com || true &&
+        airflow webserver --port 8080
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+  # Airflow scheduler
+  airflow-scheduler:
+    build:
+      context: ../..
+      dockerfile: data-pipeline/docker/Dockerfile
+    container_name: mlops-airflow-scheduler
+    depends_on:
+      airflow-webserver:
+        condition: service_healthy
+    environment:
+      AIRFLOW_HOME: /app/data-pipeline/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /app/data-pipeline/airflow/dags
+      AIRFLOW__CORE__FERNET_KEY: 'UKMzEm3yIuFYEq1y3-2FxPNWSVwRASpahmQ9kQfEr8E='
+    volumes:
+      - ../../data-pipeline:/app/data-pipeline
+      - ../../data:/app/data
+      - airflow-logs:/app/data-pipeline/airflow/logs
+    command: airflow scheduler
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "airflow scheduler"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    driver: local
+  airflow-logs:
+    driver: local
+
+networks:
+  mlops-network:
+    driver: bridge
