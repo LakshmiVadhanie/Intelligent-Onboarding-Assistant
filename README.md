@@ -50,58 +50,82 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 
 The steps for User installation are as follows:
 
-#### 1. Clone repository
+#### Step 1: Clone repository
 ```
 git clone https://github.com/LakshmiVadhanie/Intelligent-Onboarding-Assistant.git
 cd Intelligent-Onboarding-Assistant
 ```
-#### 2. Check python version  >= 3.9
+Check python version  >= 3.9
 ```python
 python --version
 ```
-3. Check if you have enough memory
-```docker
-docker run --rm "debian:bullseye-slim" bash -c 'numfmt --to iec $(echo $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE))))'
+
+#### Step 2: Environment Setup
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
+
+# Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-<hr>
+#### Step 3: Environment Setup
+```bash
+# Create virtual environment
+python -m venv venv
 
-**FOR WINDOWS: Create a file called .env in the same folder as `docker-compose.yaml` and set the user as follows:**
-```
-AIRFLOW_UID=50000
-```
-**If you get the following error**
-```
-ValueError: Unable to configure handler 'processor'
-```
-**Setting the user manually like above fixes it**
+# Activate virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
 
-<hr>
-
-4. With Docker running, initialize the database. This step only has to be done once.
-```docker
-docker compose up airflow-init
+# Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
-5. Run airflow
-```docker
-docker-compose up
-```
-Wait until terminal outputs something similar to
+#### Step 4: Environment Setup
+```bash
+# Initialize Airflow database
+airflow db init
 
-`app-airflow-webserver-1  | 127.0.0.1 - - [17/Feb/2023:09:34:29 +0000] "GET /health HTTP/1.1" 200 141 "-" "curl/7.74.0"`
+# Start Airflow webserver (in one terminal)
+airflow webserver --port 8080
 
-6. Visit localhost:8080 login with credentials
+# Start Airflow scheduler (in another terminal)
+airflow scheduler
+```
 
-```
-user:airflow2
-password:airflow2
-```
-7. Run the DAG by clicking on the play button on the right side of the window
+### Step 5: Initialize DVC
 
-8. Stop docker containers
-```docker
-docker compose down
+```bash
+# Initialize DVC
+dvc init
+
+# Configure remote storage
+dvc remote add -d myremote /path/to/dvc/storage
+
+# Pull existing data (if available)
+dvc pull
 ```
+
+### Step 6: Verify Installation
+
+```bash
+# Run tests
+pytest tests/ -v
+
+# Check Airflow DAGs
+airflow dags list
+```
+---
 
 ## Project Structure
 ```
