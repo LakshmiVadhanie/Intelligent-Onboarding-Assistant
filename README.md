@@ -103,7 +103,7 @@ airflow webserver --port 8080
 airflow scheduler
 ```
 
-### Step 5: Initialize DVC
+#### Step 5: Initialize DVC
 
 ```bash
 # Initialize DVC
@@ -117,7 +117,7 @@ Pull existing data
 dvc pull
 ```
 
-### Step 6: Verify Installation
+#### Step 6: Verify Installation
 
 ```bash
 # Run tests
