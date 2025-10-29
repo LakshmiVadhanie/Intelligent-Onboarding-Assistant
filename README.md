@@ -268,17 +268,7 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 
 # Testing
 
-#### Run Unit Tests Only
-```bash
-pytest tests/unit/ -v
-```
-
-#### Run Integration Tests Only
-```bash
-pytest tests/test_integration.py --integration
-```
-
-#### Run Test Coverage by Module
+## Run Test Coverage by Module
 
 **Preprocessing Tests**
 ```bash
