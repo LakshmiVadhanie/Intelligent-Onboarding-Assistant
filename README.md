@@ -269,6 +269,17 @@ The repository already writes anomaly reports and pipeline statistics to `data/a
 
 ![Email_alert](Assets/email_alert.png "Email Alert")
 
+## Google Cloud Platform (GCP)
+
+Our data version control is tracked and hosted on Google Cloud Platform. Google Cloud seamlessly hosts large dataset and its versioning for developing robust ETL pipelines. Multiple Users can access and update the data at once while inherent support for versioning helps retrieve older versions effortlessly.
+
+We use Google Cloud Storage (GCS) buckets to store, manage, and version our datasets. GCS buckets provide a scalable, durable, and secure solution for storing large volumes of data while enabling seamless collaboration and access control across teams.
+1. All one needs to do is initialize a service account to utilize Google Cloud Platform services.
+2. Like for every other remote, one needs to download SSH key for remote access.
+
+![GCP Image](Assets/gcp.png)
+Our data files tracked by DVC in GCP
+
 # Testing
 
 ## Run Test Coverage by Module
