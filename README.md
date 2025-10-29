@@ -45,6 +45,9 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 ##  Prerequisites
 
 - Python 3.9+
+- Apache Airflow: 2.7+
+- DVC: 3.0+
+- Cloud Account: GCP
 
 ## Installation
 
