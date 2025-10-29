@@ -244,6 +244,21 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 
 # Tracking and Logging
 
+This project features a comprehensive tracking and logging framework designed for full visibility into the MLOps data pipeline.
+
+Centralized Python Logging: Custom logging modules provide structured, timestamped logs with dual console and file output. Logs rotate daily and are categorized by pipeline component for clarity.
+
+Airflow Task Logging: Each task generates detailed execution logs accessible via the Airflow UI, with standardized log formats for consistent traceability.
+
+Progress Tracking with XCom: Task metrics (e.g., documents processed, files cleaned) are pushed to Airflow’s XCom, enabling end-to-end monitoring of pipeline progress.
+
+Pipeline Reports: JSON-based reports (pipeline_statistics.json) summarize ingestion, preprocessing, and validation metrics for each DAG run.
+
+Anomaly & Data Validation Logs: Data validation steps log detected anomalies and quality metrics, ensuring transparent issue tracking during processing.
+
+Persistent Log Storage: All logs are stored in mounted Docker volumes for durability and easy access across container restarts.
+
+This robust tracking and logging setup ensures consistent monitoring, reproducibility, and detailed traceability for every pipeline execution.
 
 # Pipeline Flow Optimization
 
