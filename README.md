@@ -292,6 +292,3 @@ pytest tests/test_retrieval.py -v
 ```bash
 pytest tests/test_generation.py -v
 ```
-
-# License
-This project is licensed under the MIT License. See LICENSE file for details.
