@@ -252,6 +252,7 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 2. Select the desired DAG
 3. Navigate to the Graph View 
 4. Identify bottlenecks by spotting long-running tasks in the graph
+
 ![Graph View](Assets/graph_view.png "Graph View ")
 
 **Airflow Gantt Chart**:
@@ -259,6 +260,7 @@ When running via Airflow, enable and trigger the DAG in the web UI or run `airfl
 2. Select the desired DAG
 3. Navigate to the Graph View and then click on Gantt
 4. Identify bottlenecks by looking for tasks with long duration
+
 ![Gantt View](Assets/gantt_view.png "Gantt View ")
 
 # Anomalies Detection and Alert Generation
