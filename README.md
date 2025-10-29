@@ -42,8 +42,6 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
    - RSS feed parsing
    - Filtered for onboarding-relevant topics
 
-## Architecture
-
 ##  Prerequisites
 
 - Python 3.9+
