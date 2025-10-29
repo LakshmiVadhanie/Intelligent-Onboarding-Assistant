@@ -290,27 +290,5 @@ pytest tests/test_retrieval.py -v
 pytest tests/test_generation.py -v
 ```
 
-# Contributing / Development Guide
-
-**This is the user guide for developers**
-
-Before developing our code, we should install the required dependencies
-```python
-pip install -r requirements.txt
-```
-
-## Testing
-Before pushing code to GitHub, Run the following commands locally to ensure build success. Working on the suggestions given by `Pylint` improves code quality. Ensuring that the test cases are passed by `Pytest` are essential for code reviews and maintaining code quality.
-
-To test for formatting and code leaks, run the following:
-```python
-pytest --pylint
-```
-
-To running the test suites for the modules, run the following:
-```python
-pytest 
-```
-
-### License
+# License
 This project is licensed under the MIT License. See LICENSE file for details.
