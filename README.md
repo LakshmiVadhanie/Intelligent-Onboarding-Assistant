@@ -277,7 +277,7 @@ We use Google Cloud Storage (GCS) buckets to store, manage, and version our data
 1. All one needs to do is initialize a service account to utilize Google Cloud Platform services.
 2. Like for every other remote, one needs to download SSH key for remote access.
 
-![GCP Image](Assets/gcp.png)
+![GCP Image](Assets/gcs.png)
 Our data files tracked by DVC in GCP
 
 # Testing
