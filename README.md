@@ -177,7 +177,7 @@ Our data pipeline is modularized right from data ingestion to preprocessing to m
 
 We utilize Apache Airflow for our pipeline. We create a DAG with our modules.
 
-![DAG Image](assets/dag.png"Airflow DAG")
+![DAG Image](Assets/dag.png"Airflow DAG")
 Pictured: Our Airflow DAG
 
 The following is the explanation of our Data pipeline DAG
@@ -293,4 +293,3 @@ pytest tests/test_generation.py -v
 
 # License
 This project is licensed under the MIT License. See LICENSE file for details.
-<img width="468" height="655" alt="image" src="https://github.com/user-attachments/assets/5623fa05-c284-4caf-b801-61c4694f637b" />
