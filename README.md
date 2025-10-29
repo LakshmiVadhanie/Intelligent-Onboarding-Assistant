@@ -46,11 +46,7 @@ The dataset contains GitLab's public documentation ecosystem which serves as a r
 
 ##  Prerequisites
 
-- Python 3.10+
-- Docker & Docker Compose
-- PostgreSQL (for Airflow)
-- OpenAI/Anthropic API key 
-- Pinecone account 
+- Python 3.9+
 
 ## Installation
 
