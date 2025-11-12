@@ -6,3 +6,4 @@ logs/
 airflow/logs/
 airflow/*.log
 *.log
+"logs/" 
