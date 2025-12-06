@@ -1,0 +1,31 @@
+{
+  "model_name": "retrieval-embeddings",
+  "model_version": "v1.0.0",
+  "registered_at": "2025-11-12T15:52:27.890456",
+  "artifacts": {
+    "embeddings.npy": {
+      "size_bytes": 29312,
+      "checksum": "0805e335008aa2284a37c68486f27ff86b71918daabf0d6a3d468d0398b09c04"
+    },
+    "metadata.json": {
+      "size_bytes": 3522,
+      "checksum": "f2f8842df97e215ad6c9169434d983e46b888c593213f0e5dda3e8be60ffea31"
+    },
+    "model_info.json": {
+      "size_bytes": 110,
+      "checksum": "db55037b08094c35f8214e4c460415231e22285f53c9ef3baef2f4cff2485f9d"
+    },
+    "texts.json": {
+      "size_bytes": 235539,
+      "checksum": "80ad4005f838e3d3304b2f676edcca6dc0477a49c498ea27a439af839ad02eba"
+    }
+  },
+  "metadata": {
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "num_documents": 19,
+    "framework": "sentence-transformers",
+    "purpose": "GitLab onboarding assistant retrieval"
+  },
+  "registry_path": "models\\registry\\retrieval-embeddings\\v1.0.0"
+}

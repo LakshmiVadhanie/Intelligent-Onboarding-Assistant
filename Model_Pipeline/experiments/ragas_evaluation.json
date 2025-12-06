@@ -1,0 +1,9 @@
+{
+  "metrics": {
+    "num_queries": 3,
+    "avg_contexts_retrieved": 5.0,
+    "context_coverage": 0.7857142857142857,
+    "context_diversity": 0.298385895586839
+  },
+  "num_queries": 3
+}

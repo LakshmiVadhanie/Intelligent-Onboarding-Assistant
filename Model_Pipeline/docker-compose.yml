@@ -1,0 +1,20 @@
+services:
+  model-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: onboarding-assistant-pipeline
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./experiments:/app/experiments
+    environment:
+      - PYTHONUNBUFFERED=1
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    command: python test_pipeline.py
+    networks:
+      - onboarding-net
+
+networks:
+  onboarding-net:
+    driver: bridge

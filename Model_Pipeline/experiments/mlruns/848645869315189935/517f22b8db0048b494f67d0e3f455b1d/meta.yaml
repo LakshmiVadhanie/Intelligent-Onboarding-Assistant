@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/jusar/Desktop/Web Development/Portfolio/Intelligent-Onboarding-Assistant/experiments/mlruns/848645869315189935/517f22b8db0048b494f67d0e3f455b1d/artifacts
+end_time: 1762979541424
+entry_point_name: ''
+experiment_id: '848645869315189935'
+lifecycle_stage: active
+run_id: 517f22b8db0048b494f67d0e3f455b1d
+run_name: baseline-retriever-v1_20251112_153216
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762979541147
+status: 3
+tags: []
+user_id: jusar
