@@ -1,0 +1,19 @@
+{
+  "model_name": "vector-store",
+  "model_version": "v1.0.0",
+  "registered_at": "2025-12-07T17:07:54.628221",
+  "artifacts": {
+    "vector_store_info.json": {
+      "size_bytes": 179,
+      "checksum": "78917d13ce58eb5bfdd41c4ac85c3b55976432eb5a89ad2822f041efdabe0a39"
+    }
+  },
+  "metadata": {
+    "vector_store_type": "chromadb",
+    "collection_name": "gitlab_onboarding",
+    "num_documents": 19,
+    "persist_directory": "models/vector_store",
+    "distance_metric": "cosine"
+  },
+  "registry_path": "models/registry/vector-store/v1.0.0"
+}
