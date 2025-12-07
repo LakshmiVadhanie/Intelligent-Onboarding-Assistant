@@ -1,26 +1,32 @@
-apache-airflow==2.7.2
-beautifulsoup4==4.12.2
+# Essential Core
+numpy==2.0.2
+pandas==2.1.3
+python-dotenv==1.0.0
+tqdm==4.66.1
 requests==2.31.0
-yt-dlp==2023.10.07
-openai-whisper
-torch
-google-cloud-storage
-pandas
-numpy
-pyyaml
-python-dateutil
-dvc
-pytest
-sentence-transformers
-chromadb
-# openai
-# langchain
-# langchain-community
-faiss-cpu
-rank-bm25
-mlflow
-ragas
-datasets
-tqdm
-python-dotenv
-mlflow
+
+# Google Cloud
+google-cloud-storage==2.10.0
+google-generativeai==0.3.1
+
+# ML & Embeddings
+sentence-transformers==2.2.2
+torch==2.1.0
+
+# Vector Store & Retrieval
+chromadb==0.4.18
+rank-bm25==0.2.2
+
+# Web Interface
+streamlit==1.29.0
+plotly==5.18.0
+
+# MLOps
+mlflow==2.9.0
+
+# Evaluation
+ragas==0.1.0
+datasets==2.14.6
+
+# Testing
+pytest==7.4.3

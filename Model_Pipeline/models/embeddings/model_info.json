@@ -1,6 +1,6 @@
 {
   "model_name": "all-mpnet-base-v2",
   "embedding_dim": 768,
-  "num_embeddings": 119,
-  "num_texts": 119
+  "num_embeddings": 55,
+  "num_texts": 55
 }
