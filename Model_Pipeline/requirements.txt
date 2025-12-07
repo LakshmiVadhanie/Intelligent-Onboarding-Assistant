@@ -13,9 +13,9 @@ dvc
 pytest
 sentence-transformers
 chromadb
-openai
-langchain
-langchain-community
+# openai
+# langchain
+# langchain-community
 faiss-cpu
 rank-bm25
 mlflow

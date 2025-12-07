@@ -228,7 +228,7 @@ if __name__ == "__main__":
     print("="*80 + "\n")
     
     # Initialize loader
-    loader = LocalDataLoader(data_dir="data")
+    loader = LocalDataLoader(data_dir="Model_Pipeline/data")
     
     # Load all data
     print("\n🔹 Loading ALL available data...")

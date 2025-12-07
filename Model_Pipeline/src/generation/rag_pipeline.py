@@ -1,5 +1,5 @@
 import google.generativeai as genai
-from openai import OpenAI
+# from openai import OpenAI
 import os
 from typing import List, Dict, Optional
 import logging
