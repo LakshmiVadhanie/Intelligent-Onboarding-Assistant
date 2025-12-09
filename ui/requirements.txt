@@ -1,2 +1,7 @@
-streamlit==1.30.0
+
+streamlit==1.25.0
 requests
+plotly
+google-cloud-storage
+chromadb
+sentence-transformers
