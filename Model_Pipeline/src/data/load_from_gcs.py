@@ -18,6 +18,55 @@ DEFAULT_CREDENTIALS_REL_PATH = (
 )
 
 
+def chunk_text(text: str, chunk_size: int = 800, overlap: int = 150) -> List[str]:
+    """
+    Chunk text into smaller pieces for better RAG performance.
+    Uses character-based splitting with overlap to maintain context.
+    
+    Args:
+        text: Text to chunk
+        chunk_size: Target size in characters (~200 tokens = ~800 chars)
+        overlap: Overlap between chunks in characters
+    
+    Returns:
+        List of text chunks
+    """
+    if len(text) <= chunk_size:
+        return [text]
+    
+    chunks = []
+    start = 0
+    
+    # Split on paragraph boundaries first, then sentences
+    separators = ["\n\n", "\n", ". ", "! ", "? ", ", ", " "]
+    
+    while start < len(text):
+        end = start + chunk_size
+        
+        # If this is the last chunk, take everything
+        if end >= len(text):
+            chunks.append(text[start:].strip())
+            break
+        
+        # Try to break at a natural boundary
+        chunk_end = end
+        for sep in separators:
+            # Look for separator near the end
+            sep_pos = text.rfind(sep, start, end)
+            if sep_pos > start + chunk_size // 2:  # Found good break point
+                chunk_end = sep_pos + len(sep)
+                break
+        
+        chunks.append(text[start:chunk_end].strip())
+        
+        # Move start position with overlap
+        start = chunk_end - overlap
+        if start <= 0 or start >= len(text):
+            break
+    
+    return [c for c in chunks if c]  # Remove empty chunks
+
+
 class GCSDataLoader:
     def __init__(
         self,
@@ -26,13 +75,25 @@ class GCSDataLoader:
         credentials_path: Optional[str] = None,
         local_cache_dir: Optional[str] = None,
         peek_bytes: int = 8192,
+        enable_chunking: bool = True,  # NEW: Enable/disable chunking
+        handbook_chunk_size: int = 800,  # NEW: Chunk size for handbook
+        transcript_chunk_size: int = 800,  # NEW: Chunk size for transcripts
+        handbook_overlap: int = 150,  # NEW: Overlap for handbook
+        transcript_overlap: int = 100,  # NEW: Overlap for transcripts
     ):
         """
         peek_bytes: how many bytes to download when peeking to decide if a blob contains JSON.
+        enable_chunking: Whether to chunk large documents into smaller pieces
         """
         self.bucket_name = bucket_name
         self.local_cache_dir = local_cache_dir
         self.peek_bytes = peek_bytes
+        self.enable_chunking = enable_chunking
+        self.handbook_chunk_size = handbook_chunk_size
+        self.transcript_chunk_size = transcript_chunk_size
+        self.handbook_overlap = handbook_overlap
+        self.transcript_overlap = transcript_overlap
+        
         if local_cache_dir:
             os.makedirs(local_cache_dir, exist_ok=True)
 
@@ -61,6 +122,8 @@ class GCSDataLoader:
         try:
             self.bucket = self.client.bucket(bucket_name)
             logger.info(f"Initialized GCS client for bucket: {bucket_name}")
+            if self.enable_chunking:
+                logger.info(f"✓ Chunking enabled: Handbook={handbook_chunk_size}±{handbook_overlap}, Transcripts={transcript_chunk_size}±{transcript_overlap}")
         except Exception as e:
             logger.exception("Failed to initialize GCS client or bucket. Check credentials/permissions.")
             raise
@@ -156,15 +219,70 @@ class GCSDataLoader:
                 logger.warning(f"Failed parsing line {i+1} in {filename} as JSON")
         return records
 
-    def load_chunked_data(self, prefix: str, max_files: Optional[int] = None, extension: Optional[str] = ".json") -> Tuple[List[Dict], Dict[str,int]]:
+    def _chunk_records(self, records: List[Dict], source_type: str) -> List[Dict]:
         """
-        Load JSON files from GCS prefix.
+        Chunk records based on their text content.
+        
+        Args:
+            records: List of document records
+            source_type: 'handbook' or 'transcript'
+        
+        Returns:
+            List of chunked records with updated metadata
+        """
+        if not self.enable_chunking:
+            return records
+        
+        # Determine chunk parameters based on source type
+        if source_type == 'handbook':
+            chunk_size = self.handbook_chunk_size
+            overlap = self.handbook_overlap
+        else:  # transcript
+            chunk_size = self.transcript_chunk_size
+            overlap = self.transcript_overlap
+        
+        chunked_records = []
+        
+        for record in records:
+            # Extract text - try common field names
+            text = record.get('text') or record.get('paragraph') or record.get('content') or ''
+            
+            if not text or len(text) <= chunk_size:
+                # Small enough, keep as-is
+                chunked_records.append(record)
+                continue
+            
+            # Chunk the text
+            text_chunks = chunk_text(text, chunk_size=chunk_size, overlap=overlap)
+            
+            # Create new records for each chunk
+            for i, chunk in enumerate(text_chunks):
+                chunked_record = record.copy()
+                chunked_record['text'] = chunk
+                chunked_record['paragraph'] = chunk  # Also set paragraph field
+                
+                # Update metadata to track chunking
+                original_id = record.get('id', record.get('uid', record.get('doc_id', '')))
+                chunked_record['id'] = f"{original_id}_chunk_{i}" if original_id else f"chunk_{i}"
+                chunked_record['chunk_index'] = i
+                chunked_record['total_chunks'] = len(text_chunks)
+                chunked_record['is_chunked'] = True
+                
+                chunked_records.append(chunked_record)
+            
+            logger.debug(f"Chunked '{record.get('title', 'unknown')}' into {len(text_chunks)} pieces")
+        
+        return chunked_records
 
-        Behavior changes compared to earlier:
-        - If 'extension' is provided, blobs whose names end with that extension are preferred.
-        - For other blobs (e.g., .pdf but containing JSON text), we peek at the first few KB
-          and attempt to detect JSON/JSONL. If the peek indicates JSON, we download & parse it.
-        - This allows loading JSON stored inside blobs with non-.json filenames (e.g. PDFs containing JSON).
+    def load_chunked_data(self, prefix: str, source_type: str = 'unknown', max_files: Optional[int] = None, extension: Optional[str] = ".json") -> Tuple[List[Dict], Dict[str,int]]:
+        """
+        Load JSON files from GCS prefix and optionally chunk them.
+
+        Args:
+            prefix: GCS prefix to load from
+            source_type: 'handbook' or 'transcript' for chunking parameters
+            max_files: Maximum number of files to load
+            extension: File extension filter
         """
         chunks: List[Dict] = []
         per_file_counts: Dict[str, int] = {}
@@ -198,10 +316,12 @@ class GCSDataLoader:
             # If we already got content from cache, parse it
             if content is not None:
                 records = self._parse_json_content(content, blob.name)
+                # CHUNK THE RECORDS
+                records = self._chunk_records(records, source_type)
                 per_file_counts[blob.name] = len(records)
                 if records:
                     chunks.extend(records)
-                logger.info(f"  -> Parsed {len(records)} records from cached {blob.name}")
+                logger.info(f"  -> Parsed and chunked into {len(records)} pieces from cached {blob.name}")
                 file_count += 1
                 continue
 
@@ -243,33 +363,43 @@ class GCSDataLoader:
 
             # parse into records
             records = self._parse_json_content(content, blob.name)
+            # CHUNK THE RECORDS
+            records = self._chunk_records(records, source_type)
             per_file_counts[blob.name] = len(records)
             if records:
                 chunks.extend(records)
 
-            logger.info(f"  -> Parsed {len(records)} records from {blob.name}")
+            logger.info(f"  -> Parsed and chunked into {len(records)} pieces from {blob.name}")
 
             file_count += 1
 
-        logger.info(f"Loaded {len(chunks)} total records from GCS prefix={prefix}")
+        logger.info(f"Loaded {len(chunks)} total chunked records from GCS prefix={prefix}")
         return chunks, per_file_counts
 
     # --- Important: use the exact filenames that you uploaded to GCS ---
     def load_handbook_chunks(self, max_files: Optional[int] = None) -> Tuple[List[Dict], Dict[str,int]]:
         """
-        Load the handbook JSON file from GCS (explicit filename).
+        Load the handbook JSON file from GCS (explicit filename) and chunk it.
         """
-        return self.load_chunked_data(prefix="onboarding_ai/debiased_data/handbook_paragraphs_debiased.json", max_files=max_files)
+        return self.load_chunked_data(
+            prefix="onboarding_ai/debiased_data/handbook_paragraphs_debiased.json", 
+            source_type='handbook',
+            max_files=max_files
+        )
 
     def load_transcript_chunks(self, max_files: Optional[int] = None) -> Tuple[List[Dict], Dict[str,int]]:
         """
-        Load the transcripts JSON file from GCS (explicit filename).
+        Load the transcripts JSON file from GCS (explicit filename) and chunk it.
         """
-        return self.load_chunked_data(prefix="onboarding_ai/debiased_data/all_transcripts_debiased.json", max_files=max_files)
+        return self.load_chunked_data(
+            prefix="onboarding_ai/debiased_data/all_transcripts_debiased.json", 
+            source_type='transcript',
+            max_files=max_files
+        )
 
     def load_all_chunks(self, max_files_per_prefix: Optional[int] = None) -> Tuple[List[Dict], Dict[str,int]]:
         """
-        Load both handbook and transcript chunks, dedupe, and return combined list.
+        Load both handbook and transcript chunks, chunk them, dedupe, and return combined list.
         Returns (all_chunks, aggregated_per_file_counts)
         """
         logger.info("Loading all chunks from GCS...")
@@ -295,7 +425,7 @@ class GCSDataLoader:
                         break
                 if key is None:
                     title = chunk.get("title", "")
-                    para = chunk.get("paragraph", "")
+                    para = chunk.get("paragraph") or chunk.get("text", "")
                     key = f"HASH:{hash((title.strip(), para.strip()))}"
             else:
                 key = f"HASH:{hash(str(chunk))}"
@@ -305,7 +435,11 @@ class GCSDataLoader:
             seen.add(key)
             all_combined.append(chunk)
 
-        logger.info(f"Total chunks loaded (deduped): {len(all_combined)}")
+        logger.info(f"Total chunks loaded (deduped, after chunking): {len(all_combined)}")
+        if self.enable_chunking:
+            chunked_count = sum(1 for c in all_combined if c.get('is_chunked', False))
+            logger.info(f"  ✓ {chunked_count} chunks were created from larger documents")
+        
         return all_combined, aggregated_counts
 
 
@@ -323,14 +457,34 @@ if __name__ == "__main__":
     else:
         logger.info("No credentials path detected; will try ADC if available.")
 
-    loader = GCSDataLoader(bucket_name=BUCKET_NAME, project_id=PROJECT_ID, credentials_path=creds_path, local_cache_dir="./.gcs_cache")
+    # Test with chunking enabled
+    loader = GCSDataLoader(
+        bucket_name=BUCKET_NAME, 
+        project_id=PROJECT_ID, 
+        credentials_path=creds_path, 
+        local_cache_dir="./.gcs_cache",
+        enable_chunking=True,  # Enable chunking
+        handbook_chunk_size=800,
+        transcript_chunk_size=800,
+        handbook_overlap=150,
+        transcript_overlap=100
+    )
 
     all_chunks, counts = loader.load_all_chunks(max_files_per_prefix=20)
     # Print per-file counts
     logger.info("Per-file counts from GCS:")
     for fname, c in counts.items():
-        logger.info(f"  - {fname}: {c} records")
-    print(f"\nTotal unique chunks (deduped): {len(all_chunks)}")
+        logger.info(f"  - {fname}: {c} records (after chunking)")
+    print(f"\nTotal unique chunks (deduped, after chunking): {len(all_chunks)}")
+    
+    # Show chunking stats
+    chunked = [c for c in all_chunks if c.get('is_chunked', False)]
+    print(f"Documents that were chunked: {len(chunked)}")
+    
     if all_chunks:
         print("\nSample record:")
         print(json.dumps(all_chunks[0], indent=2))
+        
+        if chunked:
+            print("\nSample chunked record:")
+            print(json.dumps(chunked[0], indent=2))
