@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class UniversalRAGPipeline:
     
     def __init__(self, 
-                 provider: str = "groq",  # ← CHANGED DEFAULT TO GROQ
+                 provider: str = "groq",
                  api_key: Optional[str] = None,
                  model: Optional[str] = None,
                  temperature: float = 0.3,
@@ -133,20 +133,27 @@ class UniversalRAGPipeline:
         return self.retriever.retrieve(query, k=k)
     
     def build_prompt(self, query: str, retrieved_docs: List[Dict]) -> str:
-        """Build prompt with retrieved context"""
+        """Build prompt with retrieved context - optimized for token limits"""
         context_parts = []
+        MAX_CHARS_PER_DOC = 500  # ~125 tokens per document (safe for 3 docs)
+        
         for i, doc in enumerate(retrieved_docs, 1):
             title = doc['metadata'].get('title', 'Untitled')
             text = doc['document']
+            
+            # Truncate to fit Groq's limits (critical for large chunks)
+            if len(text) > MAX_CHARS_PER_DOC:
+                text = text[:MAX_CHARS_PER_DOC] + "..."
+                logger.debug(f"Truncated doc {i} from {len(doc['document'])} to {MAX_CHARS_PER_DOC} chars")
+            
             context_parts.append(f"[Source {i}: {title}]\n{text}")
         
         context = "\n\n".join(context_parts)
         
-        prompt = f"""You are an intelligent onboarding assistant for GitLab. Answer the question based ONLY on the provided context from GitLab's handbook and meeting transcripts.
+        # Concise prompt to save tokens
+        prompt = f"""Answer based on GitLab handbook context.
 
-If the answer is not in the context, say "I don't have enough information to answer this based on the available documents."
-
-Be concise, accurate, and cite which source(s) you're using (e.g., "According to Source 1...").
+Be concise and cite sources (e.g., "According to Source 1...").
 
 Context:
 {context}
