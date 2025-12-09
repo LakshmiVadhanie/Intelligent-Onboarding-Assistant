@@ -22,7 +22,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Enhanced CSS with animations and better visuals
+# Enhanced CSS (keep your existing CSS - it's great!)
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -220,7 +220,7 @@ def get_system_stats():
         'embedding_dim': 0,
         'num_chunks': 0,
         'model_name': 'Unknown',
-        'vector_store': 'ChromaDB'
+        'vector_store': 'ChromaDB + GCS'
     }
     
     # Try to load embedding info
@@ -235,16 +235,29 @@ def get_system_stats():
     # Try to load vector store info
     vector_store_path = Path("models/vector_store")
     if vector_store_path.exists():
-        # Estimate chunks from vector store
         chroma_db = vector_store_path / "chroma.sqlite3"
         if chroma_db.exists():
-            stats['num_chunks'] = stats['num_documents']  # Approximation
+            stats['num_chunks'] = stats['num_documents']
     
     return stats
 
+@st.cache_resource
 def initialize_pipeline():
-    """Initialize RAG pipeline with Gemini"""
-    return UniversalRAGPipeline(provider="gemini")
+    """Initialize RAG pipeline with Gemini and GCS"""
+    # Get credentials path
+    creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    if creds_path is None:
+        default_creds = Path("mlops-476419-2c1937dab204.json")
+        if default_creds.exists():
+            creds_path = str(default_creds)
+    
+    return UniversalRAGPipeline(
+        provider="gemini",
+        use_gcs=True,
+        bucket_name="mlops-data-oa",
+        project_id="mlops-476419",
+        credentials_path=creds_path
+    )
 
 def create_response_time_chart(times):
     """Create animated response time chart"""
@@ -362,7 +375,7 @@ with st.sidebar:
     st.markdown(f"""
     <div style="text-align: center; margin-top: 10px;">
         <span class="stat-badge">🔮 Model: {stats['model_name'].split('/')[-1]}</span>
-        <span class="stat-badge">💾 Store: {stats['vector_store']}</span>
+        <span class="stat-badge">💾 {stats['vector_store']}</span>
     </div>
     """, unsafe_allow_html=True)
     
@@ -444,11 +457,13 @@ with st.sidebar:
     st.markdown(f"""
     <span class="stat-badge">🏆 MRR: 1.0000</span>
     <span class="stat-badge">🎯 Perfect Retrieval</span>
+    <span class="stat-badge">☁️ GCS Enabled</span>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.caption("🛠️ Built with ❤️ by Team 13")
     st.caption("⚡ Powered by Gemini 2.0 & MPNet")
+    st.caption("☁️ Data from GCS")
 
 # Main Content
 st.markdown('<div class="fun-emoji">🚀</div>', unsafe_allow_html=True)
@@ -457,20 +472,30 @@ st.markdown("### Ask me anything about GitLab's policies, processes, and culture
 
 # Initialize pipeline with loading animation
 if st.session_state.rag_pipeline is None:
-    with st.spinner("🔄 Initializing AI brain... Loading embeddings... Warming up vector store..."):
+    with st.spinner("🔄 Initializing AI brain... Loading from GCS... Warming up vector store..."):
         progress_bar = st.progress(0)
-        for i in range(100):
-            time.sleep(0.01)
-            progress_bar.progress(i + 1)
+        
+        status_messages = [
+            "☁️ Connecting to GCS...",
+            "📥 Downloading embeddings...",
+            "🧠 Loading models...",
+            "🔍 Initializing retrieval...",
+            "✨ Almost ready..."
+        ]
+        
+        for i, msg in enumerate(status_messages):
+            st.caption(msg)
+            time.sleep(0.3)
+            progress_bar.progress((i + 1) * 20)
         
         st.session_state.rag_pipeline = initialize_pipeline()
         st.session_state.system_stats = get_system_stats()
         progress_bar.empty()
     
-    st.success("✅ Pipeline loaded! Ready for your questions! 🎉")
+    st.success("✅ Pipeline loaded from GCS! Ready for your questions! 🎉")
     st.balloons()
 
-# Query input with better UX
+# Query input
 query_input = st.text_input(
     "Your Question:",
     placeholder="e.g., What is GitLab's approach to sustainability? 💚",
@@ -483,7 +508,7 @@ if 'current_query' in st.session_state and st.session_state.current_query:
     query_input = st.session_state.current_query
     st.session_state.current_query = None
 
-# Search button with better layout
+# Search button
 col1, col2, col3 = st.columns([2, 1, 2])
 
 with col2:
@@ -496,6 +521,7 @@ if search_button and query_input:
     # Animated thinking messages
     thinking_messages = [
         "🤔 Analyzing your question...",
+        "☁️ Querying GCS data...",
         "🔍 Searching through documents...",
         "🧠 Processing with AI...",
         "✨ Generating response..."
@@ -507,7 +533,7 @@ if search_button and query_input:
     
     for i, msg in enumerate(thinking_messages):
         status.update(label=msg, state="running")
-        time.sleep(0.3)
+        time.sleep(0.2)
     
     result = st.session_state.rag_pipeline.generate_answer(query_input, k=3)
     
@@ -666,6 +692,7 @@ st.markdown("""
     <span class="stat-badge">🚀 Model A: Large Chunks + MPNet</span>
     <span class="stat-badge">⚡ Sub-3s Response Time</span>
     <span class="stat-badge">🎯 Perfect Retrieval</span>
+    <span class="stat-badge">☁️ GCS-Powered</span>
     <span class="stat-badge">💚 Eco-Friendly (Free Tier)</span>
 </div>
 """, unsafe_allow_html=True)
