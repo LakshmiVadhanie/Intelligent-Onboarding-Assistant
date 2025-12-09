@@ -1,0 +1,16 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/mlops-476419/onboarding-repo/onboarding-ui:latest'
+      - '-f'
+      - 'Dockerfile.ui'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/mlops-476419/onboarding-repo/onboarding-ui:latest'
+images:
+  - 'us-central1-docker.pkg.dev/mlops-476419/onboarding-repo/onboarding-ui:latest'
+timeout: 1200s

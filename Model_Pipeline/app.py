@@ -328,7 +328,7 @@ with st.sidebar:
     
     # API Status - UPDATED TO CHECK GROQ FIRST
     groq_key = os.getenv("GROQ_API_KEY")
-    gemini_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    gemini_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
     
     if groq_key:
         st.success("✅ Groq API Connected")
@@ -350,7 +350,7 @@ with st.sidebar:
             
             **Or use Gemini:**
             1. 🔗 [Get free key](https://aistudio.google.com/app/apikey)
-            2. Add: `GOOGLE_API_KEY=your-key`
+            2. Add: `GROQ_API_KEY=your-key`
             """)
     
     st.markdown("---")

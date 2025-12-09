@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 load_dotenv()
 
 GCS_KEY_PATH = os.getenv("GCS_KEY_PATH")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 
@@ -141,7 +141,7 @@ def test_rag_generation():
     try:
         from src.generation.rag_pipeline import UniversalRAGPipeline
 
-        api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
 
         rag = UniversalRAGPipeline(provider="gemini")
         result = rag.generate_answer("What is sustainability?", k=3)
@@ -307,7 +307,7 @@ def run_all_tests():
     print("  COMPREHENSIVE PIPELINE TEST - ALL FEATURES")
     print("=" * 80)
 
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
     if api_key:
         print("\n  Gemini API key found - testing full RAG generation!")
     else:

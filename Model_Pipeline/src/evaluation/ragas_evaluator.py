@@ -28,14 +28,15 @@ class RAGASEvaluator:
             context_recall
         ]
         
-        self.api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        self.api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
         self.llm = None
         
         if self.api_key:
             try:
-                import google.generativeai as genai
-                genai.configure(api_key=self.api_key)
-                self.llm = genai.GenerativeModel('gemini-2.0-flash')
+                from groq import Groq
+                groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+                self.# Using Groq instead of gemini-2.0-flash
+# llm = groq_client
                 logger.info("RAGAS Evaluator initialized with Gemini API (gemini-2.0-flash)")
             except Exception as e:
                 logger.warning(f"Failed to initialize Gemini: {e}")
@@ -67,8 +68,8 @@ class RAGASEvaluator:
             if self.llm and contexts:
                 try:
                     prompt = f"Based on these documents, answer the question: {question}\n\nDocuments:\n{contexts[0][:500]}"
-                    response = self.llm.generate_content(prompt)
-                    synthetic_answer = response.text
+                    response = self.groq_client.chat.completions.create(model="mixtral-8x7b-32768", messages=[{"role": "user", "content": prompt}])
+                    synthetic_answer = response.choices[0].message.content
                     logger.info("Generated answer using Gemini")
                 except Exception as e:
                     logger.warning(f"Gemini generation failed: {e}")
@@ -220,7 +221,7 @@ if __name__ == "__main__":
         }
     ]
     
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
     if api_key:
         print("\nGemini API key found - using gemini-2.0-flash for evaluation")
     else:

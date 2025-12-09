@@ -1,0 +1,12 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.ui.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+ENTRYPOINT ["streamlit", "run", "/app/Model_Pipeline/app.py", "--server.port=8080", "--server.address=0.0.0.0", "--server.headless=true", "--browser.serverAddress=0.0.0.0", "--browser.gatherUsageStats=false"]

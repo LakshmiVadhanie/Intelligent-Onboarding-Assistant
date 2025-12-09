@@ -1,4 +1,4 @@
-import google.generativeai as genai
+from groq import Groq
 from groq import Groq
 # from openai import OpenAI
 import os
@@ -82,16 +82,16 @@ class UniversalRAGPipeline:
     def _init_gemini(self, api_key: Optional[str], model: Optional[str]):
         """Initialize Gemini"""
         if api_key is None:
-            api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+            api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
         
         if api_key is None:
             logger.warning("⚠️ No Google API key found!")
             logger.warning("   Get free key: https://aistudio.google.com/app/apikey")
-            logger.warning("   Set: $env:GOOGLE_API_KEY='your-key'")
+            logger.warning("   Set: $env:GROQ_API_KEY='your-key'")
             logger.warning("   Pipeline will only retrieve, not generate")
             return
         
-        genai.configure(api_key=api_key)
+        groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.model_name = model or "gemini-2.0-flash"
         self.client = genai.GenerativeModel(self.model_name)
         logger.info(f"✓ Gemini initialized: {self.model_name} (FREE!)")
@@ -223,14 +223,14 @@ Answer:"""
     
     def _generate_gemini(self, prompt: str) -> str:
         """Generate with Gemini"""
-        response = self.client.generate_content(
+        response = self.groq_client.chat.completions.create(model="mixtral-8x7b-32768", messages=[{"role": "user", "content": 
             prompt,
             generation_config=genai.types.GenerationConfig(
                 temperature=self.temperature,
                 max_output_tokens=500,
-            )
+            }])
         )
-        return response.text
+        return response.choices[0].message.content
     
     def _generate_openai(self, prompt: str) -> str:
         """Generate with OpenAI"""
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     
     # Check for API keys (prioritize Groq)
     groq_key = os.getenv("GROQ_API_KEY")
-    gemini_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    gemini_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
     openai_key = os.getenv("OPENAI_API_KEY")
     
     if groq_key:

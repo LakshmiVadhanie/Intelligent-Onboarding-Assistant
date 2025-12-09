@@ -298,7 +298,7 @@ def test_rag_pipeline():
         assert 'answer' in result, "Missing answer!"
         assert 'sources' in result, "Missing sources!"
         
-        api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
         
         print(f"✅ PASSED: RAG pipeline working")
         print(f"   Sources retrieved: {result['num_sources']}")
@@ -378,7 +378,7 @@ def run_gcs_tests():
     print(f"   Embeddings Prefix: {GCS_EMBEDDINGS_PREFIX}")
     
     # Check for API key
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
     if api_key:
         print(f"   Gemini API: ✅ Configured")
     else:
