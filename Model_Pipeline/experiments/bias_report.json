@@ -1,0 +1,91 @@
+{
+  "num_queries": 5,
+  "k": 5,
+  "source_bias": {
+    "unknown": {
+      "total_retrieved": 25,
+      "retrieval_rate": 1.0,
+      "avg_rank": 3.0,
+      "avg_similarity": 0.4264941453933716
+    }
+  },
+  "title_distribution": {
+    "Sustainability": {
+      "count": 4,
+      "avg_similarity": [
+        0.608598530292511,
+        0.48057395219802856,
+        0.4935009479522705,
+        0.31716620922088623
+      ]
+    },
+    "Corporate & Compliance Legal": {
+      "count": 3,
+      "avg_similarity": [
+        0.5669150352478027,
+        0.5086959004402161,
+        0.5707034468650818
+      ]
+    },
+    "Commercial Legal": {
+      "count": 3,
+      "avg_similarity": [
+        0.5073696374893188,
+        0.539172887802124,
+        0.6254335641860962
+      ]
+    },
+    "Risk Management and Dispute Resolution (RMDR)": {
+      "count": 3,
+      "avg_similarity": [
+        0.453609824180603,
+        0.6145792007446289,
+        0.4968535900115967
+      ]
+    },
+    "Stategy & Legal Operations": {
+      "count": 3,
+      "avg_similarity": [
+        0.5012258291244507,
+        0.2146918773651123,
+        0.2929466962814331
+      ]
+    },
+    "GitLab Privacy": {
+      "count": 2,
+      "avg_similarity": [
+        0.4369601011276245,
+        0.28129106760025024
+      ]
+    },
+    "CI/CD UX Meeting 2023-07-19": {
+      "count": 2,
+      "avg_similarity": [
+        0.27960240840911865,
+        0.27960240840911865
+      ]
+    },
+    "CI/CD UX Meeting Part II - 2023-09-13": {
+      "count": 2,
+      "avg_similarity": [
+        0.20849215984344482,
+        0.20849215984344482
+      ]
+    },
+    "Legal, Employment at GitLab: A Strategic Partnership": {
+      "count": 2,
+      "avg_similarity": [
+        0.4956057071685791,
+        0.3189186453819275
+      ]
+    },
+    "Trade Compliance": {
+      "count": 1,
+      "avg_similarity": [
+        0.3613518476486206
+      ]
+    }
+  },
+  "disparities": {},
+  "has_significant_bias": false
+}

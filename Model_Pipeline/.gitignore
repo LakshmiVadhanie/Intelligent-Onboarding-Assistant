@@ -1,0 +1,9 @@
+
+/gcp_keys
+
+# Log files
+logs/
+airflow/logs/
+airflow/*.log
+*.log
+.env

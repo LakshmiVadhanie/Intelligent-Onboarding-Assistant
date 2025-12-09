@@ -1,0 +1,5 @@
+outs:
+- md5: 2a3d9a22545fec733af2a69e534b9360
+  size: 91902
+  hash: md5
+  path: handbook_paragraphs.json
