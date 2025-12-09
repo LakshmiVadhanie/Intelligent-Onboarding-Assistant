@@ -1,6 +1,0 @@
-apache-airflow==2.7.2
-beautifulsoup4==4.12.2
-requests==2.31.0
-yt-dlp==2023.10.07
-openai-whisper
-torch

@@ -1,0 +1,322 @@
+2025-10-26 20:04:02 - pipeline - INFO - GitLab Handbook Scraper initialized. Base URL: https://handbook.gitlab.com/
+2025-10-26 20:04:02 - pipeline - INFO - Starting GitLab Handbook scraping
+2025-10-26 20:04:02 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/
+2025-10-26 20:04:02 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/
+2025-10-26 20:04:04 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_99228bc2.json
+2025-10-26 20:04:04 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/gitlab-com_customizations/
+2025-10-26 20:04:06 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_4e7a3375.json
+2025-10-26 20:04:06 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/customer-success/professional-services-engineering/professional-services-delivery-methodology/discovery/
+2025-10-26 20:04:08 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_6225e30c.json
+2025-10-26 20:04:08 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/information-system-contingency-plan-iscp/
+2025-10-26 20:04:10 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c03ef0ba.json
+2025-10-26 20:04:10 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/enterprise-data/how-we-work/calendar/
+2025-10-26 20:04:12 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_846467fa.json
+2025-10-26 20:04:12 - pipeline - INFO - Scraped 5 pages from /handbook/
+2025-10-26 20:04:12 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/values/
+2025-10-26 20:04:12 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/values/
+2025-10-26 20:04:14 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_950e4bc7.json
+2025-10-26 20:04:14 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/product-security/vulnerability-management/lifecycle/
+2025-10-26 20:04:16 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_ab0ce1c9.json
+2025-10-26 20:04:16 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/enterprise-data/platform/python-tool-package-management/
+2025-10-26 20:04:17 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_29d31047.json
+2025-10-26 20:04:18 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/customer-support-operations/docs/zendesk-salesforce-sync/partner-sync/
+2025-10-26 20:04:19 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_df8c03f0.json
+2025-10-26 20:04:19 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/careers/matrix/development/intermediate/
+2025-10-26 20:04:21 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_dc124b0a.json
+2025-10-26 20:04:21 - pipeline - INFO - Scraped 5 pages from /handbook/values/
+2025-10-26 20:04:21 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:04:21 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:04:23 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b475ac58.json
+2025-10-26 20:04:23 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/namesquatting_policy/
+2025-10-26 20:04:25 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_16ae51bc.json
+2025-10-26 20:04:25 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/digital-experience/foundations-agenda/
+2025-10-26 20:04:26 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_1e245448.json
+2025-10-26 20:04:27 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/systems/yubikey/2fa/okta/
+2025-10-26 20:04:28 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_164496a6.json
+2025-10-26 20:04:28 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/inbound-marketing/search-marketing/sitebulb/
+2025-10-26 20:04:30 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3c3febe2.json
+2025-10-26 20:04:30 - pipeline - INFO - Scraped 5 pages from /handbook/company/
+2025-10-26 20:04:30 - pipeline - INFO - Scraping complete! Total pages: 15, Failed: 0
+2025-10-26 20:04:30 - pipeline - INFO - Summary saved to data-pipeline/data/raw/handbook/scraping_summary.json
+2025-10-26 20:30:41 - pipeline - INFO - GitLab Handbook Scraper initialized. Base URL: https://handbook.gitlab.com/
+2025-10-26 20:30:41 - pipeline - INFO - Starting GitLab Handbook scraping
+2025-10-26 20:30:41 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:30:41 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:30:43 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b475ac58.json
+2025-10-26 20:30:44 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/event-stream/
+2025-10-26 20:30:45 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_38bfbfa7.json
+2025-10-26 20:30:45 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/careers/matrix/quality/software-engineer-in-test/staff/
+2025-10-26 20:30:47 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_5d31a8f1.json
+2025-10-26 20:30:47 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/developer-relations/workflows-tools/discord/
+2025-10-26 20:30:49 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_09a64a8a.json
+2025-10-26 20:30:49 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/managers/hazards-and-challenges/
+2025-10-26 20:30:51 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c3060a5b.json
+2025-10-26 20:30:51 - pipeline - INFO - Scraped 5 pages from /handbook/company/
+2025-10-26 20:30:51 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/
+2025-10-26 20:30:51 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/
+2025-10-26 20:30:53 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_99228bc2.json
+2025-10-26 20:30:53 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/how-we-work/
+2025-10-26 20:30:55 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_ab19703c.json
+2025-10-26 20:30:55 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/product-security/infrastructure-security/metrics/capacity/
+2025-10-26 20:30:57 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3e5231d7.json
+2025-10-26 20:30:57 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/merge-request-report-widgets/
+2025-10-26 20:30:59 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_2ca11256.json
+2025-10-26 20:30:59 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/engineering/saas/
+2025-10-26 20:31:01 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_358e8d42.json
+2025-10-26 20:31:02 - pipeline - INFO - Scraped 5 pages from /handbook/
+2025-10-26 20:31:02 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/engineering/
+2025-10-26 20:31:02 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/
+2025-10-26 20:31:03 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_5b4e9ad2.json
+2025-10-26 20:31:03 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/systems/accessctl/
+2025-10-26 20:31:05 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_8b62befe.json
+2025-10-26 20:31:05 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/license-and-renewals/workflows/self-managed/handling_flagged_provisioning_failures/
+2025-10-26 20:31:07 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_ae07d3ea.json
+2025-10-26 20:31:07 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/finance/finance-team-performance-indicators/
+2025-10-26 20:31:09 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_2705efdb.json
+2025-10-26 20:31:09 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/customer-support-operations/docs/supportlogic/
+2025-10-26 20:31:11 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3d084e93.json
+2025-10-26 20:31:11 - pipeline - INFO - Scraped 5 pages from /handbook/engineering/
+2025-10-26 20:31:11 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/security/
+2025-10-26 20:31:11 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/
+2025-10-26 20:31:13 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c35fe557.json
+2025-10-26 20:31:13 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/ux/ux-research/quantitative-data/
+2025-10-26 20:31:15 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_de2b351f.json
+2025-10-26 20:31:15 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/onboarding/
+2025-10-26 20:31:17 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_7e65a2f1.json
+2025-10-26 20:31:17 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/infrastructure-platforms/gitlab-delivery/distribution/k8s-release-support-policy/
+2025-10-26 20:31:19 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_449d4f04.json
+2025-10-26 20:31:19 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/identity/platform/provisioning/google/
+2025-10-26 20:31:21 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_4f566cfb.json
+2025-10-26 20:31:21 - pipeline - INFO - Scraped 5 pages from /handbook/security/
+2025-10-26 20:31:21 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/marketing/
+2025-10-26 20:31:21 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/
+2025-10-26 20:31:22 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_6f98db53.json
+2025-10-26 20:31:23 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/working_with_security/
+2025-10-26 20:31:24 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_dfc59a34.json
+2025-10-26 20:31:24 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/systems/google/user/
+2025-10-26 20:31:26 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_8fa3cbf3.json
+2025-10-26 20:31:26 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/people-group/
+2025-10-26 20:31:28 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_a4e134f3.json
+2025-10-26 20:31:28 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/people-group/people-ops-tech-analytics/people-analytics/people-tableau/
+2025-10-26 20:31:30 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_f437aaea.json
+2025-10-26 20:31:30 - pipeline - INFO - Scraped 5 pages from /handbook/marketing/
+2025-10-26 20:31:30 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/sales/
+2025-10-26 20:31:30 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/
+2025-10-26 20:31:32 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_e99ee478.json
+2025-10-26 20:31:32 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/solutions-architects/sa-practices/deliberate-practice/
+2025-10-26 20:31:34 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_21f63e43.json
+2025-10-26 20:31:34 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/security-assurance/governance/security-training/
+2025-10-26 20:31:36 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_bf67bf34.json
+2025-10-26 20:31:36 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/500_errors/
+2025-10-26 20:31:38 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b9710fbd.json
+2025-10-26 20:31:38 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/customer-success/professional-services-engineering/education-services/ilt-labs/gitlabsecurityessentialslab1/
+2025-10-26 20:31:40 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_edbacae5.json
+2025-10-26 20:31:40 - pipeline - INFO - Scraped 5 pages from /handbook/sales/
+2025-10-26 20:31:40 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/finance/
+2025-10-26 20:31:40 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/finance/
+2025-10-26 20:31:42 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c274c09d.json
+2025-10-26 20:31:42 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/end-user-services/supported-apps/zoom/zoom-recording/
+2025-10-26 20:31:43 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_eac670b1.json
+2025-10-26 20:31:44 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/brand-and-product-marketing/product-and-solution-marketing/enablement/
+2025-10-26 20:31:45 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_45cf2719.json
+2025-10-26 20:31:45 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/field-operations/customer-success-operations/troops-administration/
+2025-10-26 20:31:47 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_988336db.json
+2025-10-26 20:31:47 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/build-value-with-customers/
+2025-10-26 20:31:49 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_374b199e.json
+2025-10-26 20:31:49 - pipeline - INFO - Scraped 5 pages from /handbook/finance/
+2025-10-26 20:31:49 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/product/
+2025-10-26 20:31:49 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/
+2025-10-26 20:31:51 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_2a700086.json
+2025-10-26 20:31:51 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/real-time/design_document/
+2025-10-26 20:31:53 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_7f0c265d.json
+2025-10-26 20:31:53 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/product-security/security-platforms-architecture/product-security-engineering/
+2025-10-26 20:31:55 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_4e0fd7b0.json
+2025-10-26 20:31:55 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/product-security/vulnerability-management/automation/
+2025-10-26 20:31:57 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b8b23d8d.json
+2025-10-26 20:31:57 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/infrastructure-platforms/production-engineering/ops/roadmaps/fy26/
+2025-10-26 20:31:59 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3fc62241.json
+2025-10-26 20:32:00 - pipeline - INFO - Scraped 5 pages from /handbook/product/
+2025-10-26 20:32:00 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:00 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:00 - pipeline - WARNING - Retry 1/3 for https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:01 - pipeline - WARNING - Retry 2/3 for https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:03 - pipeline - ERROR - Failed to scrape https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/: 404 Client Error: Not Found for url: https://handbook.gitlab.com/handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:03 - pipeline - INFO - Scraped 0 pages from /handbook/legal-and-corporate-affairs/
+2025-10-26 20:32:03 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/people-group/
+2025-10-26 20:32:03 - pipeline - INFO - Scraped 0 pages from /handbook/people-group/
+2025-10-26 20:32:03 - pipeline - INFO - Scraping complete! Total pages: 40, Failed: 1
+2025-10-26 20:32:03 - pipeline - INFO - Summary saved to data-pipeline/data/raw/handbook/scraping_summary.json
+2025-10-26 20:49:41 - pipeline - INFO - GitLab Handbook Scraper initialized. Base URL: https://handbook.gitlab.com/
+2025-10-26 20:49:41 - pipeline - INFO - Starting GitLab Handbook scraping
+2025-10-26 20:49:41 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:49:41 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/
+2025-10-26 20:49:43 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b475ac58.json
+2025-10-26 20:49:43 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/systems/okta/user/ios/
+2025-10-26 20:49:45 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_558cd7dc.json
+2025-10-26 20:49:45 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/marking_tickets_as_spam/
+2025-10-26 20:49:47 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_75dadf00.json
+2025-10-26 20:49:47 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/infrastructure-platforms/production-engineering/ops/roadmaps/fy26/
+2025-10-26 20:49:49 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3fc62241.json
+2025-10-26 20:49:49 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/customer-success/csm/success-plans/
+2025-10-26 20:49:50 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_7eaf4ebe.json
+2025-10-26 20:49:51 - pipeline - INFO - Scraped 5 pages from /handbook/company/
+2025-10-26 20:49:51 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/
+2025-10-26 20:49:51 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/
+2025-10-26 20:49:52 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_99228bc2.json
+2025-10-26 20:49:53 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/readmes/cynthia/
+2025-10-26 20:49:54 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_84d29e6a.json
+2025-10-26 20:49:54 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/gearing-ratios/
+2025-10-26 20:49:56 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c11cde67.json
+2025-10-26 20:49:56 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/support-time-off-buddies/
+2025-10-26 20:49:58 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_0f35c282.json
+2025-10-26 20:49:58 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/development/growth/ai-prompts/epic-summary-prompt/
+2025-10-26 20:50:00 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_5cb17e0c.json
+2025-10-26 20:50:00 - pipeline - INFO - Scraped 5 pages from /handbook/
+2025-10-26 20:50:00 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/values
+2025-10-26 20:50:00 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/values
+2025-10-26 20:50:02 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_66e0ab4a.json
+2025-10-26 20:50:02 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/enterprise-data/organization/data-steering/
+2025-10-26 20:50:04 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_002a6960.json
+2025-10-26 20:50:04 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/user-journey-map/
+2025-10-26 20:50:06 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_cbfbc902.json
+2025-10-26 20:50:06 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/brand-and-product-marketing/product-and-solution-marketing/enablement/dotcom-subscriptions/
+2025-10-26 20:50:08 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_6c44e464.json
+2025-10-26 20:50:08 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/systems/slack/webhooks/
+2025-10-26 20:50:10 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_bc0800e1.json
+2025-10-26 20:50:10 - pipeline - INFO - Scraped 5 pages from /handbook/values
+2025-10-26 20:50:10 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/engineering/
+2025-10-26 20:50:10 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/
+2025-10-26 20:50:12 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_5b4e9ad2.json
+2025-10-26 20:50:13 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/customer-success/professional-services-engineering/education-services/ilt-labs/sysadminhandsonlab1k8s/
+2025-10-26 20:50:14 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_fbb1e94e.json
+2025-10-26 20:50:15 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/customer-success/professional-services-engineering/education-services/gitlabpmhandsonlab7/
+2025-10-26 20:50:16 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_39c056fa.json
+2025-10-26 20:50:17 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/readmes/tom-mcatee/
+2025-10-26 20:50:19 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_442fc2f1.json
+2025-10-26 20:50:19 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/infrastructure/team/finops/
+2025-10-26 20:50:20 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_d9fa2620.json
+2025-10-26 20:50:21 - pipeline - INFO - Scraped 5 pages from /handbook/engineering/
+2025-10-26 20:50:21 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/security/
+2025-10-26 20:50:21 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/
+2025-10-26 20:50:23 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c35fe557.json
+2025-10-26 20:50:23 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/tools-and-tips/onepassword-cli/
+2025-10-26 20:50:25 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_2c17b484.json
+2025-10-26 20:50:25 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/development/sec/secure/static-analysis/code_review/
+2025-10-26 20:50:26 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_fc850e74.json
+2025-10-26 20:50:27 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/ux/how-we-work/figma-provisioning/
+2025-10-26 20:50:28 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_6b5398d6.json
+2025-10-26 20:50:29 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/security-assurance/field-security/field-security-study/
+2025-10-26 20:50:30 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_395d16b8.json
+2025-10-26 20:50:31 - pipeline - INFO - Scraped 5 pages from /handbook/security/
+2025-10-26 20:50:31 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/marketing/
+2025-10-26 20:50:31 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/
+2025-10-26 20:50:32 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_6f98db53.json
+2025-10-26 20:50:33 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/ux/ux-research/research-shadowing/
+2025-10-26 20:50:34 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_8656160e.json
+2025-10-26 20:50:35 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/only-healthy-constraints/
+2025-10-26 20:50:36 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_a694b8fe.json
+2025-10-26 20:50:36 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/ic-leadership/
+2025-10-26 20:50:38 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_1482dbd4.json
+2025-10-26 20:50:38 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/culture/all-remote/tips/
+2025-10-26 20:50:40 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_03af0694.json
+2025-10-26 20:50:40 - pipeline - INFO - Scraped 5 pages from /handbook/marketing/
+2025-10-26 20:50:40 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/sales/
+2025-10-26 20:50:40 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/
+2025-10-26 20:50:42 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_e99ee478.json
+2025-10-26 20:50:42 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/workflows/cmoc_practice_events/
+2025-10-26 20:50:44 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_5979983b.json
+2025-10-26 20:50:44 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/security-assurance/field-security/answerbase_quality_guide/
+2025-10-26 20:50:46 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_55e70ff7.json
+2025-10-26 20:50:46 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/culture/inclusion/tmrg-gitlab-women/mentorship-program/
+2025-10-26 20:50:47 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_4ac5556b.json
+2025-10-26 20:50:48 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/infrastructure-platforms/tenant-scale/geo/process/
+2025-10-26 20:50:49 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_ac040ee7.json
+2025-10-26 20:50:50 - pipeline - INFO - Scraped 5 pages from /handbook/sales/
+2025-10-26 20:50:50 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/finance/
+2025-10-26 20:50:50 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/finance/
+2025-10-26 20:50:51 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_c274c09d.json
+2025-10-26 20:50:51 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/careers/matrix/infrastructure/core-platform/distribution/intermediate/
+2025-10-26 20:50:53 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3a4b032f.json
+2025-10-26 20:50:53 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/business-technology/readmes/analissa-moreno/
+2025-10-26 20:50:55 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_3feddabd.json
+2025-10-26 20:50:55 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/legal/publiccompanyresources/
+2025-10-26 20:50:57 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_0a975ba5.json
+2025-10-26 20:50:57 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/support/enhanced-support-offerings/offering-assigned-support-engineer/ase-workflows-and-standards/ase-time-tracking/
+2025-10-26 20:50:59 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_7ae3ac98.json
+2025-10-26 20:50:59 - pipeline - INFO - Scraped 5 pages from /handbook/finance/
+2025-10-26 20:50:59 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/product/
+2025-10-26 20:50:59 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/product/
+2025-10-26 20:51:01 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_2a700086.json
+2025-10-26 20:51:01 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/security-operations/secops-oncall/
+2025-10-26 20:51:03 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_a9036c07.json
+2025-10-26 20:51:03 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/training/sales-enablement-sessions/enablement/collaborating-community-programs/
+2025-10-26 20:51:05 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_64c5d4ec.json
+2025-10-26 20:51:05 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/ecommerce/
+2025-10-26 20:51:07 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_452bd732.json
+2025-10-26 20:51:07 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/product-security/application-security/threat-modeling/
+2025-10-26 20:51:09 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_9b5ae998.json
+2025-10-26 20:51:09 - pipeline - INFO - Scraped 5 pages from /handbook/product/
+2025-10-26 20:51:09 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/legal/
+2025-10-26 20:51:09 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/legal/
+2025-10-26 20:51:11 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_cd02ec6e.json
+2025-10-26 20:51:11 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/sales/field-operations/customer-success-operations/cs-ops-programs/contact-role-tagging-for-personalized-communications/
+2025-10-26 20:51:13 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_4d8972e6.json
+2025-10-26 20:51:13 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/working-groups/next-architecture-workflow/
+2025-10-26 20:51:15 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_544d8326.json
+2025-10-26 20:51:15 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/legal/legacy/legacy-subscription-agreement-v3/
+2025-10-26 20:51:17 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b4476160.json
+2025-10-26 20:51:17 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/devops/oncall/understanding-the-basics/
+2025-10-26 20:51:19 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_67836912.json
+2025-10-26 20:51:19 - pipeline - INFO - Scraped 5 pages from /handbook/legal/
+2025-10-26 20:51:19 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/people-group/
+2025-10-26 20:51:19 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/people-group/
+2025-10-26 20:51:21 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_a4e134f3.json
+2025-10-26 20:51:21 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/corporate/end-user-services/supported-apps/zoom/zoom-setup/
+2025-10-26 20:51:22 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_d053b806.json
+2025-10-26 20:51:23 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/security/password-guidelines/
+2025-10-26 20:51:24 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_01d692f2.json
+2025-10-26 20:51:25 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/faq-gitlab-licensing-technology-to-independent-chinese-company/
+2025-10-26 20:51:26 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_d44b697c.json
+2025-10-26 20:51:27 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/engineering/testing/end-to-end-pipeline-monitoring/
+2025-10-26 20:51:29 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_7eef9177.json
+2025-10-26 20:51:29 - pipeline - INFO - Scraped 5 pages from /handbook/people-group/
+2025-10-26 20:51:29 - pipeline - INFO - Scraping complete! Total pages: 55, Failed: 0
+2025-10-26 20:51:29 - pipeline - INFO - Summary saved to data-pipeline/data/raw/handbook/scraping_summary.json
+2025-10-26 21:17:10 - pipeline - INFO - YouTube Transcriber initialized. Channel: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-26 21:17:10 - pipeline - INFO - Starting YouTube transcription process
+2025-10-26 21:17:10 - pipeline - INFO - Using 8 sample videos with known transcripts
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: l5I8jaMsVMw
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for l5I8jaMsVMw: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for l5I8jaMsVMw
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: 8aV5AxJE2-g
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for 8aV5AxJE2-g: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for 8aV5AxJE2-g
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: 7q5hArHDEko
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for 7q5hArHDEko: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for 7q5hArHDEko
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: PGyhBwLyK2U
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for PGyhBwLyK2U: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for PGyhBwLyK2U
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: MqL6BMOySIQ
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for MqL6BMOySIQ: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for MqL6BMOySIQ
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: _jUDocRJrdE
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for _jUDocRJrdE: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for _jUDocRJrdE
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: c4rN0IQGtKI
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for c4rN0IQGtKI: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for c4rN0IQGtKI
+2025-10-26 21:17:10 - pipeline - INFO - Fetching transcript for video: 7h7KZC0GWak
+2025-10-26 21:17:10 - pipeline - WARNING - Could not get transcript for 7h7KZC0GWak: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-26 21:17:10 - pipeline - WARNING - No transcript available for 7h7KZC0GWak
+2025-10-26 21:17:10 - pipeline - INFO - Transcription complete! Processed: 0, Failed: 8
+2025-10-26 21:17:10 - pipeline - INFO - Summary saved to data-pipeline/data/raw/transcripts/transcription_summary.json
+2025-10-26 21:41:41 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-26 21:41:41 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-26 21:41:41 - pipeline - WARNING - yt-dlp not available, using alternative method
+2025-10-26 21:41:41 - pipeline - WARNING - Command line yt-dlp failed: [Errno 2] No such file or directory: 'yt-dlp'
+2025-10-26 21:41:41 - pipeline - INFO - Using manual video list as fallback
+2025-10-26 21:43:09 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-26 21:43:09 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-26 21:43:09 - pipeline - WARNING - yt-dlp not available, using alternative method
+2025-10-26 21:43:11 - pipeline - INFO - Found 126 videos using command line yt-dlp

@@ -1,0 +1,2 @@
+The process has forked and you cannot use this CoreFoundation functionality safely. You MUST exec().
+Break on __THE_PROCESS_HAS_FORKED_AND_YOU_CANNOT_USE_THIS_COREFOUNDATION_FUNCTIONALITY___YOU_MUST_EXEC__() to debug.

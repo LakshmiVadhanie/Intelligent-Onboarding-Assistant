@@ -1,0 +1,19 @@
+{
+  "content": "GitLab now offers Claude Sonnet 4.5, Anthropicâs most advanced model for coding and real-world agents, directly in the GitLab Duo model selector.\nUsers now have the flexibility to choose Claude Sonnet 4.5 alongside other leading models, enhancing their\nGitLab Duo\nexperience with upgrades in tool orchestration, context editing, and domain-specific capabilities. With top performance on\nSWE-bench Verified (77.2%\n) and strengths in cybersecurity, finance, and research-heavy workflows, GitLab users can apply Claude Sonnet 4.5 to bring sharper insights and deeper context to their development work.\n\"Having Claude Sonnet 4.5 in GitLab is a big win for developers. Itâs a really capable coding model, and, when you use it with the GitLab Duo Agent Platform, you get smarter help right in your workflows. Itâs the kind of step that makes development easier,\" said Taylor McCaslin, Principal, Strategy and Operations for AI Partnerships at GitLab.\nGitLab Duo Agent Platform + Claude Sonnet 4.5\nGitLab Duo Agent Platform\nextends the value of Claude Sonnet 4.5 by orchestrating agents, connecting them to internal systems, and integrating them throughout the software lifecycle. This combination creates a uniquely GitLab experience â where advanced reasoning and problem-solving meet platform-wide context and security. The result is faster development, more accurate outcomes, and stronger organizational coverage, all delivered inside the GitLab workflow developers already use every day.\nWhere you can use Claude Sonnet 4.5\nClaude Sonnet 4.5 is now available as a model option in GitLab Duo Agent Platform Agentic Chat on GitLab.com. You can choose Claude Sonnet 4.5 from the model selection dropdown to leverage its advanced coding capabilities for your development tasks.\nNote:\nAbility to select Claude Sonnet 4.5 in supported IDEs will be available soon.\nGet started\nGitLab Duo Pro and Enterprise customers can access Claude Sonnet 4.5 today. Visit our\ndocumentation\nto learn more about GitLab Duo capabilities and models.\nQuestions or feedback? Share your experience with us through the GitLab community.\nWant to try GitLab Ultimate with Duo Enterprise?\nSign up for a free trial today.",
+  "metadata": {
+    "title": "Greater AI choice in GitLab Duo: Claude Sonnet 4.5 arrives",
+    "url": "https://about.gitlab.com/blog/greater-ai-choice-in-gitlab-duo-claude-sonnet-4-5-arrives/",
+    "published": "2025-09-29T00:00:00.000Z",
+    "updated": "2025-09-29T00:00:00.000Z",
+    "author": "Tim Zallmann",
+    "categories": [],
+    "summary": "<p>GitLab now offers Claude Sonnet 4.5, Anthropic’s most advanced model for coding and real-world agents, directly in the GitLab Duo model selector.</p>\n<p>Users now have the flexibility to choose Claude Sonnet 4.5 alongside other leading models, enhancing their <a href=\"https://about.gitlab.com/gitlab-duo/\">GitLab Duo</a> experience with upgrades in tool orchestration, context editing, and domain-specific capabilities. With top performance on <a href=\"https://www.anthropic.com/news/claude-sonne",
+    "fetched_at": "2025-10-24T18:28:00.071283",
+    "source": "gitlab_blog"
+  },
+  "processing": {
+    "content_length": 2196,
+    "word_count": 332,
+    "is_relevant": true
+  }
+}

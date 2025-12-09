@@ -1,7 +1,0 @@
-Category,Precision,Recall,MRR,F1,Avg Similarity,Num Queries
-Engineering,0.0,0.0,0.0,0.0,0.2543561363220214,10
-Hr Policies,0.0,0.0,0.0,0.0,0.19414151072502137,10
-Company Culture,0.0,0.0,0.0,0.0,0.32957114100456236,10
-Legal Compliance,0.0,0.0,0.0,0.0,0.2991203546524048,10
-Management,0.0,0.0,0.0,0.0,0.2133000707626343,10
-Sales Marketing,0.0,0.0,0.0,0.0,0.21028077840805057,10

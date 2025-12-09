@@ -1,0 +1,293 @@
+2025-10-27 11:59:38 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 11:59:38 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 11:59:38 - pipeline - INFO - Extracting playlist videos using yt-dlp...
+2025-10-27 11:59:40 - pipeline - INFO - Found 127 videos in playlist
+2025-10-27 12:09:36 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 12:09:36 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 12:09:36 - pipeline - INFO - Extracting playlist videos using yt-dlp...
+2025-10-27 12:09:37 - pipeline - INFO - Found 127 videos in playlist
+2025-10-27 12:17:49 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 12:17:49 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 12:17:49 - pipeline - INFO - Extracting playlist videos using yt-dlp...
+2025-10-27 12:17:51 - pipeline - INFO - Found 15 videos in playlist
+2025-10-27 12:20:46 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 12:20:46 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 12:20:46 - pipeline - INFO - Extracting playlist videos from: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 12:20:48 - pipeline - INFO - Found 15 videos in playlist
+2025-10-27 12:59:05 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PLFGfElNsQthZ12EUkq3N9QlThvkf3WGnZ
+2025-10-27 12:59:05 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 12:59:05 - pipeline - INFO - Extracting playlist videos using yt-dlp...
+2025-10-27 12:59:06 - pipeline - INFO - Found 15 videos in playlist
+2025-10-27 13:28:16 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 13:28:16 - pipeline - INFO - Starting YouTube transcription process
+2025-10-27 13:28:16 - pipeline - INFO - pytube not installed, trying alternative method
+2025-10-27 13:28:16 - pipeline - INFO - Processing 24 videos from playlist
+2025-10-27 13:28:16 - pipeline - INFO - Fetching transcript for video: rBHkNJP4xKg
+2025-10-27 13:28:17 - pipeline - WARNING - No transcript available for rBHkNJP4xKg: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=rBHkNJP4xKg! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:17 - pipeline - WARNING - No transcript available for rBHkNJP4xKg
+2025-10-27 13:28:17 - pipeline - INFO - Fetching transcript for video: ZRcWCWatUys
+2025-10-27 13:28:18 - pipeline - WARNING - No transcript available for ZRcWCWatUys: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=ZRcWCWatUys! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:18 - pipeline - WARNING - No transcript available for ZRcWCWatUys
+2025-10-27 13:28:18 - pipeline - INFO - Fetching transcript for video: NnERWy3lnws
+2025-10-27 13:28:18 - pipeline - WARNING - No transcript available for NnERWy3lnws: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=NnERWy3lnws! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:18 - pipeline - WARNING - No transcript available for NnERWy3lnws
+2025-10-27 13:28:18 - pipeline - INFO - Fetching transcript for video: WnbnyV2wgZU
+2025-10-27 13:28:19 - pipeline - WARNING - No transcript available for WnbnyV2wgZU: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=WnbnyV2wgZU! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:19 - pipeline - WARNING - No transcript available for WnbnyV2wgZU
+2025-10-27 13:28:19 - pipeline - INFO - Fetching transcript for video: 8IU8LPEa0r0
+2025-10-27 13:28:20 - pipeline - WARNING - No transcript available for 8IU8LPEa0r0: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=8IU8LPEa0r0! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:20 - pipeline - WARNING - No transcript available for 8IU8LPEa0r0
+2025-10-27 13:28:20 - pipeline - INFO - Fetching transcript for video: Oq61TjkBRVU
+2025-10-27 13:28:21 - pipeline - WARNING - No transcript available for Oq61TjkBRVU: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=Oq61TjkBRVU! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:21 - pipeline - WARNING - No transcript available for Oq61TjkBRVU
+2025-10-27 13:28:21 - pipeline - INFO - Fetching transcript for video: X5Kgsz6Rb38
+2025-10-27 13:28:22 - pipeline - WARNING - No transcript available for X5Kgsz6Rb38: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=X5Kgsz6Rb38! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:22 - pipeline - WARNING - No transcript available for X5Kgsz6Rb38
+2025-10-27 13:28:22 - pipeline - INFO - Fetching transcript for video: KC6MFK3ADho
+2025-10-27 13:28:23 - pipeline - WARNING - No transcript available for KC6MFK3ADho: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=KC6MFK3ADho! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:23 - pipeline - WARNING - No transcript available for KC6MFK3ADho
+2025-10-27 13:28:23 - pipeline - INFO - Fetching transcript for video: l5I8jaMsVMw
+2025-10-27 13:28:24 - pipeline - WARNING - No transcript available for l5I8jaMsVMw: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=l5I8jaMsVMw! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:24 - pipeline - WARNING - No transcript available for l5I8jaMsVMw
+2025-10-27 13:28:24 - pipeline - INFO - Fetching transcript for video: 8aV5AxJE2-g
+2025-10-27 13:28:26 - pipeline - WARNING - No transcript available for 8aV5AxJE2-g: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=8aV5AxJE2-g! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:26 - pipeline - WARNING - No transcript available for 8aV5AxJE2-g
+2025-10-27 13:28:26 - pipeline - INFO - Fetching transcript for video: 7q5hArHDEko
+2025-10-27 13:28:26 - pipeline - WARNING - No transcript available for 7q5hArHDEko: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=7q5hArHDEko! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:26 - pipeline - WARNING - No transcript available for 7q5hArHDEko
+2025-10-27 13:28:26 - pipeline - INFO - Fetching transcript for video: PGyhBwLyK2U
+2025-10-27 13:28:29 - pipeline - WARNING - No transcript available for PGyhBwLyK2U: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=429 Client Error: Too Many Requests for url: https://www.youtube.com/api/timedtext?v=PGyhBwLyK2U&ei=vKv_aJLmEpSIkucPu93j8Ak&caps=asr&opi=112496729&exp=xpe&xoaf=5&xowf=1&hl=en&ip=0.0.0.0&ipbits=0&expire=1761611308&sparams=ip,ipbits,expire,v,ei,caps,opi,exp,xoaf&signature=AEB6BA9EF3E845808789DE763AE2DC9FFC8E66CA.29009C02BF85EF8B1D35E6A3C8077E7653B1D8E8&key=yt8&kind=asr&lang=en! This is most likely caused by:
+
+Request to YouTube failed: PGyhBwLyK2U
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:29 - pipeline - WARNING - No transcript available for PGyhBwLyK2U
+2025-10-27 13:28:29 - pipeline - INFO - Fetching transcript for video: MqL6BMOySIQ
+2025-10-27 13:28:32 - pipeline - WARNING - No transcript available for MqL6BMOySIQ: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=429 Client Error: Too Many Requests for url: https://www.youtube.com/api/timedtext?v=MqL6BMOySIQ&ei=v6v_aJT_IMqDkucPwsGimQc&caps=asr&opi=112496729&exp=xpe&xoaf=5&xowf=1&hl=en&ip=0.0.0.0&ipbits=0&expire=1761611311&sparams=ip,ipbits,expire,v,ei,caps,opi,exp,xoaf&signature=E1F2138A1A251B6FC7AE5321168614467C5C03A6.885612BB8DB41855C7E75A75E821632F716CB4F0&key=yt8&kind=asr&lang=en! This is most likely caused by:
+
+Request to YouTube failed: MqL6BMOySIQ
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:32 - pipeline - WARNING - No transcript available for MqL6BMOySIQ
+2025-10-27 13:28:32 - pipeline - INFO - Fetching transcript for video: _jUDocRJrdE
+2025-10-27 13:28:33 - pipeline - WARNING - No transcript available for _jUDocRJrdE: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=_jUDocRJrdE! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:33 - pipeline - WARNING - No transcript available for _jUDocRJrdE
+2025-10-27 13:28:33 - pipeline - INFO - Fetching transcript for video: c4rN0IQGtKI
+2025-10-27 13:28:34 - pipeline - WARNING - No transcript available for c4rN0IQGtKI: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=c4rN0IQGtKI! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:34 - pipeline - WARNING - No transcript available for c4rN0IQGtKI
+2025-10-27 13:28:34 - pipeline - INFO - Fetching transcript for video: 7h7KZC0GWak
+2025-10-27 13:28:35 - pipeline - WARNING - No transcript available for 7h7KZC0GWak: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=7h7KZC0GWak! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:35 - pipeline - WARNING - No transcript available for 7h7KZC0GWak
+2025-10-27 13:28:35 - pipeline - INFO - Fetching transcript for video: nMAgP4WLLpo
+2025-10-27 13:28:36 - pipeline - WARNING - No transcript available for nMAgP4WLLpo: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=nMAgP4WLLpo! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:36 - pipeline - WARNING - No transcript available for nMAgP4WLLpo
+2025-10-27 13:28:36 - pipeline - INFO - Fetching transcript for video: enMumwvLAug
+2025-10-27 13:28:38 - pipeline - WARNING - No transcript available for enMumwvLAug: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=429 Client Error: Too Many Requests for url: https://www.youtube.com/api/timedtext?v=enMumwvLAug&ei=xav_aNvzKPG1kucPw4XHyA8&caps=asr&opi=112496729&exp=xpe&xoaf=5&xowf=1&hl=en&ip=0.0.0.0&ipbits=0&expire=1761611317&sparams=ip,ipbits,expire,v,ei,caps,opi,exp,xoaf&signature=4D54FD6F840F81E55F62671A18D0FD3C79C4CC9C.E5BC140ED695314FA9F1BFEB375CA87AFB510222&key=yt8&kind=asr&lang=en! This is most likely caused by:
+
+Request to YouTube failed: enMumwvLAug
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:38 - pipeline - WARNING - No transcript available for enMumwvLAug
+2025-10-27 13:28:38 - pipeline - INFO - Fetching transcript for video: PoBaY_aQzA4
+2025-10-27 13:28:39 - pipeline - WARNING - No transcript available for PoBaY_aQzA4: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=PoBaY_aQzA4! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:39 - pipeline - WARNING - No transcript available for PoBaY_aQzA4
+2025-10-27 13:28:39 - pipeline - INFO - Fetching transcript for video: OoRwKJnAKL4
+2025-10-27 13:28:40 - pipeline - WARNING - No transcript available for OoRwKJnAKL4: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=OoRwKJnAKL4! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:40 - pipeline - WARNING - No transcript available for OoRwKJnAKL4
+2025-10-27 13:28:40 - pipeline - INFO - Fetching transcript for video: VLKvTWDmKLY
+2025-10-27 13:28:41 - pipeline - WARNING - No transcript available for VLKvTWDmKLY: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=VLKvTWDmKLY! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:41 - pipeline - WARNING - No transcript available for VLKvTWDmKLY
+2025-10-27 13:28:41 - pipeline - INFO - Fetching transcript for video: 5_i6J_3Z7jk
+2025-10-27 13:28:42 - pipeline - WARNING - No transcript available for 5_i6J_3Z7jk: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=5_i6J_3Z7jk! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:42 - pipeline - WARNING - No transcript available for 5_i6J_3Z7jk
+2025-10-27 13:28:42 - pipeline - INFO - Fetching transcript for video: bZHGkTmX6aY
+2025-10-27 13:28:42 - pipeline - WARNING - No transcript available for bZHGkTmX6aY: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=bZHGkTmX6aY! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:42 - pipeline - WARNING - No transcript available for bZHGkTmX6aY
+2025-10-27 13:28:42 - pipeline - INFO - Fetching transcript for video: TWqh6oKBmMw
+2025-10-27 13:28:43 - pipeline - WARNING - No transcript available for TWqh6oKBmMw: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=TWqh6oKBmMw! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+2025-10-27 13:28:43 - pipeline - WARNING - No transcript available for TWqh6oKBmMw
+2025-10-27 13:28:43 - pipeline - INFO - Transcription complete! Processed: 0, Failed: 24
+2025-10-27 13:28:43 - pipeline - INFO - Summary saved to data-pipeline/data/raw/transcripts/transcription_summary.json
+2025-10-27 13:28:49 - pipeline - INFO - YouTube Transcriber initialized. Playlist: https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv
+2025-10-27 13:28:49 - pipeline - INFO - Starting YouTube transcription process...
+2025-10-27 13:28:49 - pipeline - INFO - Extracting playlist videos using yt-dlp...
+2025-10-27 13:28:51 - pipeline - INFO - Found 127 videos in playlist
+2025-10-27 16:12:33 - pipeline - INFO - Text Chunker initialized - Method: recursive, Size: 800, Overlap: 150
+2025-10-27 16:12:33 - pipeline - INFO - Starting document chunking
+2025-10-27 16:12:33 - pipeline - INFO - Found 6 cleaned documents to chunk
+2025-10-27 16:12:33 - pipeline - INFO - Created 37 chunks from cleaned_handbook_950e4bc7.json
+2025-10-27 16:12:33 - pipeline - INFO - Created 1 chunks from cleaned_handbook_b475ac58.json
+2025-10-27 16:12:33 - pipeline - INFO - Created 1 chunks from cleaned_handbook_75dee6ea.json
+2025-10-27 16:12:33 - pipeline - INFO - Created 10 chunks from cleaned_handbook_ae86cb32.json
+2025-10-27 16:12:33 - pipeline - INFO - Created 2 chunks from cleaned_handbook_04618eef.json
+2025-10-27 16:12:33 - pipeline - INFO - Created 2 chunks from cleaned_handbook_99228bc2.json
+2025-10-27 16:12:33 - pipeline - INFO - Chunking complete! Total chunks: 53
+2025-10-27 16:12:33 - pipeline - INFO - Summary saved to data-pipeline/data/processed/chunked/chunking_summary.json
+2025-10-27 16:13:42 - pipeline - INFO - Text Cleaner initialized
+2025-10-27 16:13:42 - pipeline - INFO - Starting handbook text cleaning
+2025-10-27 16:13:42 - pipeline - INFO - Found 55 handbook documents to process
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_bc0800e1.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_6f98db53.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_5cb17e0c.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_d9fa2620.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_b4476160.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_002a6960.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_d053b806.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_0a975ba5.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_b475ac58.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_cbfbc902.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_39c056fa.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_03af0694.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_c274c09d.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_c11cde67.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_7ae3ac98.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_6c44e464.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_4ac5556b.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_6b5398d6.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_3a4b032f.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_66e0ab4a.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_2a700086.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_64c5d4ec.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_a4e134f3.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_a9036c07.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_c35fe557.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_fbb1e94e.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_55e70ff7.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_75dadf00.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_0f35c282.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_395d16b8.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_8656160e.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_01d692f2.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_ac040ee7.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_67836912.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_99228bc2.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_1482dbd4.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_2c17b484.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_7eef9177.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_4d8972e6.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_558cd7dc.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_9b5ae998.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_cd02ec6e.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_3fc62241.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_5979983b.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_7eaf4ebe.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_fc850e74.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_a694b8fe.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_442fc2f1.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_3feddabd.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_d44b697c.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_84d29e6a.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_452bd732.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_544d8326.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_5b4e9ad2.json
+2025-10-27 16:13:42 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_e99ee478.json
+2025-10-27 16:13:42 - pipeline - INFO - Text cleaning complete! Processed: 55, Failed: 0
+2025-10-27 16:13:42 - pipeline - INFO - Summary saved to data-pipeline/data/processed/cleaned/cleaning_summary.json
