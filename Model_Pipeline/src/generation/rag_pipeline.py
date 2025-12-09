@@ -1,4 +1,5 @@
 import google.generativeai as genai
+from groq import Groq
 # from openai import OpenAI
 import os
 from typing import List, Dict, Optional
@@ -19,7 +20,7 @@ logger = logging.getLogger(__name__)
 class UniversalRAGPipeline:
     
     def __init__(self, 
-                 provider: str = "gemini", 
+                 provider: str = "groq",
                  api_key: Optional[str] = None,
                  model: Optional[str] = None,
                  temperature: float = 0.3,
@@ -31,7 +32,7 @@ class UniversalRAGPipeline:
         Initialize Universal RAG Pipeline with GCS support
         
         Args:
-            provider: LLM provider ("gemini" or "openai")
+            provider: LLM provider ("gemini", "openai", or "groq")
             api_key: API key for LLM
             model: Model name
             temperature: Generation temperature
@@ -69,8 +70,10 @@ class UniversalRAGPipeline:
             self._init_gemini(api_key, model)
         elif self.provider == "openai":
             self._init_openai(api_key, model)
+        elif self.provider == "groq":
+            self._init_groq(api_key, model)
         else:
-            raise ValueError(f"Unknown provider: {provider}. Use 'gemini' or 'openai'")
+            raise ValueError(f"Unknown provider: {provider}. Use 'gemini', 'openai', or 'groq'")
         
         logger.info("\n" + "=" * 80)
         logger.info("✅ UNIVERSAL RAG PIPELINE INITIALIZED!")
@@ -109,25 +112,48 @@ class UniversalRAGPipeline:
         self.model_name = model or "gpt-3.5-turbo"
         logger.info(f"✓ OpenAI initialized: {self.model_name}")
     
+    def _init_groq(self, api_key: Optional[str], model: Optional[str]):
+        """Initialize Groq"""
+        if api_key is None:
+            api_key = os.getenv("GROQ_API_KEY")
+        
+        if api_key is None:
+            logger.warning("⚠️ No Groq API key found!")
+            logger.warning("   Get free key: https://console.groq.com/keys")
+            logger.warning("   Add to .env: GROQ_API_KEY='your-key'")
+            logger.warning("   Pipeline will only retrieve, not generate")
+            return
+        
+        self.client = Groq(api_key=api_key)
+        self.model_name = model or "llama-3.3-70b-versatile"
+        logger.info(f"✓ Groq initialized: {self.model_name} (FREE & FAST!)")
+    
     def retrieve_context(self, query: str, k: int = 5) -> List[Dict]:
         """Retrieve relevant documents"""
         return self.retriever.retrieve(query, k=k)
     
     def build_prompt(self, query: str, retrieved_docs: List[Dict]) -> str:
-        """Build prompt with retrieved context"""
+        """Build prompt with retrieved context - optimized for token limits"""
         context_parts = []
+        MAX_CHARS_PER_DOC = 500  # ~125 tokens per document (safe for 3 docs)
+        
         for i, doc in enumerate(retrieved_docs, 1):
             title = doc['metadata'].get('title', 'Untitled')
             text = doc['document']
+            
+            # Truncate to fit Groq's limits (critical for large chunks)
+            if len(text) > MAX_CHARS_PER_DOC:
+                text = text[:MAX_CHARS_PER_DOC] + "..."
+                logger.debug(f"Truncated doc {i} from {len(doc['document'])} to {MAX_CHARS_PER_DOC} chars")
+            
             context_parts.append(f"[Source {i}: {title}]\n{text}")
         
         context = "\n\n".join(context_parts)
         
-        prompt = f"""You are an intelligent onboarding assistant for GitLab. Answer the question based ONLY on the provided context from GitLab's handbook and meeting transcripts.
+        # Concise prompt to save tokens
+        prompt = f"""Answer based on GitLab handbook context.
 
-If the answer is not in the context, say "I don't have enough information to answer this based on the available documents."
-
-Be concise, accurate, and cite which source(s) you're using (e.g., "According to Source 1...").
+Be concise and cite sources (e.g., "According to Source 1...").
 
 Context:
 {context}
@@ -170,8 +196,12 @@ Answer:"""
         try:
             if self.provider == "gemini":
                 answer = self._generate_gemini(prompt)
-            else: 
+            elif self.provider == "openai":
                 answer = self._generate_openai(prompt)
+            elif self.provider == "groq":
+                answer = self._generate_groq(prompt)
+            else:
+                raise ValueError(f"Unknown provider: {self.provider}")
             
             logger.info("✓ Answer generated successfully")
             
@@ -215,6 +245,20 @@ Answer:"""
         )
         return response.choices[0].message.content
     
+    def _generate_groq(self, prompt: str) -> str:
+        """Generate with Groq"""
+        response = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=[
+                {"role": "system", "content": "You are a helpful GitLab onboarding assistant. Answer based on the provided context."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=self.temperature,
+            max_tokens=500,
+            top_p=1,
+        )
+        return response.choices[0].message.content
+    
     def print_response(self, result: Dict, show_full_sources: bool = False):
         """Pretty print response"""
         print("\n" + "=" * 80)
@@ -246,19 +290,24 @@ if __name__ == "__main__":
     print("🧪 TESTING UNIVERSAL RAG PIPELINE")
     print("=" * 80)
     
-    # Check for API keys
+    # Check for API keys (prioritize Groq)
+    groq_key = os.getenv("GROQ_API_KEY")
     gemini_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
     openai_key = os.getenv("OPENAI_API_KEY")
     
-    if gemini_key:
+    if groq_key:
+        provider = "groq"
+        print("\n✓ Using GROQ (Free & Fast!)")
+    elif gemini_key:
         provider = "gemini"
         print("\n✓ Using GEMINI (Free!)")
     elif openai_key:
         provider = "openai"
         print("\n✓ Using OPENAI")
     else:
-        provider = "gemini"
+        provider = "groq"
         print("\n⚠️ No API keys found - retrieval-only mode")
+        print("   Get free Groq key: https://console.groq.com/keys")
     
     print("=" * 80)
     
@@ -296,6 +345,6 @@ if __name__ == "__main__":
     print("=" * 80)
     print(f"\n✓ Provider: {provider.upper()}")
     print(f"✓ Model: {rag.model_name}")
-    if provider == "gemini":
+    if provider in ["gemini", "groq"]:
         print("✓ Cost: $0.00 (FREE!)")
     print("=" * 80)
