@@ -243,7 +243,7 @@ def get_system_stats():
 
 @st.cache_resource
 def initialize_pipeline():
-    """Initialize RAG pipeline with Gemini and GCS"""
+    """Initialize RAG pipeline with Groq and GCS"""
     # Get credentials path
     creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
     if creds_path is None:
@@ -252,7 +252,7 @@ def initialize_pipeline():
             creds_path = str(default_creds)
     
     return UniversalRAGPipeline(
-        provider="gemini",
+        provider="groq",  # ← CHANGED TO GROQ
         use_gcs=True,
         bucket_name="mlops-data-oa",
         project_id="mlops-476419",
@@ -326,10 +326,14 @@ with st.sidebar:
     st.markdown("### *Your AI-Powered Guide*")
     st.markdown("---")
     
-    # API Status
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    # API Status - UPDATED TO CHECK GROQ FIRST
+    groq_key = os.getenv("GROQ_API_KEY")
+    gemini_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
     
-    if api_key:
+    if groq_key:
+        st.success("✅ Groq API Connected")
+        st.markdown('<span class="stat-badge pulse">🎉 Free & Fast! 🚀</span>', unsafe_allow_html=True)
+    elif gemini_key:
         st.success("✅ Gemini API Connected")
         st.markdown('<span class="stat-badge pulse">🎉 Free Tier Active</span>', unsafe_allow_html=True)
     else:
@@ -338,11 +342,15 @@ with st.sidebar:
         
         with st.expander("🔑 Enable Full RAG Mode"):
             st.markdown("""
-            **Get Started in 3 Steps:**
-            1. 🔗 [Get free key](https://aistudio.google.com/app/apikey)
+            **Get Started with Groq (Recommended - Fast & Free!):**
+            1. 🔗 [Get free Groq key](https://console.groq.com/keys)
             2. 📝 Create `.env` file
-            3. 🔄 Add: `GOOGLE_API_KEY=your-key`
+            3. 🔄 Add: `GROQ_API_KEY=gsk_your-key`
             4. ♻️ Restart app
+            
+            **Or use Gemini:**
+            1. 🔗 [Get free key](https://aistudio.google.com/app/apikey)
+            2. Add: `GOOGLE_API_KEY=your-key`
             """)
     
     st.markdown("---")
@@ -462,7 +470,7 @@ with st.sidebar:
     
     st.markdown("---")
     st.caption("🛠️ Built with ❤️ by Team 13")
-    st.caption("⚡ Powered by Gemini 2.0 & MPNet")
+    st.caption("⚡ Powered by Groq (Mixtral) & MPNet")  # ← UPDATED
     st.caption("☁️ Data from GCS")
 
 # Main Content
