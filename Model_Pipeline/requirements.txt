@@ -35,7 +35,6 @@ ragas
 pytest
 
 # Other
-__future__
 airflow
 argparse
 bias_detection
