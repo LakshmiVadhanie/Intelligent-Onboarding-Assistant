@@ -1,3 +1,5 @@
+# src/retrieval/advanced_retriever.py
+
 from sentence_transformers import SentenceTransformer, CrossEncoder
 import sys
 from pathlib import Path
@@ -82,62 +84,142 @@ class AdvancedRetriever:
                 rerank_top_n: int = 20) -> List[Dict]:
         """
         Retrieve with two-stage approach: dense retrieval + reranking
-        
+
         Args:
             query: User query
             k: Final number of documents to return
             rerank_top_n: Number of candidates to retrieve before reranking
-            
+
         Returns:
-            Top-k reranked documents
+            Top-k reranked documents (list of dict). Returns [] if no candidates found.
         """
         logger.info(f"🔍 Query: '{query[:60]}...'")
         logger.info(f"   Stage 1: Retrieving top-{rerank_top_n} candidates...")
-        
+
         # Stage 1: Dense retrieval
-        query_embedding = self.encoder.encode(query, normalize_embeddings=True)
-        
-        results = self.vector_store.query(
-            query_embedding=query_embedding,
-            n_results=rerank_top_n
-        )
-        
-        # Format candidates
+        try:
+            query_embedding = self.encoder.encode(query, normalize_embeddings=True)
+        except Exception:
+            # fallback: encode without normalization if model doesn't support it
+            logger.exception("Failed to encode query with normalize_embeddings=True, retrying without normalization.")
+            query_embedding = self.encoder.encode(query)
+
+        # Query the vector store
+        try:
+            results = self.vector_store.query(
+                query_embedding=query_embedding,
+                n_results=rerank_top_n
+            )
+        except Exception:
+            logger.exception("vector_store.query() raised an exception. Returning empty results.")
+            return []
+
+        # Defensive: ensure results structure is present and non-empty
+        try:
+            ids_batch = results.get('ids', [])
+            docs_batch = results.get('documents', [])
+            dists_batch = results.get('distances', [])
+            metas_batch = results.get('metadatas', [])
+        except Exception:
+            logger.exception("Unexpected vector_store.query() return format.")
+            return []
+
+        # If the query returns no items (empty collection), return early
+        if not ids_batch or not ids_batch[0]:
+            logger.info("   ✓ Retrieved 0 candidates (vector store empty or no match).")
+            return []
+
+        # Format candidates safely (guard index accesses)
         candidates = []
-        for i in range(len(results['ids'][0])):
+        num_items = len(ids_batch[0])
+        for i in range(num_items):
+            doc_text = ""
+            if docs_batch and isinstance(docs_batch, list) and docs_batch and len(docs_batch[0]) > i:
+                doc_text = docs_batch[0][i]
+            dist = None
+            if dists_batch and isinstance(dists_batch, list) and dists_batch and len(dists_batch[0]) > i:
+                dist = dists_batch[0][i]
+            meta = {}
+            if metas_batch and isinstance(metas_batch, list) and metas_batch and len(metas_batch[0]) > i:
+                meta = metas_batch[0][i] or {}
+
+            dense_score = None
+            if dist is not None:
+                try:
+                    dense_score = 1 - float(dist)
+                except Exception:
+                    dense_score = None
+
             candidates.append({
-                'id': results['ids'][0][i],
-                'document': results['documents'][0][i],
-                'dense_score': 1 - results['distances'][0][i],  
-                'metadata': results['metadatas'][0][i] if results['metadatas'][0] else {}
+                'id': ids_batch[0][i],
+                'document': doc_text,
+                'dense_score': dense_score,
+                'metadata': meta
             })
-        
+
         logger.info(f"   ✓ Retrieved {len(candidates)} candidates")
-        
+
         # Stage 2: Reranking
         logger.info(f"   Stage 2: Reranking with cross-encoder...")
-        
-        pairs = [[query, doc['document']] for doc in candidates]
-        rerank_scores = self.reranker.predict(pairs)
-        
-        # Add reranking scores
+
+        # Defensive: if no candidates, skip reranker
+        if not candidates:
+            logger.info("   No candidates to rerank; returning empty result set.")
+            return []
+
+        # CrossEncoder expects list of tuples (query, doc_text). Use tuples for pairs.
+        pairs = [(query, doc['document']) for doc in candidates]
+
+        # Defensive call to reranker: catch errors (including empty input or unexpected exceptions)
+        try:
+            rerank_scores = self.reranker.predict(pairs)
+        except IndexError as e:
+            # This may occur if reranker receives empty list — should be avoided by checks above.
+            logger.exception("Reranker IndexError (likely empty input). Returning dense-ranked candidates.")
+            # Fall back: return top-k by dense_score if available
+            fallback_sorted = sorted(
+                [c for c in candidates if c['dense_score'] is not None],
+                key=lambda x: x['dense_score'],
+                reverse=True
+            )
+            final_results = fallback_sorted[:k]
+            for idx, doc in enumerate(final_results, 1):
+                doc['rank'] = idx
+                doc['similarity'] = doc.get('dense_score')
+            return final_results
+        except Exception:
+            logger.exception("Unexpected error during reranking. Returning dense-ranked candidates as fallback.")
+            fallback_sorted = sorted(
+                [c for c in candidates if c['dense_score'] is not None],
+                key=lambda x: x['dense_score'],
+                reverse=True
+            )
+            final_results = fallback_sorted[:k]
+            for idx, doc in enumerate(final_results, 1):
+                doc['rank'] = idx
+                doc['similarity'] = doc.get('dense_score')
+            return final_results
+
+        # Add reranking scores (ensure lengths match)
+        if len(rerank_scores) != len(candidates):
+            logger.warning("Reranker returned %d scores but there are %d candidates. Truncating/padding as needed.",
+                           len(rerank_scores), len(candidates))
+
         for i, doc in enumerate(candidates):
-            doc['rerank_score'] = float(rerank_scores[i])
+            score = float(rerank_scores[i]) if i < len(rerank_scores) else (doc.get('dense_score') or 0.0)
+            doc['rerank_score'] = score
             doc['rank_before_rerank'] = i + 1
-        
-        # Sort by rerank score
-        reranked = sorted(candidates, key=lambda x: x['rerank_score'], reverse=True)
-        
-        # Get top-k
+
+        # Sort by rerank score and build final list
+        reranked = sorted(candidates, key=lambda x: x.get('rerank_score', 0.0), reverse=True)
         final_results = reranked[:k]
-        
-        # Add final ranks
+
         for i, doc in enumerate(final_results, 1):
             doc['rank'] = i
-            doc['similarity'] = doc['rerank_score'] 
-        
+            doc['similarity'] = doc.get('rerank_score', doc.get('dense_score'))
+
         logger.info(f"   ✓ Reranked and returning top-{k} documents")
-        
+
         return final_results
     
     def compare_with_baseline(self, query: str, k: int = 5) -> Dict:
@@ -155,11 +237,19 @@ class AdvancedRetriever:
         advanced_results = self.retrieve(query, k=k)
         
         # Get baseline results (dense only)
-        query_embedding = self.encoder.encode(query, normalize_embeddings=True)
-        baseline_query = self.vector_store.query(query_embedding, n_results=k)
-        
+        try:
+            query_embedding = self.encoder.encode(query, normalize_embeddings=True)
+        except Exception:
+            query_embedding = self.encoder.encode(query)
+
+        try:
+            baseline_query = self.vector_store.query(query_embedding, n_results=k)
+        except Exception:
+            logger.exception("vector_store.query() failed during baseline compare.")
+            baseline_query = {'ids': [[]], 'distances': [[]]}
+
         baseline_results = []
-        for i in range(len(baseline_query['ids'][0])):
+        for i in range(len(baseline_query.get('ids', [[]])[0])):
             baseline_results.append({
                 'id': baseline_query['ids'][0][i],
                 'rank': i + 1,
@@ -212,12 +302,15 @@ if __name__ == "__main__":
         print(f"\n🎯 ADVANCED RETRIEVAL RESULTS (with reranking):")
         print("-"*80)
         
-        for doc in comparison['advanced']:
-            print(f"\n✓ Rank {doc['rank']}: {doc['id']}")
-            print(f"  Rerank Score: {doc['rerank_score']:.4f}")
-            print(f"  Dense Score: {doc['dense_score']:.4f}")
-            print(f"  Rank before rerank: {doc['rank_before_rerank']}")
-            print(f"  Preview: {doc['document'][:100]}...")
+        if comparison['advanced']:
+            for doc in comparison['advanced']:
+                print(f"\n✓ Rank {doc['rank']}: {doc['id']}")
+                print(f"  Rerank Score: {doc.get('rerank_score', 0.0):.4f}")
+                print(f"  Dense Score: {doc.get('dense_score', 0.0):.4f}")
+                print(f"  Rank before rerank: {doc.get('rank_before_rerank', 'N/A')}")
+                print(f"  Preview: {doc['document'][:100]}...")
+        else:
+            print("No advanced retrieval results (vector store may be empty).")
         
         print(f"\n🔄 Reranking changed order: {comparison['reranking_changed_order']}")
         
