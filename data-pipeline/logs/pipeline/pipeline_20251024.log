@@ -1,0 +1,179 @@
+2025-10-24 18:08:52 - pipeline - INFO - Test log message
+2025-10-24 18:14:19 - pipeline - INFO - GitLab Handbook Scraper initialized. Base URL: https://handbook.gitlab.com/
+2025-10-24 18:14:35 - pipeline - INFO - Starting GitLab Handbook scraping
+2025-10-24 18:14:35 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/
+2025-10-24 18:14:35 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/
+2025-10-24 18:14:37 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_99228bc2.json
+2025-10-24 18:14:38 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/brand-and-product-marketing/product-and-solution-marketing/usecase-gtm/agile/message-house-template/
+2025-10-24 18:14:39 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_75dee6ea.json
+2025-10-24 18:14:39 - pipeline - INFO - Scraped 2 pages from /handbook/
+2025-10-24 18:14:39 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/values/
+2025-10-24 18:14:39 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/values/
+2025-10-24 18:14:40 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_950e4bc7.json
+2025-10-24 18:14:41 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/total-rewards/compensation/
+2025-10-24 18:14:42 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_ae86cb32.json
+2025-10-24 18:14:43 - pipeline - INFO - Scraped 2 pages from /handbook/values/
+2025-10-24 18:14:43 - pipeline - INFO - Scraping section: https://handbook.gitlab.com/handbook/company/
+2025-10-24 18:14:43 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/company/
+2025-10-24 18:14:44 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_b475ac58.json
+2025-10-24 18:14:44 - pipeline - INFO - Scraping: https://handbook.gitlab.com/handbook/marketing/developer-relations/contributor-success/user-journey/
+2025-10-24 18:14:46 - pipeline - INFO - Saved document to data-pipeline/data/raw/handbook/handbook_04618eef.json
+2025-10-24 18:14:46 - pipeline - INFO - Scraped 2 pages from /handbook/company/
+2025-10-24 18:14:46 - pipeline - INFO - Scraping complete! Total pages: 6, Failed: 0
+2025-10-24 18:14:46 - pipeline - INFO - Summary saved to data-pipeline/data/raw/handbook/scraping_summary.json
+2025-10-24 18:19:45 - pipeline - INFO - Text Cleaner initialized
+2025-10-24 18:19:45 - pipeline - INFO - Starting handbook text cleaning
+2025-10-24 18:19:45 - pipeline - INFO - Found 6 handbook documents to process
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_b475ac58.json
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_75dee6ea.json
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_950e4bc7.json
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_04618eef.json
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_99228bc2.json
+2025-10-24 18:19:45 - pipeline - INFO - Saved cleaned document to data-pipeline/data/processed/cleaned/cleaned_handbook_ae86cb32.json
+2025-10-24 18:19:45 - pipeline - INFO - Text cleaning complete! Processed: 6, Failed: 0
+2025-10-24 18:19:45 - pipeline - INFO - Summary saved to data-pipeline/data/processed/cleaned/cleaning_summary.json
+2025-10-24 18:19:58 - pipeline - INFO - Text Chunker initialized - Method: recursive, Size: 800, Overlap: 150
+2025-10-24 18:19:58 - pipeline - INFO - Starting document chunking
+2025-10-24 18:19:58 - pipeline - INFO - Found 6 cleaned documents to chunk
+2025-10-24 18:19:58 - pipeline - INFO - Created 37 chunks from cleaned_handbook_950e4bc7.json
+2025-10-24 18:19:58 - pipeline - INFO - Created 1 chunks from cleaned_handbook_b475ac58.json
+2025-10-24 18:19:58 - pipeline - INFO - Created 1 chunks from cleaned_handbook_75dee6ea.json
+2025-10-24 18:19:58 - pipeline - INFO - Created 10 chunks from cleaned_handbook_ae86cb32.json
+2025-10-24 18:19:58 - pipeline - INFO - Created 2 chunks from cleaned_handbook_04618eef.json
+2025-10-24 18:19:58 - pipeline - INFO - Created 2 chunks from cleaned_handbook_99228bc2.json
+2025-10-24 18:19:58 - pipeline - INFO - Chunking complete! Total chunks: 53
+2025-10-24 18:19:58 - pipeline - INFO - Summary saved to data-pipeline/data/processed/chunked/chunking_summary.json
+2025-10-24 18:25:14 - pipeline - INFO - YouTube Transcriber initialized. Channel: https://www.youtube.com/@Gitlab
+2025-10-24 18:25:14 - pipeline - INFO - Starting YouTube transcription process
+2025-10-24 18:25:14 - pipeline - INFO - Using 8 sample GitLab videos
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: 7QJpLK1SZxE
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for 7QJpLK1SZxE: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for 7QJpLK1SZxE
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: vhJPvAlLDHE
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for vhJPvAlLDHE: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for vhJPvAlLDHE
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: EuGsen3FxXc
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for EuGsen3FxXc: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for EuGsen3FxXc
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: HbkZD_s7pKs
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for HbkZD_s7pKs: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for HbkZD_s7pKs
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: aZrK8AQM8Rk
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for aZrK8AQM8Rk: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for aZrK8AQM8Rk
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: 6drI_PQnBmo
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for 6drI_PQnBmo: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for 6drI_PQnBmo
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: GLe6Jr1UNnQ
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for GLe6Jr1UNnQ: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for GLe6Jr1UNnQ
+2025-10-24 18:25:14 - pipeline - INFO - Fetching transcript for video: fLKpqDx6GT0
+2025-10-24 18:25:14 - pipeline - ERROR - Failed to get transcript for fLKpqDx6GT0: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-24 18:25:14 - pipeline - WARNING - No transcript available for fLKpqDx6GT0
+2025-10-24 18:25:14 - pipeline - INFO - Transcription complete! Processed: 0, Failed: 8
+2025-10-24 18:25:14 - pipeline - INFO - Summary saved to data-pipeline/data/raw/transcripts/transcription_summary.json
+2025-10-24 18:27:28 - pipeline - INFO - YouTube Transcriber initialized. Channel: https://www.youtube.com/@Gitlab
+2025-10-24 18:27:28 - pipeline - INFO - Starting YouTube transcription process
+2025-10-24 18:27:28 - pipeline - INFO - Using 8 sample GitLab videos
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: rBHkNJP4xKg
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for rBHkNJP4xKg: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for rBHkNJP4xKg
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: ZRcWCWatUys
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for ZRcWCWatUys: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for ZRcWCWatUys
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: NnERWy3lnws
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for NnERWy3lnws: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for NnERWy3lnws
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: WnbnyV2wgZU
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for WnbnyV2wgZU: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for WnbnyV2wgZU
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: 8IU8LPEa0r0
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for 8IU8LPEa0r0: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for 8IU8LPEa0r0
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: Oq61TjkBRVU
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for Oq61TjkBRVU: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for Oq61TjkBRVU
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: X5Kgsz6Rb38
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for X5Kgsz6Rb38: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for X5Kgsz6Rb38
+2025-10-24 18:27:28 - pipeline - INFO - Fetching transcript for video: KC6MFK3ADho
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for KC6MFK3ADho: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-24 18:27:28 - pipeline - WARNING - No transcript available for KC6MFK3ADho
+2025-10-24 18:27:28 - pipeline - INFO - Transcription complete! Processed: 0, Failed: 8
+2025-10-24 18:27:28 - pipeline - INFO - Summary saved to data-pipeline/data/raw/transcripts/transcription_summary.json
+2025-10-24 18:27:50 - pipeline - INFO - Blog Fetcher initialized. RSS URL: https://about.gitlab.com/atom.xml
+2025-10-24 18:27:50 - pipeline - INFO - Starting blog fetching process
+2025-10-24 18:27:50 - pipeline - INFO - Fetching RSS feed from https://about.gitlab.com/atom.xml
+2025-10-24 18:27:51 - pipeline - INFO - Found 20 blog posts in feed
+2025-10-24 18:27:51 - pipeline - INFO - Processing 20 blog posts
+2025-10-24 18:27:51 - pipeline - INFO - Processing blog post: Modernize Java applications quickly with GitLab Duo with Amazon Q
+2025-10-24 18:27:51 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_79e47dc9.json
+2025-10-24 18:27:51 - pipeline - INFO - Processing blog post: Delivering faster and smarter scans with Advanced SAST
+2025-10-24 18:27:52 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_1263110e.json
+2025-10-24 18:27:52 - pipeline - INFO - Processing blog post: GitLab 18.5: Intelligence that moves software development forward
+2025-10-24 18:27:52 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_94bfb212.json
+2025-10-24 18:27:53 - pipeline - INFO - Processing blog post: Claude Haiku 4.5 now available in GitLab Duo Agentic Chat
+2025-10-24 18:27:53 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_c0f80652.json
+2025-10-24 18:27:54 - pipeline - INFO - Processing blog post: Variable and artifact sharing in GitLab parent-child pipelines
+2025-10-24 18:27:54 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_745d8690.json
+2025-10-24 18:27:55 - pipeline - INFO - Processing blog post: How we built a structured Streamlit Application Framework in Snowflake
+2025-10-24 18:27:55 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_506819a1.json
+2025-10-24 18:27:55 - pipeline - INFO - Processing blog post: Optimize GitLab object storage for scale and performance
+2025-10-24 18:27:56 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_bb6ac037.json
+2025-10-24 18:27:56 - pipeline - INFO - Processing blog post: Streamline enterprise artifact management with GitLab
+2025-10-24 18:27:57 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_af128517.json
+2025-10-24 18:27:57 - pipeline - INFO - Processing blog post: Atlassian ending Data Center as GitLab maintains deployment choice
+2025-10-24 18:27:58 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_a39a748a.json
+2025-10-24 18:27:58 - pipeline - INFO - Processing blog post: How GitLab transforms embedded systems testing cycles
+2025-10-24 18:27:59 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_2fe212e6.json
+2025-10-24 18:27:59 - pipeline - INFO - Processing blog post: Greater AI choice in GitLab Duo: Claude Sonnet 4.5 arrives
+2025-10-24 18:28:00 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_f2a27958.json
+2025-10-24 18:28:00 - pipeline - INFO - Processing blog post: Agentic AI guides and resources
+2025-10-24 18:28:00 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_6505e773.json
+2025-10-24 18:28:01 - pipeline - INFO - Processing blog post: GitLab Duo Agent Platform adds support for Model Context Protocol
+2025-10-24 18:28:01 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_bafb930d.json
+2025-10-24 18:28:02 - pipeline - INFO - Processing blog post: GitLab named a Leader in the 2025 Gartner Magic Quadrant for DevOps Platforms
+2025-10-24 18:28:02 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_8d47e4db.json
+2025-10-24 18:28:03 - pipeline - INFO - Processing blog post: GitLab 18.4: AI-native development with automation and insight
+2025-10-24 18:28:03 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_26c99151.json
+2025-10-24 18:28:03 - pipeline - INFO - Processing blog post: A comprehensive guide to GitLab DAST
+2025-10-24 18:28:04 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_30e1e032.json
+2025-10-24 18:28:04 - pipeline - INFO - Processing blog post: GitLab named a Leader in the 2025 Gartner Magic Quadrant for AI Code Assistants
+2025-10-24 18:28:05 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_3479ecf2.json
+2025-10-24 18:28:05 - pipeline - INFO - Processing blog post: How GitLab Duo Agent Platform transforms DataOps
+2025-10-24 18:28:06 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_dc4237e4.json
+2025-10-24 18:28:06 - pipeline - INFO - Processing blog post: GitLab and Accenture announce Global Reseller Agreement
+2025-10-24 18:28:06 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_46164d0c.json
+2025-10-24 18:28:07 - pipeline - INFO - Processing blog post: How we supercharged GitLab CI statuses with WebSockets
+2025-10-24 18:28:07 - pipeline - INFO - Saved blog post to data-pipeline/data/raw/blogs/blog_2e6673bc.json
+2025-10-24 18:28:08 - pipeline - INFO - Blog fetching complete! Processed: 20, Failed: 0
+2025-10-24 18:28:08 - pipeline - INFO - Summary saved to data-pipeline/data/raw/blogs/blog_fetching_summary.json
+2025-10-24 18:32:37 - pipeline - INFO - YouTube Transcriber initialized. Channel: https://www.youtube.com/@Gitlab
+2025-10-24 18:32:37 - pipeline - INFO - Starting YouTube transcription process
+2025-10-24 18:32:37 - pipeline - INFO - Using 8 sample videos with known transcripts
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: l5I8jaMsVMw
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for l5I8jaMsVMw: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for l5I8jaMsVMw
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: 8aV5AxJE2-g
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for 8aV5AxJE2-g: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for 8aV5AxJE2-g
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: 7q5hArHDEko
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for 7q5hArHDEko: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for 7q5hArHDEko
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: PGyhBwLyK2U
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for PGyhBwLyK2U: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for PGyhBwLyK2U
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: MqL6BMOySIQ
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for MqL6BMOySIQ: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for MqL6BMOySIQ
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: _jUDocRJrdE
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for _jUDocRJrdE: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for _jUDocRJrdE
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: c4rN0IQGtKI
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for c4rN0IQGtKI: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for c4rN0IQGtKI
+2025-10-24 18:32:37 - pipeline - INFO - Fetching transcript for video: 7h7KZC0GWak
+2025-10-24 18:32:37 - pipeline - WARNING - Could not get transcript for 7h7KZC0GWak: 'YouTubeTranscriptApi' object has no attribute 'get_transcript'
+2025-10-24 18:32:37 - pipeline - WARNING - No transcript available for 7h7KZC0GWak
+2025-10-24 18:32:37 - pipeline - INFO - Transcription complete! Processed: 0, Failed: 8
+2025-10-24 18:32:37 - pipeline - INFO - Summary saved to data-pipeline/data/raw/transcripts/transcription_summary.json

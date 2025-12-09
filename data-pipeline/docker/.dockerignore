@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Airflow
+data-pipeline/airflow/logs/*
+data-pipeline/airflow/*.pid
+data-pipeline/airflow/*.err
+data-pipeline/airflow/*.log
+data-pipeline/airflow/airflow.db
+data-pipeline/airflow/webserver_config.py
+
+# Logs
+data-pipeline/logs/
+logs/
+*.log
+
+# Data (to keep image size small)
+data-pipeline/data/raw/*
+data-pipeline/data/processed/*
+data-pipeline/data/curated/*
+data-pipeline/data/cache/*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# GCP keys (IMPORTANT!)
+data-pipeline/gcp_keys/
+*.json
+
+# Test files
+tests/__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation (optional - remove if you want docs in image)
+*.md
+docs/

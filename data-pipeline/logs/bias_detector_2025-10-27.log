@@ -1,0 +1,8 @@
+2025-10-27 16:49:44,755 - bias_detector - INFO - Speaker distribution: {'Alice': 2, 'Bob': 1}
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'he' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'she' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'man' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'woman' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'guys' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - WARNING - Sensitive term 'girls' found 1 times.
+2025-10-27 16:49:54,150 - bias_detector - INFO - Speaker distribution: {'Alice': 2, 'Bob': 1}

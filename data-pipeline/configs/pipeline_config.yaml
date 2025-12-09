@@ -1,0 +1,77 @@
+# Pipeline Configuration
+project:
+  name: "Intelligent Onboarding Assistant"
+  version: "1.0.0"
+  team: "Team 13"
+  environment: development
+
+# Data Sources
+data_sources:
+  gitlab:
+    base_url: "https://handbook.gitlab.com/"
+    sections_to_scrape:
+      - "/handbook/company/"
+      - "/handbook/"
+      - "/handbook/values"
+      - "/handbook/engineering/"
+      - "/handbook/security/"
+      - "/handbook/marketing/"
+      - "/handbook/sales/"
+      - "/handbook/finance/"
+      - "/handbook/product/"
+      - "/handbook/legal/"
+      - "/handbook/people-group/"
+    rate_limit: 1
+    retry_attempts: 3
+    timeout: 30
+    
+  youtube:
+    playlist_url: "https://www.youtube.com/playlist?list=PL05JrBw4t0Kpap0GkV0SSuGnPhCM8jrAv"
+    test_video_url: "https://www.youtube.com/watch?v=jskAZAqhuAA"  # GitLab Core Team meeting - July 2020
+    test_mode: true  # Set to false to process entire playlist
+    max_videos: 150  # Start small for testing
+    whisper_model: "base"
+    
+  blog:
+    rss_url: "https://about.gitlab.com/blog/"
+    max_posts: 20  # Start small for testing
+
+# Preprocessing
+preprocessing:
+  cleaning:
+    remove_html: true
+    normalize_whitespace: true
+    min_text_length: 50
+    
+  chunking:
+    method: "recursive"
+    chunk_size: 800
+    chunk_overlap: 150
+    min_chunk_size: 100
+
+# Validation
+validation:
+  schema:
+    enforce_schema: true
+    required_fields:
+      - "content"
+      - "source"
+      - "timestamp"
+      - "metadata"
+    
+  anomaly_detection:
+    enabled: true
+    missing_values_pct: 5
+    min_content_length: 50
+
+# Storage
+storage:
+  local:
+    base_path: "./data-pipeline/data"
+
+# Logging
+monitoring:
+  logging:
+    level: "INFO"
+    format: "json"
+    file_path: "./data-pipeline/logs/pipeline"

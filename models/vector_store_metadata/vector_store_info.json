@@ -1,7 +1,0 @@
-{
-  "vector_store_type": "chromadb",
-  "collection_name": "gitlab_onboarding",
-  "num_documents": 19,
-  "persist_directory": "models/vector_store",
-  "distance_metric": "cosine"
-}

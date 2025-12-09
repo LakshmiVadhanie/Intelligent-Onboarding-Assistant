@@ -1,0 +1,19 @@
+{
+  "content": "GitLab now offers Claude Haiku 4.5, Anthropic's fastest model combining high intelligence with exceptional speed, directly in the GitLab Duo model selector.\nUsers have the flexibility to choose Claude Haiku 4.5 alongside other leading models, enhancing their GitLab Duo experience with near-frontier performance at remarkable speed. With strong performance on\nSWE-bench Verified (73.3%)\nand more than 2x the speed of Claude Sonnet 4.5, GitLab users can apply Claude Haiku 4.5 to accelerate their development workflows with rapid, intelligent responses.\nGitLab Duo Agent Platform + Claude Haiku 4.5\nGitLab Duo Agent Platform\nextends the value of Claude Haiku 4.5 by enabling multi-agent orchestration, where Claude Haiku 4.5 can serve as a fast sub-agent executing parallel tasks while more powerful models handle high-level planning. This combination creates efficient agentic workflows, where speed meets intelligence across the software development lifecycle. The result is faster iterations, cost-effective AI assistance, and responsive experiences, all delivered inside the GitLab workflow developers already use every day.\nWhere you can use Claude Haiku 4.5\nClaude Haiku 4.5 is now available as a model option in GitLab Duo Agent Platform Agentic Chat on GitLab.com. You can choose Claude Haiku 4.5 from the model selection dropdown to leverage its speed and coding capabilities for your development tasks.\nNote:\nAbility to select Claude Haiku 4.5 in supported IDEs will be available soon.\nKey capabilities:\nSuperior coding performance:\nAchieves 73% on SWE-bench Verified, matching the intelligence level of models that were cutting-edge just months ago.\nLightning-fast responses:\nMore than 2x faster than Sonnet 4.5, perfect for real-time pair programming.\nEnhanced computer use:\nOutperforms Claude Sonnet 4 at autonomous task execution.\nContext awareness:\nFirst Haiku model with native context window tracking for better task persistence.\nExtended thinking:\nPause and reason through complex problems before generating responses.\nGet started today\nGitLab Duo Pro and Enterprise customers can access Claude Haiku 4.5 today. Visit our\ndocumentation\nto learn more about GitLab Duo capabilities and models.\nQuestions or feedback? Share your experience with us through the GitLab community.\nWant to try GitLab Ultimate with Duo Enterprise?\nSign up for a free trial today.\nRead more\nGreater AI choice in GitLab Duo: Claude Sonnet 4.5 arrives\nGitLab 18.4: AI-native development with automation and insight\nGitLab Duo Chat gets agentic AI makeover",
+  "metadata": {
+    "title": "Claude Haiku 4.5 now available in GitLab Duo Agentic Chat",
+    "url": "https://about.gitlab.com/blog/claude-haiku-4-5-now-available-in-gitlab-duo-agentic-chat/",
+    "published": "2025-10-20T00:00:00.000Z",
+    "updated": "2025-10-20T00:00:00.000Z",
+    "author": "Tim Zallmann",
+    "categories": [],
+    "summary": "<p>GitLab now offers Claude Haiku 4.5, Anthropic's fastest model combining high intelligence with exceptional speed, directly in the GitLab Duo model selector.</p>\n<p>Users have the flexibility to choose Claude Haiku 4.5 alongside other leading models, enhancing their GitLab Duo experience with near-frontier performance at remarkable speed. With strong performance on <a href=\"https://www.anthropic.com/news/claude-haiku-4-5\">SWE-bench Verified (73.3%)</a> and more than 2x the speed of Claude Sonn",
+    "fetched_at": "2025-10-24T18:27:53.721662",
+    "source": "gitlab_blog"
+  },
+  "processing": {
+    "content_length": 2545,
+    "word_count": 374,
+    "is_relevant": true
+  }
+}

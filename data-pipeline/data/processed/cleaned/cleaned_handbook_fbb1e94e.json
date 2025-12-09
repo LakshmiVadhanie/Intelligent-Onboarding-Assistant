@@ -1,0 +1,17 @@
+{
+  "content": "GitLab System Admin - Hands-On Lab: Exploring the Kubernetes Admin Dashboard\nThis Hands-On Guide demonstrates the admin dashboard of the Kubernetes GitLab installation.\nObjectives\nIn this lab, you will start to get familiar with the GitLab Admin dashboard. The Admin dashboard is one of the key areas administrators will use to manage their GitLab instances.\nTask A. Accessing the Admin Dashboard\nNavigate to your GitLab instance.\nAuthenticate to the instance as your root admin user.\nIn the left sidebar, select\nAdmin\n.\nTake some time to explore the various sections of the Admin area.\nTask B. Configure Instance Sign Up and Sign In\nTo help secure your GitLab instance, you can customize the way users sign up and authenticate with your instance. In this task, you will enable two-factor authentication and Admin Mode. Admin Mode will introduce additional authentication for Admin tasks in your GitLab instance.\nNavigate to the Admin area of your GitLab instance.\nIn the left sidebar, select\nSettings  General\n.\nSelect\nExpand\nnext to\nSign-up restrictions\n.\nIn\nAllowed domains for sign-ups\n, enter your company domain. This ensures only your companys users can register an account.\nSelect\nSave\n.\nSelect\nExpand\nnext to\nSign-in restrictions\n.\nCheck on\nEnforce two-factor authentication\n.\nCheck on\nEnable Admin Mode\n.\nSelect\nSave\n.\nWhen you are navigated to the two-factor authentication page, select\nConfigure Later\n.\nTo re-enter Admin Mode, select your profile image in the left sidebar. In the resulting menu, select\nEnter Admin Mode\n.\nInput your Admin password in the prompt, then select\nEnter admin mode\n.\nLab Guide Complete\nYou have completed this lab exercise. You can view the other\nlab guides for this course\n.\nSuggestions?\nIf you wish to make a change to the lab, please submit your changes via Merge Request.\nLast modified October 23, 2025:\nUpdate Suggestions to be Uniform (\n0c39f0dd\n)\nView page source\n-\nEdit this page\n-\nplease\ncontribute\n.",
+  "metadata": {
+    "url": "https://handbook.gitlab.com/handbook/customer-success/professional-services-engineering/education-services/ilt-labs/sysadminhandsonlab1k8s/",
+    "title": "GitLab System Admin - Hands-On Lab: Exploring the Kubernetes Admin Dashboard | The GitLab Handbook",
+    "scraped_at": "2025-10-26T20:50:13.726802",
+    "content_length": 1952,
+    "section": "handbook"
+  },
+  "processing": {
+    "original_length": 1952,
+    "cleaned_length": 1950,
+    "cleaned_at": "2025-10-27T16:13:42.487633",
+    "processor": "text_cleaner_v1",
+    "word_count": 324
+  }
+}
