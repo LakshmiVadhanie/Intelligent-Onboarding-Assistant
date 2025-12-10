@@ -19,7 +19,6 @@
 - [Key Features](#key-features)
 - [System Architecture](#system-architecture)
 - [Project Structure](#project-structure)
-- [Performance Metrics](#performance-metrics)
 - [MLOps Pipeline](#mlops-pipeline)
 - [Deployment](#deployment)
 - [Testing](#testing)
@@ -539,45 +538,6 @@ Intelligent-Onboarding-Assistant/
 ├── .env.example                 # Environment template
 └── README.md                    # This file
 ```
-
----
-
-## Performance Metrics
-
-### Retrieval Quality
-
-| Metric | Configuration A (Winner) | Configuration B | Industry Standard |
-|--------|-------------------------|-----------------|-------------------|
-| **MRR** (Mean Reciprocal Rank) | **1.0000** | 0.6667 | 0.60-0.70 |
-| **Precision@1** | **100%** | 67% | 70-80% |
-| **Precision@5** | 67% | 47% | 50-60% |
-| **Recall@5** | 67% | 47% | 60-70% |
-| **NDCG@5** | 0.67 | 0.47 | 0.65-0.75 |
-| **F1@1** | 1.0 | 0.67 | 0.70 |
-
-**Configuration A**: 20,900 token chunks + all-mpnet-base-v2 (768-dim)  
-**Configuration B**: 17,100 token chunks + all-MiniLM-L6-v2 (384-dim)
-
-### Business Impact
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| **Query Resolution Time** | 15-20 min | 1-2 sec | **95% faster** |
-| **Onboarding Duration** | 4-6 weeks | 2-3 weeks | **50% reduction** |
-| **Senior Employee Time** | 10 hrs/week | 2 hrs/week | **80% saved** |
-| **Query Success Rate** | 60% | 95% | **58% increase** |
-| **Availability** | Business hours | 24/7 | **Always on** |
-| **Cost per Query** | $5-10 | $0 | **Free (Groq tier)** |
-
-### System Performance
-
-| Component | Latency | Details |
-|-----------|---------|---------|
-| **Dense Retrieval** | 200-300ms | MPNet embeddings, ChromaDB |
-| **Sparse Retrieval** | 50-100ms | BM25, Elasticsearch |
-| **Reranking** | 400-600ms | BGE-Reranker-Large, top-20 → top-5 |
-| **LLM Generation** | 1-1.5s | Groq Mixtral, streaming |
-| **Total E2E** | **1.8-2.5s** | Sub-3s target achieved |
 
 ---
 
