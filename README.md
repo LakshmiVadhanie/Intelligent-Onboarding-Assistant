@@ -699,49 +699,9 @@ python test_gcs_pipeline.py
 python test_comprehensive.py
 ```
 
-### Test Coverage
-
-**Current Coverage**: 87%
-
----
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md).
-
-### Development Workflow
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** with proper tests
-4. **Run tests**: `pytest tests/ -v`
-5. **Commit changes**: `git commit -m 'Add amazing feature'`
-6. **Push to branch**: `git push origin feature/amazing-feature`
-7. **Open a Pull Request**
-
-### Code Standards
-
-- Follow PEP 8 style guide
-- Write docstrings for all functions
-- Add unit tests for new features
-- Update documentation as needed
-- Use type hints where appropriate
-
----
-
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-### Third-Party Licenses
-
-- GitLab Handbook: CC BY-SA 4.0
-- Sentence-Transformers: Apache 2.0
-- ChromaDB: Apache 2.0
-- Streamlit: Apache 2.0
-- MLflow: Apache 2.0
-
----
 
 ## Team
 
@@ -771,19 +731,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/Mithun3110/Intelligent-Onboarding-Assistant/issues)
 - **Email**: team13-mlops@northeastern.edu
-
----
-
-## Project Status
-
-![Build](https://img.shields.io/github/workflow/status/Mithun3110/Intelligent-Onboarding-Assistant/CI)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
-![Docker](https://img.shields.io/badge/docker-ready-blue)
-![Deployment](https://img.shields.io/badge/deployment-production-success)
-
-**Last Updated**: December 2025  
-**Pipeline Status**: Production Ready  
-**Cost**: $0.00 with Groq free tier
 
 ---
 
