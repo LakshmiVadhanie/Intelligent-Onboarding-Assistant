@@ -17,3 +17,4 @@ pytest
 beautifulsoup4
 scipy
 groq
+groq

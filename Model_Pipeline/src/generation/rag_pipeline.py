@@ -63,6 +63,7 @@ class UniversalRAGPipeline:
         
         self.provider = provider.lower()
         self.temperature = temperature
+        self.groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.client = None
         self.model_name = model
         
