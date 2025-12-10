@@ -368,9 +368,8 @@ Our solution addresses this by reducing query resolution time by 95%, from an av
 | **Retrieval** | ChromaDB (Dense), Elasticsearch (Sparse), BGE-Reranker |
 | **Generation** | Groq (Mixtral-8x7B, Llama 3) |
 | **Monitoring** | MLflow, Prometheus, Grafana, RAGAS |
-| **CI/CD** | GitHub Actions, Docker, pytest |
+| **CI/CD** | GitHub Actions, Docker|
 | **Frontend** | Streamlit, FastAPI |
-| **Testing** | pytest, Great Expectations, Fairlearn |
 
 ---
 
