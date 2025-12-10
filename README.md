@@ -165,43 +165,6 @@ GCS_PROJECT_ID=your_gcp_project_id
 GOOGLE_APPLICATION_CREDENTIALS=C:\path\to\your\project\your-service-account-key.json
 GCS_KEY_PATH=C:\path\to\your\project\your-service-account-key.json
 
-# ============================================
-# Model Configuration
-# ============================================
-
-# Embedding Model (for retrieval)
-EMBEDDING_MODEL=all-mpnet-base-v2
-
-# Reranker Model
-RERANKER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
-
-# LLM Model
-# For Groq: mixtral-8x7b-32768, llama-3.1-70b-versatile, gemma-7b-it
-LLM_MODEL=mixtral-8x7b-32768
-LLM_TEMPERATURE=0.3
-
-# ============================================
-# Retrieval Configuration
-# ============================================
-
-TOP_K_RETRIEVAL=20
-TOP_K_RERANK=5
-CHUNK_SIZE=800
-CHUNK_OVERLAP=150
-
-# ============================================
-# Vector Store Configuration
-# ============================================
-
-VECTOR_STORE_DIR=models/vector_store
-COLLECTION_NAME=gitlab_onboarding
-
-# ============================================
-# Provider Selection
-# ============================================
-
-# Choose: "groq" (free, recommended), "gemini" (free), or "openai" (paid)
-LLM_PROVIDER=groq
 ```
 
 **Important Notes:**
