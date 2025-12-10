@@ -27,11 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f Model_Pipeline/requirements.txt ]; then
-            pip install -r Model_Pipeline/requirements.txt
-          elif [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
+          pip install -r Model_Pipeline/requirements.txt
 
       # Run test pipeline
       - name: Run test pipeline
@@ -40,6 +36,7 @@ jobs:
           python test_pipeline.py
         env:
           PYTHONPATH: ${{ github.workspace }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
 
       # Authenticate with GCP using gcloud directly
       - name: Set up Cloud SDK
