@@ -1,0 +1,1 @@
+{"documents": ["sample 1", "sample 2", "sample 3"], "embeddings_shape": [3, 384], "embedding_dim": 384, "doc_count": 3, "timestamp": "2025-12-09T16:55:28.421724"}

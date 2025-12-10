@@ -1,0 +1,7 @@
+{
+  "version_id": "v2",
+  "timestamp": "2025-12-09T17:00:51.129761",
+  "data_samples": 4,
+  "embedding_dim": 384,
+  "prev_version": "v1"
+}
