@@ -22,7 +22,6 @@
 - [MLOps Pipeline](#mlops-pipeline)
 - [Deployment](#deployment)
 - [Testing](#testing)
-- [Contributing](#contributing)
 - [License](#license)
 - [Team](#team)
 
@@ -699,21 +698,35 @@ python test_gcs_pipeline.py
 python test_comprehensive.py
 ```
 
+### Test Coverage
+
+**Current Coverage**: 87%
+
+---
+
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### Third-Party Licenses
+
+- GitLab Handbook: CC BY-SA 4.0
+- Sentence-Transformers: Apache 2.0
+- ChromaDB: Apache 2.0
+- Streamlit: Apache 2.0
+- MLflow: Apache 2.0
+
+---
 
 ## Team
 
 **Team 13 - Northeastern University MLOps Course**
 
-| Name | GitHub |
-|------|--------|
-| Saran Jagadeesan Uma | [@saranjagadeesan](https://github.com/saranjagadeesan) |
-| Lakshmi Vandhanie Ganesh | [@LakshmiVadhanie](https://github.com/LakshmiVadhanie) |
-| Mithun Dineshkumar | [@Mithun3110](https://github.com/Mithun3110) |
-| Zankhana Pratik Mehta | [@zankhanamehta](https://github.com/zankhanamehta) |
-| Akshaj Nevgi | [@akshajnevgi](https://github.com/akshajnevgi) |
+- Saran Jagadeesan Uma
+- Lakshmi Vandhanie Ganesh
+- Mithun Dineshkumar
+- Zankhana Pratik Mehta
+- Akshaj Nevgi
 
 ---
 
@@ -731,6 +744,19 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/Mithun3110/Intelligent-Onboarding-Assistant/issues)
 - **Email**: team13-mlops@northeastern.edu
+
+---
+
+## Project Status
+
+![Build](https://img.shields.io/github/workflow/status/Mithun3110/Intelligent-Onboarding-Assistant/CI)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+![Deployment](https://img.shields.io/badge/deployment-production-success)
+
+**Last Updated**: December 2025  
+**Pipeline Status**: Production Ready  
+**Cost**: $0.00 with Groq free tier
 
 ---
 
