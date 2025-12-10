@@ -1,0 +1,34 @@
+# Core
+numpy
+pandas
+python-dotenv
+requests
+tqdm
+
+# Google Cloud
+google-auth
+google-cloud-storage
+google-generativeai
+
+# ML & Embeddings
+sentence-transformers
+
+# Vector Store
+chromadb
+
+# Web Interface
+plotly
+streamlit
+
+# MLOps
+mlflow
+
+# Evaluation
+datasets
+ragas
+
+# Testing
+pytest
+
+
+

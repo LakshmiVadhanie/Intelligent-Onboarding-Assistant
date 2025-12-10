@@ -1,320 +1,151 @@
 # Intelligent Onboarding Assistant
 
-[Lakshmi Vandhanie Ganesh](https://github.com/LakshmiVadhanie),
-[Zankhana Pratik Mehta](https://github.com/zankhana46),
-[Mithun Dineshkumar](https://github.com/Mithun3110),
-[Saran Jagadeesan Uma](https://github.com/Saran-Jagadeesan-Uma),
-[Akshaj Nevgi](https://github.com/Akshaj-N)
+<div align="center">
 
-# Introduction 
-The Intelligent Onboarding Assistant is a RAG (Retrieval-Augmented Generation) system designed to transform the employee onboarding experience by consolidating fragmented organizational knowledge into a conversational AI assistant. New employees typically face information overload, struggling to navigate thousands of pages of documentation and scattered meeting recordings to understand company culture, processes and policies. The project addresses these challenges by implementing a hybrid retrieval system that combines semantic search with keyword matching across multiple data sources and reducing the average query resolution time and cutting onboarding duration.
+**An enterprise-grade RAG system that transforms company onboarding using GitLab's public knowledge base**
 
-This project demonstrates a complete MLOps pipeline encompassing automated data ingestion from multiple sources including company handbooks and meeting transcripts, intelligent chunking strategies, multi-modal knowledge integration and production-ready deployment infrastructure with continuous monitoring. The objectives of this project include preparing the data pipeline, implementing hybrid retrieval with cross-encoder reranking, establishing comprehensive evaluation frameworks using RAGAS metrics, deploying a containerized FastAPI service with CI/CD automation and demonstrating real-world production viability. Thus, this project serves as a practical demonstration of how modern MLOps practices combined with RAG can dramatically reduce onboarding time, decrease senior employee mentorship burden and ultimately transform the employee experience while delivering measurable business value in the competitive talent landscape.
+**[Live Demo](https://onboarding-ui-p5rleegxya-uc.a.run.app/)**
 
+</div>
 
-# Dataset Information 
+---
 
-The dataset contains GitLab's public documentation ecosystem which serves as a real-world proxy for enterprise onboarding materials. GitLab was selected as the project's data source due to its comprehensive handbook content (1000+ pages), publicly accessible meeting recordings, complete operational transparency and zero data access barriers. This combination provides the multi-modal and real-world complexity necessary to build and validate a robust onboarding assistant while avoiding legal and privacy constraints.
+## Quick Start
 
-## Data Card
-  
-| **Attribute**       | **Details**                           |
-|---------------------|---------------------------------------|
-| **Dataset Name**     | GitLab-Onboarding-Knowledge-v1        |
-| **Total Size**       | ~800MB - 1.5GB                        |
-| **Source**           | [GitLab Handbook](https://handbook.gitlab.com/) |
-| **Document Count**   | 1000+ handbook pages, 50+ videos      |
-| **Format**           | Markdown (handbook), MP4/transcripts (meetings) |
-| **Access**           | Public (CC BY-SA 4.0 license)         |
+### Prerequisites
 
+- Python 3.9 or higher
+- Google Cloud account (for GCS storage)
+- Groq API key (free tier: https://console.groq.com)
+- Git
+- Docker (optional, for containerized deployment)
 
-## Data Sources
+### Complete Setup Guide
 
-1. **GitLab Handbook**: [GitLab Handbook](https://handbook.gitlab.com/)
-   - Web scraping via BeautifulSoup/Scrapy
-   - Markdown files from GitLab's public repository
+#### Step 1: Clone the Repository
 
-2. **Meeting Recordings**: [YouTube GitLab Channel](https://www.youtube.com/@Gitlab)
-   - Video URLs: [GitLab YouTube](https://www.youtube.com/@Gitlab)
-   - Transcription: YouTube API + Whisper (for non-transcribed videos)
-
-3. **GitLab Blog**: [GitLab Blog](https://about.gitlab.com/blog/)
-   - RSS feed parsing
-   - Filtered for onboarding-relevant topics
-
-##  Prerequisites
-
-- Python 3.9+
-- Apache Airflow: 2.7+
-- DVC: 3.0+
-- Cloud Account: GCP
-
-## Installation
-
-The steps for User installation are as follows:
-
-#### Step 1: Clone repository
-```
-git clone https://github.com/LakshmiVadhanie/Intelligent-Onboarding-Assistant.git
+```bash
+git clone https://github.com/Mithun3110/Intelligent-Onboarding-Assistant.git
 cd Intelligent-Onboarding-Assistant
 ```
-Check python version  >= 3.9
-```python
-python --version
-```
 
-#### Step 2: Environment Setup
+#### Step 2: Set Up Python Environment
+
 ```bash
 # Create virtual environment
 python -m venv venv
 
 # Activate virtual environment
-# On Linux/macOS:
-source venv/bin/activate
 # On Windows:
 venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
 
-# Install dependencies
-pip install --upgrade pip
+#### Step 3: Install Dependencies
+
+```bash
+# Navigate to Model_Pipeline directory
+cd Model_Pipeline
+
+# Install all required packages
 pip install -r requirements.txt
+
+# This will install:
+# - sentence-transformers (for embeddings)
+# - chromadb (vector database)
+# - streamlit (web interface)
+# - groq (LLM API)
+# - google-cloud-storage (GCS integration)
+# - mlflow (experiment tracking)
+# - and other dependencies
 ```
 
-#### Step 3: Initialize Airflow 
-```bash
-# Initialize Airflow database
-airflow db init
+#### Step 4: Set Up Google Cloud Storage (GCS)
 
-# Start Airflow webserver (in one terminal)
-airflow webserver --port 8080
+**4.1: Create GCS Service Account**
 
-# Start Airflow scheduler (in another terminal)
-airflow scheduler
-```
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Navigate to "IAM & Admin" → "Service Accounts"
+3. Click "Create Service Account"
+4. Name it: `mlops-storage-uploader`
+5. Grant roles: "Storage Admin" and "Storage Object Admin"
+6. Click "Create Key" → Choose "JSON"
+7. Save the JSON file as `mlops-476419-2c1937dab204.json` in the project root
 
-#### Step 4: Initialize DVC
-
-```bash
-# Initialize DVC
-cd Intelligent-Onboarding-Assistant
-dvc init
-git add .dvc .gitignore
-git commit -m "Initialize DVC"
-```
-```
-Pull existing data
-dvc pull
-```
-
-#### Step 5: Verify Installation
+**4.2: Set Up GCS Bucket**
 
 ```bash
-# Run tests
-pytest tests/ -v
+# Install Google Cloud SDK if not already installed
+# Visit: https://cloud.google.com/sdk/docs/install
 
-# Check Airflow DAGs
-airflow dags list
+# Authenticate
+gcloud auth login
+
+# Create bucket (if not exists)
+gsutil mb -p mlops-476419 -l us-central1 gs://mlops-data-oa
+
+# Verify bucket
+gsutil ls gs://mlops-data-oa
 ```
 
-# Project Structure
-```
-Intelligent-Onboarding-Assistant/
-├── README.md                        # This file
-├── fix_airflow_setup.sh             # Helper script for local Airflow fixes
-├── test_dag_local.py                # Small harness to test DAG logic locally
-├── test_scraper.py                  # Tests for scraping/ingestion
-├── test_setup.py                    # Setup/unit test helpers
-├── data/                            # Data artifacts and outputs
-│   ├── anomaly_report.json
-│   └── pipeline_statistics.json
-├── data-pipeline/                   # DVC metadata and pipeline requirements
-│   ├── data.dvc
-│   └── requirements.txt
-├── airflow/                         # Airflow configuration + dags + logs
-│   ├── airflow.cfg
-│   ├── webserver_config.py
-│   ├── dags/
-│   │   └── main_pipeline_dag.py     # Primary pipeline DAG
-│   └── logs/
-├── configs/
-│   └── pipeline_config.yaml
-├── logs/                            # Pipeline/runtime logs
-├── monitoring/
-│   └── dashboards/
-├── scripts/                         # Modular pipeline code
-│   ├── ingestion/
-│   │   ├── blog_fetcher.py
-│   │   ├── gitlab_scraper.py
-│   │   ├── v1.py
-│   │   └── video_extractor.py
-│   ├── preprocessing/
-│   │   ├── chunking_strategy.py
-│   │   ├── meeting_transcript_cleaner.py
-│   │   └── transcript_cleaner.py
-│   ├── monitoring/
-│   │   └── alert_manager.py
-│   ├── utils/
-│   │   ├── config_loader.py
-│   │   ├── gcs_uploader.py
-│   │   ├── logging_config.py
-│   │   └── logging_setup.py
-│   └── validation/
-│       ├── bias_detector.py
-│       ├── data_validator.py
-│       └── fairness_analysis.py
-└── tests/                           # pytest unit tests
-  ├── conftest.py
-  ├── test_preprocessing/
-  │   └── test_transcript_cleaner.py
-  └── test_validation/
-    ├── test_bias_detector.py
-    ├── test_data_validator.py
-    └── test_fairness_analysis.py
-```
+#### Step 5: Set Up Groq API
 
-# Data Pipeline
+**5.1: Get Groq API Key**
 
-Our data pipeline is modularized right from data ingestion to preprocessing to make our data ready for modeling. It is made sure that every module functions as expected by following Test Driven Development (TDD). This is achieved through enforcing tests for every module. 
+1. Visit [Groq Console](https://console.groq.com)
+2. Sign up or log in
+3. Navigate to "API Keys"
+4. Click "Create API Key"
+5. Copy the key (starts with `gsk_...`)
 
-We utilize Apache Airflow for our pipeline. We create a DAG with our modules.
+**5.2: Note about Groq Free Tier**
 
-![DAG Image](Assets/dag.png"Airflow DAG")
-Pictured: Our Airflow DAG
+- 14,400 requests per day
+- Rate limit: 30 requests per minute
+- Models available: Mixtral, Llama 3, Gemma
+- No credit card required
 
-The following is the explanation of our Data pipeline DAG
+#### Step 6: Configure Environment Variables
 
-## Data Pipeline Components
-
-The data pipeline in this repository is modular and orchestrated by Airflow (see `airflow/dags/main_pipeline_dag.py`). Each module is implemented as a small, testable script under `scripts/` and is executed as a task in the DAG. The stages below map the common pipeline components to the actual scripts and files in this repo.
-
-### 1. Data acquisition / downloading
-The first stage involves fetching raw content from sources and persist to the local `data/` folder (or a DVC-tracked store).
-- Relevant scripts:
-  - `scripts/ingestion/gitlab_scraper.py`: scraper for handbook/documentation pages.
-  - `scripts/ingestion/blog_fetcher.py`: fetches and parses blog posts or RSS feeds.
-  - `scripts/ingestion/video_extractor.py`: collects video URLs and metadata (used with transcription tools).
-  - `scripts/ingestion/v1.py`: ingestion entrypoints / orchestration helper for ingestion flows.
-
-### 2. Data cleaning & preprocessing
-The next phase involves cleaning raw text and transcript artifacts, normalizing formats and preparing downstream inputs.
-- Relevant scripts:
-  - `scripts/preprocessing/transcript_cleaner.py`: main transcript/text cleaning utilities.
-  - `scripts/preprocessing/meeting_transcript_cleaner.py`: meeting-specific transcript cleaning and normalization.
-  - `scripts/preprocessing/chunking_strategy.py`: document chunking logic used to split large documents into retrieval-friendly pieces.
-
-Notes: by convention ingestion scripts write raw artifacts to `data/raw/` (or `data/`) and preprocessing writes cleaned outputs to `data/processed/` (or a repo `data/` path). When running via Airflow the DAG tasks pass file locations or use a shared configuration in `configs/pipeline_config.yaml` and `scripts/utils/config_loader.py`.
-
-### 3. Validation, anomaly detection & statistics
-This phase validates schema, detects anomalies and computes dataset statistics or reports.
-- Relevant scripts:
-  - `scripts/validation/data_validator.py` — validators and schema checks.
-  - `scripts/validation/bias_detector.py` — performs data slicing and bias checks.
-  - `scripts/validation/fairness_analysis.py` — fairness reporting and slice-level metrics.
-
-Outputs: anomaly reports and pipeline statistics are written to `data/anomaly_report.json` and `data/pipeline_statistics.json` which can be monitored and used to trigger alerts via `scripts/monitoring/alert_manager.py` or Airflow alert hooks.
-
-### 4. Feature engineering & downstream artifacts
-Thus step derives features, perform chunking/embedding-creation and produce artifacts used by retrieval or modeling.
-- Relevant script:
-  - `scripts/preprocessing/chunking_strategy.py` is used to create chunks for the retrieval layer.
-  - Embedding generation and storage may be implemented in `scripts/utils/` or in downstream model code that consumes cleaned/processed data.
-
-### 5. Orchestration (Airflow DAG)
-- Purpose: wire tasks together, handle retries, scheduling and logging.
-- The primary DAG is `airflow/dags/main_pipeline_dag.py`. Typical DAG task mapping:
-  - Ingestion task(s) -> call to `scripts/ingestion/*`
-  - Preprocessing task(s) -> call to `scripts/preprocessing/*`
-  - Validation & statistics task(s) -> call to `scripts/validation/*`
-  - Monitoring/alerting -> call to `scripts/monitoring/alert_manager.py`
-
-Each DAG task should be idempotent and write outputs to deterministic paths (so DVC can track them and CI can assert reproducibility).
-
-### 6. Data versioning & model tracking
-- Data produced by the pipeline should be recorded with DVC (`data-pipeline/data.dvc`) and models/experiments tracked with MLflow. Use `dvc add` for large artifacts and `mlflow` APIs to log experiments.
-
-Example: run an ingestion + preprocess pair locally (manual/debug run):
+Create a `.env` file in the `Model_Pipeline` directory:
 
 ```bash
-source .venv/bin/activate
-python scripts/ingestion/v1.py         # run ingestion step (entrypoint)
-python scripts/preprocessing/transcript_cleaner.py   # run local preprocessing
-python scripts/validation/data_validator.py         # optional validation run
+# Navigate to Model_Pipeline if not already there
+cd Model_Pipeline
+
+# Create .env file
+# On Windows:
+copy .env.example .env
+# On macOS/Linux:
+cp .env.example .env
 ```
 
-When running via Airflow, enable and trigger the DAG in the web UI or run `airflow dags trigger <dag_id>` to launch the full pipeline.
+Edit the `.env` file and add the following:
 
-# Tracking and Logging
+```env
+# Groq API Configuration
+GROQ_API_KEY=your_groq_api_key_here
 
-This project features a comprehensive tracking and logging framework designed for full visibility into the MLOps data pipeline.
+# Google Cloud Storage Configuration
+GCS_BUCKET_NAME=your_gcs_bucket_name
+GCS_PROJECT_ID=your_gcp_project_id
 
-Centralized Python Logging: Custom logging modules provide structured, timestamped logs with dual console and file output. Logs rotate daily and are categorized by pipeline component for clarity.
+# Google Cloud Credentials (use absolute paths)
+GOOGLE_APPLICATION_CREDENTIALS=C:\path\to\your\project\your-service-account-key.json
+GCS_KEY_PATH=C:\path\to\your\project\your-service-account-key.json
 
-Airflow Task Logging: Each task generates detailed execution logs accessible via the Airflow UI, with standardized log formats for consistent traceability.
-
-Progress Tracking with XCom: Task metrics (e.g., documents processed, files cleaned) are pushed to Airflow’s XCom, enabling end-to-end monitoring of pipeline progress.
-
-Pipeline Reports: JSON-based reports (pipeline_statistics.json) summarize ingestion, preprocessing, and validation metrics for each DAG run.
-
-Anomaly & Data Validation Logs: Data validation steps log detected anomalies and quality metrics, ensuring transparent issue tracking during processing.
-
-Persistent Log Storage: All logs are stored in mounted Docker volumes for durability and easy access across container restarts.
-
-This robust tracking and logging setup ensures consistent monitoring, reproducibility, and detailed traceability for every pipeline execution.
-
-# Pipeline Flow Optimization
-
-**Airflow Graph View**:
-1. Access the Airflow UI
-2. Select the desired DAG
-3. Navigate to the Graph View 
-4. Identify bottlenecks by spotting long-running tasks in the graph
-
-![Graph View](Assets/graph_view.png "Graph View ")
-
-**Airflow Gantt Chart**:
-1. Access the Airflow UI
-2. Select the desired DAG
-3. Navigate to the Graph View and then click on Gantt
-4. Identify bottlenecks by looking for tasks with long duration
-
-![Gantt View](Assets/gantt_view.png "Gantt View ")
-
-# Anomalies Detection and Alert Generation
-
-The repository already writes anomaly reports and pipeline statistics to `data/anomaly_report.json` and `data/pipeline_statistics.json`. Use `scripts/validation/data_validator.py` for detection and `scripts/monitoring/alert_manager.py` to send alerts via email when issues are found.
-
-![Email_alert](Assets/email_alert.png "Email Alert")
-
-## Google Cloud Platform (GCP)
-
-Our data version control is tracked and hosted on Google Cloud Platform. Google Cloud seamlessly hosts large dataset and its versioning for developing robust ETL pipelines. Multiple Users can access and update the data at once while inherent support for versioning helps retrieve older versions effortlessly.
-
-We use Google Cloud Storage (GCS) buckets to store, manage, and version our datasets. GCS buckets provide a scalable, durable, and secure solution for storing large volumes of data while enabling seamless collaboration and access control across teams.
-1. All one needs to do is initialize a service account to utilize Google Cloud Platform services.
-2. Like for every other remote, one needs to download SSH key for remote access.
-
-![GCP Image](Assets/gcs.png)
-Our data files tracked by DVC in GCP
-
-# Testing
-
-## Run Test Coverage by Module
-
-**Preprocessing Tests**
-```bash
-pytest tests/test_preprocessor.py -v
+# Optional: Model Configuration
+EMBEDDING_MODEL=all-mpnet-base-v2
+CHUNK_SIZE=800
+CHUNK_OVERLAP=150
 ```
 
-**Chunking Tests**
-```bash
-pytest tests/test_chunking.py -v
-```
-
-**Retrieval Tests**
-```bash
-pytest tests/test_retrieval.py -v
-```
-
-**Generation Tests (RAG Pipeline)**
-```bash
-pytest tests/test_generation.py -v
-```
+**Important Notes:**
+- Replace `your_groq_api_key_here` with your actual Groq API key from Step 5
+- Replace `your_gcs_bucket_name` with your GCS bucket name
+- Replace `your_gcp_project_id` with your Google Cloud project ID
+- For `GOOGLE_APPLICATION_CREDENTIALS` and `GCS_KEY_PATH`, use the **absolute path** to your service account JSON file
+  - **Windows example**: `C:\Users\YourName\Desktop\project\mlops-service-account.json`
+  - **macOS/Linux example**: `/home/username/project/mlops-service-account.json`
+- Never commit the `.env` file or service account JSON to Git (they're in .gitignore)
