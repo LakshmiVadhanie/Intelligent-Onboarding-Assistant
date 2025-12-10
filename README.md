@@ -161,6 +161,47 @@ GROQ_API_KEY=your_groq_api_key_here
 GCS_BUCKET_NAME=your_gcs_bucket_name
 GCS_PROJECT_ID=your_gcp_project_id
 
+# Google Cloud Credentials (use absolute paths)
+# Windows example: C:\Users\YourName\Desktop\project\service-account.json
+# macOS/Linux example: /home/username/project/service-account.json
+GOOGLE_APPLICATION_CREDENTIALS=C:\path\to\your\project\your-service-account-key.json
+GCS_KEY_PATH=C:\path\to\your\project\your-service-account-key.json
+
+# ============================================
+# Model Configuration
+# ============================================
+
+# Embedding Model (for retrieval)
+EMBEDDING_MODEL=all-mpnet-base-v2
+
+# Reranker Model
+RERANKER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
+
+# LLM Model
+# For Groq: mixtral-8x7b-32768, llama-3.1-70b-versatile, gemma-7b-it
+LLM_MODEL=mixtral-8x7b-32768
+LLM_TEMPERATURE=0.3
+
+# ============================================
+# Retrieval Configuration
+# ============================================
+
+TOP_K_RETRIEVAL=20
+TOP_K_RERANK=5
+CHUNK_SIZE=800
+CHUNK_OVERLAP=150
+
+# ============================================
+# Vector Store Configuration
+# ============================================
+
+VECTOR_STORE_DIR=models/vector_store
+COLLECTION_NAME=gitlab_onboarding
+
+# ============================================
+# Provider Selection
+# ============================================
+
 # Choose: "groq" (free, recommended), "gemini" (free), or "openai" (paid)
 LLM_PROVIDER=groq
 ```
@@ -196,62 +237,7 @@ python src/retrieval/vector_store.py
 # Subsequent runs use cached embeddings
 ```
 
-#### Step 9: Run the Application
-
-**Option A: Streamlit Web Interface (Recommended)**
-
-```bash
-# Make sure you're in Model_Pipeline directory
-cd Model_Pipeline
-
-# Launch the web app
-streamlit run app.py
-
-# The app will open automatically at http://localhost:8501
-```
-
-**Features:**
-- Clean, modern UI with real-time responses
-- Source citations with clickable links
-- Conversation history
-- Performance metrics dashboard
-- Model configuration options
-
-**Option B: Command-Line Interface**
-
-```bash
-# Interactive CLI
-python src/generation/rag_pipeline.py
-
-# You'll see a prompt where you can type questions
-# Type 'quit' or 'exit' to stop
-```
-
-**Option C: Python Script**
-
-```python
-# Create a file test_query.py
-from src.generation.rag_pipeline import UniversalRAGPipeline
-
-# Initialize pipeline
-pipeline = UniversalRAGPipeline(use_groq=True)
-
-# Ask a question
-response = pipeline.query("What is GitLab's remote work policy?")
-
-# Print results
-print(f"Answer: {response['answer']}")
-print(f"\nSources: {len(response['sources'])} documents")
-for i, source in enumerate(response['sources'], 1):
-    print(f"{i}. {source['metadata']['source']}")
-```
-
-Then run:
-```bash
-python test_query.py
-```
-
-#### Step 10: Verify Everything Works
+#### Step 9: Verify Everything Works
 
 Run the comprehensive test suite:
 
@@ -407,10 +393,73 @@ Our solution addresses this by reducing query resolution time by 95%, from an av
 - **Bias Detection**: Fairlearn-based analysis across demographic slices
 - **CI/CD**: GitHub Actions for automated testing and deployment
 - **Monitoring**: Comprehensive logging and performance metrics
+- **Data Versioning**: DVC for reproducible experiments
 
 ---
 
 ## System Architecture
+
+### High-Level Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      DATA INGESTION LAYER                        │
+├─────────────────────────────────────────────────────────────────┤
+│  GitLab Handbook  │  YouTube Videos  │  Blog Posts  │  Issues   │
+│   (Scrapy/BS4)    │  (Whisper API)   │ (RSS Parser) │ (GraphQL) │
+└──────────────┬────────────────┬───────────────┬─────────────────┘
+               │                │               │
+               ▼                ▼               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    PREPROCESSING PIPELINE                        │
+├─────────────────────────────────────────────────────────────────┤
+│  Markdown Parsing  │  Transcription  │  Text Cleaning  │  DVC   │
+│  Link Resolution   │  Deduplication  │  Normalization  │  GCS   │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       CHUNKING STRATEGY                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Handbook: 800 tokens (150 overlap) - Markdown-aware            │
+│  Transcripts: 800 tokens (100 overlap) - Time-based semantic    │
+│  Result: ~20,000 searchable chunks (15k handbook + 5k meetings) │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      EMBEDDING GENERATION                        │
+├─────────────────────────────────────────────────────────────────┤
+│  Model: all-mpnet-base-v2 (768 dimensions)                      │
+│  Storage: ChromaDB (cosine similarity)                          │
+│  Indexing: 20,000 chunks with metadata enrichment               │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      RETRIEVAL PIPELINE                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Query Enhancement → Dense Search (Semantic) → Sparse (BM25)    │
+│  → Combine Top-20 → Cross-Encoder Rerank → Final Top-5         │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      GENERATION LAYER                            │
+├─────────────────────────────────────────────────────────────────┤
+│  LLM: Groq Mixtral-8x7B (Free Tier)                            │
+│  Context: Top-5 chunks + Query                                  │
+│  Output: Answer + Source Citations + Confidence Scores          │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      USER INTERFACE                              │
+├─────────────────────────────────────────────────────────────────┤
+│  Streamlit Web App │  FastAPI REST API  │  CLI Interface        │
+│  Real-time queries │  Batch processing  │  Development testing  │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ### Technology Stack
 
@@ -690,10 +739,6 @@ python test_gcs_pipeline.py
 python test_comprehensive.py
 ```
 
-### Test Coverage
-
-**Current Coverage**: 87%
-
 ---
 
 ## Contributing
@@ -780,7 +825,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made by Team 13 | Northeastern University**
+**Made with ❤️ by Team 13 | Northeastern University**
 
 [Back to Top](#intelligent-onboarding-assistant)
 
