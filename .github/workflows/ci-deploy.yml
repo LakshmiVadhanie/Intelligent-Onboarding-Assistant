@@ -17,14 +17,37 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Authenticate with GCP using service account key
-      - name: Set up GCP credentials
-        uses: google-github-actions/auth@v1
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}  # ✅ Fixed: removed extra quotes
+          python-version: '3.10'
 
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f Model_Pipeline/requirements.txt ]; then
+            pip install -r Model_Pipeline/requirements.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      # Run test pipeline
+      - name: Run test pipeline
+        run: |
+          cd Model_Pipeline
+          python test_pipeline.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      # Authenticate with GCP using gcloud directly
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT }}
+          export_default_credentials: true
 
       - name: Configure Docker for Artifact Registry
         run: |
