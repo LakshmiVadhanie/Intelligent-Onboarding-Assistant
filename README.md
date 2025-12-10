@@ -246,12 +246,12 @@ Run the comprehensive test suite:
 python test_pipeline.py
 
 # Expected output:
-# ✓ Data Loading: PASSED
-# ✓ Embeddings Generation: PASSED
-# ✓ Vector Store: PASSED
-# ✓ Retrieval: PASSED
-# ✓ RAG Pipeline: PASSED
-# ✓ Evaluation Metrics: PASSED
+# Data Loading: PASSED
+# Embeddings Generation: PASSED
+# Vector Store: PASSED
+# Retrieval: PASSED
+# RAG Pipeline: PASSED
+# Evaluation Metrics: PASSED
 ```
 
 ### Troubleshooting Common Issues
@@ -399,6 +399,68 @@ Our solution addresses this by reducing query resolution time by 95%, from an av
 
 ## System Architecture
 
+### High-Level Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      DATA INGESTION LAYER                        │
+├─────────────────────────────────────────────────────────────────┤
+│  GitLab Handbook  │  YouTube Videos  │  Blog Posts  │  Issues   │
+│   (Scrapy/BS4)    │  (Whisper API)   │ (RSS Parser) │ (GraphQL) │
+└──────────────┬────────────────┬───────────────┬─────────────────┘
+               │                │               │
+               ▼                ▼               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    PREPROCESSING PIPELINE                        │
+├─────────────────────────────────────────────────────────────────┤
+│  Markdown Parsing  │  Transcription  │  Text Cleaning  │  DVC   │
+│  Link Resolution   │  Deduplication  │  Normalization  │  GCS   │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       CHUNKING STRATEGY                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Handbook: 800 tokens (150 overlap) - Markdown-aware            │
+│  Transcripts: 800 tokens (100 overlap) - Time-based semantic    │
+│  Result: ~20,000 searchable chunks (15k handbook + 5k meetings) │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      EMBEDDING GENERATION                        │
+├─────────────────────────────────────────────────────────────────┤
+│  Model: all-mpnet-base-v2 (768 dimensions)                      │
+│  Storage: ChromaDB (cosine similarity)                          │
+│  Indexing: 20,000 chunks with metadata enrichment               │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      RETRIEVAL PIPELINE                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Query Enhancement → Dense Search (Semantic) → Sparse (BM25)    │
+│  → Combine Top-20 → Cross-Encoder Rerank → Final Top-5         │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      GENERATION LAYER                            │
+├─────────────────────────────────────────────────────────────────┤
+│  LLM: Groq Mixtral-8x7B (Free Tier)                            │
+│  Context: Top-5 chunks + Query                                  │
+│  Output: Answer + Source Citations + Confidence Scores          │
+└──────────────┬──────────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      USER INTERFACE                              │
+├─────────────────────────────────────────────────────────────────┤
+│  Streamlit Web App │  FastAPI REST API  │  CLI Interface        │
+│  Real-time queries │  Batch processing  │  Development testing  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 ### Technology Stack
 
 | Layer | Technologies |
@@ -486,8 +548,8 @@ Intelligent-Onboarding-Assistant/
 
 | Metric | Configuration A (Winner) | Configuration B | Industry Standard |
 |--------|-------------------------|-----------------|-------------------|
-| **MRR** (Mean Reciprocal Rank) | **1.0000** ✅ | 0.6667 | 0.60-0.70 |
-| **Precision@1** | **100%** ✅ | 67% | 70-80% |
+| **MRR** (Mean Reciprocal Rank) | **1.0000** | 0.6667 | 0.60-0.70 |
+| **Precision@1** | **100%** | 67% | 70-80% |
 | **Precision@5** | 67% | 47% | 50-60% |
 | **Recall@5** | 67% | 47% | 60-70% |
 | **NDCG@5** | 0.67 | 0.47 | 0.65-0.75 |
@@ -580,12 +642,12 @@ Open http://localhost:5000 to view:
 ### Continuous Integration
 
 Every push to `main` triggers:
-1. ✅ Unit tests (pytest)
-2. ✅ Integration tests (pipeline validation)
-3. ✅ Bias detection
-4. ✅ Performance benchmarking
-5. ✅ Docker image build
-6. ✅ Deployment to staging
+1. Unit tests (pytest)
+2. Integration tests (pipeline validation)
+3. Bias detection
+4. Performance benchmarking
+5. Docker image build
+6. Deployment to staging
 
 ---
 
@@ -677,6 +739,10 @@ python test_gcs_pipeline.py
 python test_comprehensive.py
 ```
 
+### Test Coverage
+
+**Current Coverage**: 87%
+
 ---
 
 ## Contributing
@@ -763,7 +829,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made with ❤️ by Team 13 | Northeastern University**
+**Made by Team 13 | Northeastern University**
 
 [Back to Top](#intelligent-onboarding-assistant)
 
