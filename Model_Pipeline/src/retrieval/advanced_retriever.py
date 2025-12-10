@@ -1,6 +1,6 @@
 # src/retrieval/advanced_retriever.py
 
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer  # CrossEncoder disabled
 import sys
 from pathlib import Path
 
@@ -59,7 +59,7 @@ class AdvancedRetriever:
         logger.info(f"✓ Loaded embedding model")
         
         logger.info(f"\n🔄 Loading reranker model: {reranker_model}")
-        self.reranker = CrossEncoder(reranker_model)
+        self.reranker = None  # Disabled to avoid HuggingFace rate limits
         self.reranker_model_name = reranker_model
         logger.info(f"✓ Loaded reranker model")
         
