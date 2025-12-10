@@ -6,7 +6,6 @@ COPY requirements.ui.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # PRE-DOWNLOAD the sentence-transformers model during build
-# This uses Google Cloud Build's IP, not your blocked IP
 RUN python -c "from sentence_transformers import SentenceTransformer; \
     print('Downloading sentence-transformers model...'); \
     model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2'); \
