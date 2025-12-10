@@ -222,17 +222,6 @@ Answer:"""
         
         return result
     
-    def _generate_gemini(self, prompt: str) -> str:
-        """Generate with Gemini"""
-        response = self.groq_client.chat.completions.create(model="mixtral-8x7b-32768", messages=[{"role": "user", "content": 
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                temperature=self.temperature,
-                max_output_tokens=500,
-            }])
-        )
-        return response.choices[0].message.content
-    
     def _generate_openai(self, prompt: str) -> str:
         """Generate with OpenAI"""
         response = self.client.chat.completions.create(
