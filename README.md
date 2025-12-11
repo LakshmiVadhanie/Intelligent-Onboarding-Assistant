@@ -565,6 +565,85 @@ python test_gcs_pipeline.py
 
 ```
 
+## MLOps Monitoring Pipeline
+
+Production models require continuous monitoring to detect performance degradation and data drift. We implement a 5-step automated monitoring system:
+
+### Step 1: Metrics Collection
+Collects **11 key metrics per query**: Precision@5, Recall@5, F1@5, MRR, NDCG@5, Response Time, Semantic Relevance, Query Count, Embedding Dimensions.
+
+```python
+from src.monitoring.metrics_collector import MetricsCollector
+
+collector = MetricsCollector()
+metrics = collector.collect_metrics(
+    query="What is the onboarding process?",
+    retrieved_docs=[doc1, doc2, doc3, doc4, doc5],
+    generated_response="...",
+    response_time=0.45,
+    relevant_doc_indices=[0, 1, 3]
+)
+daily_metrics = collector.get_aggregated_metrics(window='1d')
+```
+
+### Step 2: Data Shift Detection
+Uses **Evidently AI** (distribution comparison) and **TFDV** (schema validation) to detect drift.
+
+```python
+from src.monitoring.data_shift_detector import DataShiftDetector
+
+detector = DataShiftDetector()
+drift_report = detector.detect_drift(
+    new_data=new_data,
+    reference_data=original_training_data,
+    methods=['evidently', 'tfdv']
+)
+print(f"Data Drift: {drift_report['drift_percentage']}%")
+```
+
+### Step 3: Threshold Management
+**18 configurable thresholds** across performance (Precision>0.5, F1>0.35, Response<5s) and drift metrics (Evidently>30%, TFDV>20%).
+
+```python
+from src.monitoring.threshold_manager import ThresholdManager
+
+manager = ThresholdManager()
+violations = manager.check_thresholds(metrics)
+if violations:
+    print(f"CRITICAL: {violations} → TRIGGER RETRAINING")
+```
+
+### Step 4: Automated Retraining Pipeline
+**5-step pipeline**: DataPuller → ModelRetrainer → ModelValidator → ModelComparator → ModelDeployer. Deploys if improvement ≥2%.
+
+```python
+from src.monitoring.retraining_pipeline import RetrainingPipeline
+
+pipeline = RetrainingPipeline(data_source='gcs')
+result = pipeline.run_full_pipeline(
+    trigger_reason="Precision dropped to 0.42",
+    data_source_path="gs://bucket/data.json"
+)
+# Deploys v2 if improvement_percentage >= 2%
+```
+
+### Step 5: Stakeholder Notifications
+**Email + Slack** notifications for: Retraining Triggered, Model Deployed, Deployment Held, Failures.
+
+```python
+from src.monitoring.notifications import NotificationManager
+
+manager = NotificationManager(
+    email_recipients=['stakeholder@company.com'],
+    sender_email='alerts@company.com',
+    sender_password='app_password'
+)
+manager.notify_retraining_triggered(
+    trigger_reason="Precision@5 dropped from 0.55 to 0.42",
+    drift_percentage=45.0
+)
+```
+
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
